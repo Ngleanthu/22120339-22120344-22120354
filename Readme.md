@@ -1,7 +1,6 @@
 # CSC10002-23CTT5 Project Bonus
 # Members Group: 22120339 - 22120344 - 22120354
 
-
 ## Notes cho các thành viên nhóm:
 
 ### Cấu trúc thư mục của dự án
