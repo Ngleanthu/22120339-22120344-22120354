@@ -24,7 +24,7 @@
     <ClCompile Include="src\functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\global.cpp">
+    <ClCompile Include="src\global.h">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
