@@ -15,3 +15,6 @@
 - Mỗi người nên code ra từng file riêng biệt bỏ vào `lib`, và thông báo cho mọi người là mình sẽ làm phần nào, để tránh trường hợp bị xung đột khi đẩy code. **(Merge conflict)**
 - Ngoài ra, mỗi người cần phải chia ra từng branch khi code. ***Không được commit/push lên branch main!***
 - *To be continued.*
+
+### Viết commit message:
+https://github.com/RomuloOliveira/commit-messages-guide/blob/master/README_vi-VN.md
