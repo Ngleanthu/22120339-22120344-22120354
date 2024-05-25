@@ -1,0 +1,29 @@
+# Style heavily based on OpenTelemetry's Clang-Format:
+# https://github.com/open-telemetry/opentelemetry-cpp/blob/main/.clang-format
+BasedOnStyle: Chromium
+Standard: Cpp11
+InsertBraces: true
+UseTab: Never
+IndentWidth: 4
+ColumnLimit: 100
+IndentCaseLabels: true
+PointerAlignment: Right
+IncludeBlocks: Preserve
+AlignOperands: true
+AlignConsecutiveAssignments: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+#  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
