@@ -1,5 +1,5 @@
-#include "Enums.h"
-#include "Misc.h"
+
+#include "struct.h"
 #include <string>
 // Student records
 struct User
@@ -18,7 +18,7 @@ struct User
 };
 
 // Struct Student extending User
-struct Student
+struct Student_user
 {
     User user;
     std::string major;
