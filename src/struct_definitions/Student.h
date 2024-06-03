@@ -1,11 +1,12 @@
-
 #include <string>
+
 struct Student
 {
-    std::string ID;
+    unsigned int id;
     std::string name;
     Date dob;
-    Gender gen;  
+    Gender gender;
+    unsigned int social_id;
     Student *studentNext = nullptr;
 };
 
