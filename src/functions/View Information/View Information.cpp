@@ -2,11 +2,39 @@
 
 void viewListOfClasses(SchoolYear school_year)  // view all the classes in a school year.
 {
-	Class* class_l = school_year.class_list;
+    // To do: Need to read school_year.name to open the correct file !!!
+
+    // Read data in a file.
+    std::ifstream fin;
+    fin.open("D://school_year.txt");
+
+    if (!fin.is_open()) std::cout << "Cannot open file!";
+
+    LLNode* class_l = nullptr;
+    LLNode* cur = class_l;
+
+    while (!fin.eof())
+    {
+        LLNode* tmp = new LLNode;
+        std::getline(fin, tmp->name);
+        tmp->next = nullptr;
+        if (cur == nullptr)
+        {
+            class_l = cur = tmp;
+        }
+        else
+        {
+            cur->next = tmp;
+            cur = tmp;
+        }
+    }
+
     for (; class_l != nullptr; class_l = class_l->next)
     {
-        std::cout << class_l->id << " - " << class_l->name << ".\n";
+        std::cout << "\n" << class_l->name;
     }
+
+    fin.close();
 }
 
 void viewStudentsInClass(Class* a)             // view all the students in class. 
