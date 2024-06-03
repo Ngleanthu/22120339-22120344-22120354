@@ -11,4 +11,7 @@ int main()
         return 0;
     }
     std::cout << "Login successful" << std::endl;
+    // TODO: Hiển thị menu:
+    // TODO: Gồm: xem profile người dùng hiện tại (từ file CSV), Logout, đổi pass
+    // TODO: Và menu cho các phần liên quan đến Giáo vụ
 }
