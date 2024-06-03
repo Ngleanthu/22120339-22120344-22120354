@@ -28,7 +28,7 @@ struct Course
 struct SchoolYear
 {
     std::string school_year;
-    LLNode *class_list
+    LLNode *class_list;
 };
 
 struct LLNode
