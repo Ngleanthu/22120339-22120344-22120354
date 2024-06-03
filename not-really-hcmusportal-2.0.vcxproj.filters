@@ -27,11 +27,34 @@
     <ClCompile Include="src\global.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\functions\Login\Login.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\functions\FileIO\FileRead.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="visualisations\Users.drawio">
       <Filter>Visualisations</Filter>
     </None>
     <None Include="Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\struct_definitions\Enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\struct_definitions\Misc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\struct_definitions\User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\functions\Login\Login.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\functions\FileIO\FileIO.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

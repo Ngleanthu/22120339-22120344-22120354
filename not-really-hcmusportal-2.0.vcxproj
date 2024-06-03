@@ -129,6 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\functions.cpp" />
+    <ClCompile Include="src\functions\FileIO\FileRead.cpp" />
+    <ClCompile Include="src\functions\Login\Login.cpp" />
     <ClCompile Include="src\global.h" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
@@ -137,6 +139,8 @@
     <None Include="visualisations\Users.drawio" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\functions\FileIO\FileIO.h" />
+    <ClInclude Include="src\functions\Login\Login.h" />
     <ClInclude Include="src\struct_definitions\Enums.h" />
     <ClInclude Include="src\struct_definitions\Misc.h" />
     <ClInclude Include="src\struct_definitions\User.h" />
