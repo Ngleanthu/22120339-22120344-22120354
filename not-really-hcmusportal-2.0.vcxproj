@@ -136,6 +136,11 @@
     <None Include="Readme.md" />
     <None Include="visualisations\Users.drawio" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\struct_definitions\Enums.h" />
+    <ClInclude Include="src\struct_definitions\Misc.h" />
+    <ClInclude Include="src\struct_definitions\User.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
