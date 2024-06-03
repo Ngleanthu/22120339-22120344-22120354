@@ -18,7 +18,7 @@ struct User
 };
 
 // Struct Student extending User
-struct Student
+struct Student_user
 {
     User user;
     std::string major;

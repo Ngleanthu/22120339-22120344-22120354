@@ -34,4 +34,15 @@
     </None>
     <None Include="Readme.md" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\struct_definitions\Enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\struct_definitions\Misc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\struct_definitions\User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

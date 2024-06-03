@@ -1,4 +1,5 @@
 #include <string>
+#include "Student.h"
 struct Course
 {
     unsigned int id;
@@ -10,5 +11,5 @@ struct Course
     unsigned int current_students = 0;
     // A course can only have so much students, so it's better to use an array here instead
     // Dizzme mùa đăng ký học phần
-    unsigned int *student_list = new unsigned int[max_students];
+    Student *student_list;
 };
