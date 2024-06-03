@@ -48,6 +48,7 @@ void register_user(user_info& info) {
         file << info.users[i].username << " " << info.users[i].password << endl;
     }
     file.close();
+    delete[] new_users;
 
     cout << "Registration successful. You can now log in with your username and password." << endl;
 }
@@ -68,4 +69,28 @@ void login(user_info info) {
     }
 
     cout << "Incorrect username or password. Please try again." << endl;
+}
+
+void forgot_password(user_info info)
+{
+    string user_name;
+    cout << "Enter your user name: ";
+    cin >> user_name;
+
+    bool user_exist = false;
+
+    for (int i = 0; i < info.num_users; i++)
+    {
+        if (info.users[i].username == user_name)
+        {
+            cout << "Your account is found!" << endl;
+            cout << "Your password is " << info.users[i].password << endl;
+            user_exist = true;
+            return;
+        }
+    }
+    if (user_exist == false)
+    {
+        cout << "Your user name does not exist!" << endl;
+    }
 }

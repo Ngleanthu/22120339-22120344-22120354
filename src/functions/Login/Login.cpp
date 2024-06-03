@@ -30,7 +30,8 @@ int main() {
     do {
         cout << "1. Register" << endl;
         cout << "2. Login" << endl;
-        cout << "3. Exit" << endl;
+        cout << "3. Forgot password" << endl;
+        cout << "4. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -44,6 +45,10 @@ int main() {
             login(info);
             break;
         case 3:
+            system("cls");
+            forgot_password(info);
+            break;
+        case 4:
             cout << "Exiting program." << endl;
             return 0;
             break;
