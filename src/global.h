@@ -18,13 +18,13 @@ struct User
     Gender gender;
     unsigned int social_id;
 
-    // Login details
+    // Login details 
     std::string username;
     std::string password;
 };
 
 // Struct Student extending User
-struct Student
+struct Student 
 {
     User user;
     std::string major;
