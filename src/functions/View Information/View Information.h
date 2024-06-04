@@ -14,6 +14,6 @@ struct Student {
 };
 
 void viewListOfClasses(SchoolYear school_year);
-void viewStudentsInClass(const std::string& filename); 
-void viewListOfCourse(Course *course, int numCourse);
-void viewStudentsInCourse(Course* a);
+void viewStudentsInClass(const std::string& filename);
+void viewListOfCourse(Course* head);
+void viewStudentsInCourse(const std::string& filename);
