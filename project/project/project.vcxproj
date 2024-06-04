@@ -127,20 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AccountHandle.cpp" />
-    <ClCompile Include="Linklist.cpp" />
-    <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Login.cpp" />
-    <ClCompile Include="StateMachine.cpp" />
-    <ClCompile Include="System.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AccountHandle.h" />
     <ClInclude Include="Linklist.h" />
-    <ClInclude Include="Login.h" />
+    <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="System.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Linklist.cpp" />
+    <ClCompile Include="SplashScreen.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="System.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

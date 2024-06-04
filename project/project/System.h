@@ -1,4 +1,5 @@
 #pragma once
+
 #include"StateMachine.h"
 
 
@@ -10,10 +11,10 @@ struct Data
 		_states = new StateMachine;
 	}
 };
-class System
+class System 
 {
 private:
-	Data* _data;
+	StateMachine* _data;
 public:
 	System();
 	void Run();

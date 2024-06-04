@@ -1,23 +1,27 @@
 #include "System.h"
+#include"SplashScreen.h"
 #include<Windows.h>
-#include"Login.h"
-System::System() : _data(new Data)
+System::System() : _data(new StateMachine)
 {
-	_data->_states->AddState(new Login(_data));
-	
+	_data->AddState(new SplashScreen(_data));
 	Run();
 
 }
+
 void System::Run()
 {
 
+	
 
 	while (1)
 	{
 		Sleep(60);
-		_data->_states->ProcessStateChange();
-		_data->_states->GetCurrentState()->ProcessInput();
-		_data->_states->GetCurrentState()->Update();
-		_data->_states->GetCurrentState()->Draw();	
+		_data->ProcessStateChange();
+		_data->GetCurrentState()->ProcessInput();
+		_data->GetCurrentState()->Update();
+		_data->GetCurrentState()->Draw();
+
+
+
 	}
 }
