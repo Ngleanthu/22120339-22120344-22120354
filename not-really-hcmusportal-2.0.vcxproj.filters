@@ -33,7 +33,10 @@
     <ClCompile Include="src\functions\FileIO\FileRead.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="src\functions\Profile\Profile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\functions\Menu\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,12 +47,6 @@
     <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\struct_definitions\Enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\struct_definitions\Misc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\struct_definitions\User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -58,9 +55,6 @@
     </ClInclude>
     <ClInclude Include="src\functions\FileIO\FileIO.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

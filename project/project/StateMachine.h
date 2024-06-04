@@ -10,11 +10,8 @@ private:
 	bool _remove;
 public:
 	StateMachine();
-	~StateMachine();
 	void AddState(State* state, bool replace = 0);
 	void RemoveState();
 	void ProcessStateChange();
 	State*& GetCurrentState();
 };
-
-
