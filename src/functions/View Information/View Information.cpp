@@ -193,3 +193,102 @@ void viewStudentsInCourse(const std::string &filename)  // view students in a co
         }
         delete[] students;
 }
+
+bool checkValidFileName(std::string name_of_file, std::string directory, std::string name)
+{
+    std::ifstream file;
+    file.open(name_of_file + "." + directory);
+    if (file.is_open())
+    {
+        std::string line;
+        while (std::getline(file, line))
+        {
+            if (line.find(name) != std::string::npos)
+            {
+                file.close();
+                return true;
+            }
+        }
+        file.close();
+        return false;
+    }
+    else
+    {
+        std::cout << "Unable to open file to check!\n";
+    }
+}
+
+void viewScoreBoardOfCourse(std::string course_name)
+{
+    std::string course_name;
+    std::cout << "Enter course name: ";
+    std::getline(std::cin, course_name, '\n');
+
+
+    while (!checkValidFileName("course", "txt", course_name))
+    {
+        std::cout << "Unvalid course's name! \n";
+        std::cout << "Please try again!";
+        std::cout << "\nEnter course name: ";
+        std::getline(std::cin, course_name, '\n');
+    }
+
+    std::ifstream fin;
+    fin.open(course_name + "-scoreboard.csv");
+    StudentScore* students = new StudentScore[MAX];
+    int cnt = 0;
+    if (fin.is_open())
+    {
+        int i = 0;
+        std::string line;
+        std::getline(fin, line);
+        while (std::getline(fin, line))
+        {
+            std::stringstream ss(line);
+            std::string token;
+
+            StudentScore stu;
+
+            std::getline(ss, token, ',');
+
+            std::getline(ss, token, ',');
+            stu.id = token;
+
+            std::getline(ss, token, ',');
+            stu.full_name = token;
+
+            std::getline(ss, token, ',');
+            stu.total_mark = std::stof(token);
+
+            std::getline(ss, token, ',');
+            stu.final_mark = std::stof(token);
+
+            std::getline(ss, token, ',');
+            stu.midterm_mark = std::stof(token);
+
+            std::getline(ss, token);
+            stu.other_mark = std::stof(token);
+
+            students[i] = stu;
+            i++;
+        }
+        cnt = i;
+        fin.close();
+    }
+    else
+    {
+        std::cerr << "Unable to open file" << std::endl;
+    }
+
+    std::cout << std::setw(3) << "No " << std::setw(3) << "ID" << std::setw(15)
+        << "Name" << std::setw(25) << "Total Mark" << std::setw(15)
+        << "Final Mark" << std::setw(15) << "Midterm Mark" << std::setw(15)
+        << "Other Mark" << std::endl;
+    for (int j = 0; j < cnt; ++j)
+    {
+        std::cout << std::left << std::setw(4) << j + 1 << std::setw(13) << students[j].id << std::setw(15)
+            << students[j].full_name << std::setw(14) << std::right << students[j].total_mark
+            << std::setw(15) << students[j].final_mark << std::setw(15)
+            << students[j].midterm_mark << std::setw(15) << students[j].other_mark << std::endl;
+    }
+}

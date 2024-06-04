@@ -13,7 +13,11 @@ struct Student {
 	std::string social_id;
 };
 
+
+bool checkValidFileName(std::string name_of_file, std::string directory, std::string name);
+
 void viewListOfClasses(SchoolYear school_year);
 void viewStudentsInClass(const std::string& filename);
 void viewListOfCourse(Course* head);
 void viewStudentsInCourse(const std::string& filename);
+void viewScoreBoardOfCourse(std::string course_name);
