@@ -1,6 +1,4 @@
 #pragma once
-#include<iostream>
-using namespace std; 
-void Menu(string username);
-
-
+#include <iostream>
+#include "../FileIO/FileIO.h"
+void Menu(std::string username);

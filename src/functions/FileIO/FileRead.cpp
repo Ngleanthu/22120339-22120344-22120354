@@ -1,8 +1,8 @@
 #include "./FileIO.h"
 
-Result readCSV(std::string filename, std::string directory)
+ListResult readCSV(std::string filename, std::string directory)
 {
-    Result result;
+    ListResult result;
 
     std::filesystem::path path = directory + filename;
     if (!std::filesystem::exists(path))
@@ -49,13 +49,29 @@ Result readCSV(std::string filename, std::string directory)
 
         while (std::getline(dataStream, columnValue, ','))
         {
-            // Remove quotes from around column value if they exist
-            if ((!columnValue.empty()) &&
-                ((columnValue[0] == '"' && columnValue[columnValue.length() - 1] == '"') ||
-                 (columnValue[0] == '\'' && columnValue[columnValue.length() - 1] == '\'')))
+            std::cout << columnValue << std::endl;
+            if (columnValue.length() > 0 && (columnValue[0] == '"' || columnValue[0] == '\''))
             {
-                columnValue = columnValue.substr(1, columnValue.size() - 2);
+                // If the cell is quoted, read in characters until we find the matching end quote
+                char quoteChar              = columnValue[0];
+                std::string quotedCellValue = columnValue.substr(1);  // Skip the opening quote
+                bool endQuoteFound          = false;
+
+                while (std::getline(dataStream, columnValue, ',') && !endQuoteFound)
+                {
+                    quotedCellValue += "," + columnValue;  // Add the comma back to the cell value
+                    if (columnValue.length() > 0 &&
+                        columnValue[columnValue.length() - 1] == quoteChar)
+                    {
+                        // Found the matching end quote, remove it and stop reading the cell
+                        endQuoteFound = true;
+                        quotedCellValue.erase(quotedCellValue.length() - 1, 1);
+                    }
+                }
+
+                columnValue = quotedCellValue;
             }
+
             rowData->columns[column] = columnValue;
             column++;
         }
@@ -93,4 +109,54 @@ void AddCSVRecord(CSVList *list, CSVRow *data)
         list->tail       = node;
     }
     list->size++;
+}
+
+RowResult SearchSingleCSVRecord(std::string filename,
+                                std::string directory,
+                                std::string searchValue)
+{
+    ListResult tempFileData = readCSV(filename, directory);
+
+    RowResult searchResult;
+
+    if (tempFileData.errorMsg != "")
+    {
+        std::cout << tempFileData.errorMsg << std::endl;
+        searchResult.errorMsg   = tempFileData.errorMsg;
+        searchResult.row        = nullptr;
+        searchResult.numColumns = 0;
+
+        return searchResult;
+    }
+
+    CSVList *dataList = tempFileData.list;
+    CSVNode *current  = dataList->head;
+
+    while (current != nullptr)
+    {
+        if (searchValue == current->data->columns[0])
+        {
+            searchResult.row        = current->data;
+            searchResult.errorMsg   = "";
+            searchResult.numColumns = current->data->numColumns;
+            return searchResult;
+        }
+        current = current->next;
+    }
+    searchResult.errorMsg = "Record not found";
+    return searchResult;
+}
+
+void printCSVList(CSVList *list)
+{
+    CSVNode *current = list->head;
+    while (current != nullptr)
+    {
+        for (int i = 0; i < current->data->numColumns; i++)
+        {
+            std::cout << current->data->columns[i] << " ";
+        }
+        std::cout << std::endl;
+        current = current->next;
+    }
 }

@@ -1,48 +1,57 @@
 #include "Menu.h"
-void Menu(string username)
+#include "../../struct_definitions/User.h"
+#include "../Profile/Profile.h"
+
+const std::string profileFile      = "profile.csv";
+const std::string profileDirectory = "../../db";
+
+void Menu(std::string username)
 {
-	int choice;
-	if (username.find("staff"))
-	{
-		
-		
-		do {
-			cout << "1.Class Management" << endl << "2.Course Management" << endl << "Enter your choice : ";
-			cin >> choice; 
-			if (choice == 1)
-			{
+    int choice;
 
-			}
-			if (choice == 2)
-			{
+    User currentUserProfile;
+    GetProfile(username, currentUserProfile);
 
+    if (currentUserProfile.is_staff == true)
+    {
+        do
+        {
+            std::cout << "1. View Profile" << std::endl
+                      << "2. Class Management" << std::endl
+                      << "3. Course Management" << std::endl
+                      << "Enter your choice : ";
+            std::cin >> choice;
+            if (choice == 1)
+            {
+				
 			}
-			else {
-				cout << "Invalid input";
-			}
-			system("cls");
-		} while (choice != 1 && choice != 2);
-		
-	}
-	else
-	{
-		do {
-			cout << "1.View course" << endl << "2.Scoreboard" << endl << "Enter your choice : ";
-			cin >> choice;
-			if (choice == 1)
-			{
-
-			}
-			if (choice == 2)
-			{
-
-			}
-			else {
-				cout << "Invalid input";
-			}
-			system("cls");
-		} while (choice != 1 && choice != 2);
-	}
-
-
+            if (choice == 2)
+            {}
+            else
+            {
+                std::cout << "Invalid input";
+            }
+            system("cls");
+        } while (choice != 1 && choice != 2 && choice != 3);
+    }
+    else
+    {
+        do
+        {
+            std::cout << "1. View Profile" << std::endl
+                      << "2. View course" << std::endl
+                      << "3. Scoreboard" << std::endl
+                      << "Enter your choice : ";
+            std::cin >> choice;
+            if (choice == 1)
+            {}
+            if (choice == 2)
+            {}
+            else
+            {
+                std::cout << "Invalid input";
+            }
+            system("cls");
+        } while (choice != 1 && choice != 2 && choice != 3);
+    }
 }

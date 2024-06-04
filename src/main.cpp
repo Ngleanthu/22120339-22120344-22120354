@@ -1,7 +1,7 @@
 #include "functions/FileIO/FileIO.h"
 #include "functions/Login/Login.h"
 #include "global.h"
-#include"functions/Menu/Menu.h"
+#include "functions/Menu/Menu.h"
 int main()
 {
     std::string loggedInUsername = login();

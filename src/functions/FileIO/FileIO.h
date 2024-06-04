@@ -26,14 +26,25 @@ struct CSVList
     int size;
 };
 
-struct Result
+struct ListResult
 {
     CSVList *list;
     std::string errorMsg;
 };
 
-Result readCSV(std::string filename, std::string directory);
+struct RowResult
+{
+    CSVRow *row;
+    std::string errorMsg;
+    int numColumns = 0;
+};
+
+ListResult readCSV(std::string filename, std::string directory);
 void AddCSVRecord(CSVList *list, CSVRow *data);
 CSVList *createCSVList();
+RowResult SearchSingleCSVRecord(std::string filename,
+                                std::string directory,
+                                std::string searchValue);
 
+void printCSVList(CSVList *list);
 #endif
