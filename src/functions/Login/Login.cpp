@@ -2,7 +2,7 @@
 
 std::string login()
 {
-    Result loginData = readCSV(loginDataFile, loginDataDirectory);
+    ListResult loginData = readCSV(loginDataFile, loginDataDirectory);
     if (loginData.errorMsg != "")
     {
         std::cout << loginData.errorMsg << std::endl;
@@ -24,18 +24,28 @@ std::string login()
 
 bool findUserInCSVList(CSVList *list, std::string username, std::string password)
 {
-    CSVNode *current = list->head;
-
-    while (current != nullptr)
+    RowResult searchResult = SearchSingleCSVRecord(loginDataFile, loginDataDirectory, username);
+    if (searchResult.errorMsg != "")
     {
-        if (username.compare(current->data->columns[0]) &&
-            password.compare(current->data->columns[1]))
-        {
-            return true;
-        }
-        current = current->next;
+        std::cout << searchResult.errorMsg << std::endl;
+        return false;
     }
-    return false;
+
+    if (searchResult.row == nullptr)
+    {
+        std::cout << "This user does not exist!" << std::endl;
+        return false;
+    }
+
+    if (password.compare(searchResult.row->columns[1]))
+    {
+        return true;
+    }
+    else
+    {
+        std::cout << "Wrong password!" << std::endl;
+        return false;
+    }
 }
 
 // TODO: Đổi Pass + Logout
