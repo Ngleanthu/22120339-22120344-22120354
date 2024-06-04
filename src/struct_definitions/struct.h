@@ -26,7 +26,7 @@ struct Student
     std::string name;
     Date dob;
     Gender gender;
-    unsigned int social_id;
+    std::string social_id;
     Student *studentNext = nullptr;
 };
 struct Course
