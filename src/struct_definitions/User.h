@@ -1,6 +1,6 @@
-
-#include "struct.h"
+#pragma once
 #include <string>
+#include "struct.h"
 // Student records
 struct User
 {
@@ -9,12 +9,9 @@ struct User
     std::string last_name;
     Date date_of_birth;
     Gender gender;
-    unsigned int social_id;
+    std::string social_id;
     std::string department;
-
-    // Login details
-    std::string username;
-    std::string password;
+    bool is_staff;
 };
 
 // Struct Student extending User
@@ -24,10 +21,4 @@ struct Student_user
     std::string major;
     std::string degree;
     float gpa;
-};
-
-// struct Admin extending User
-struct Admin
-{
-    User user;
 };
