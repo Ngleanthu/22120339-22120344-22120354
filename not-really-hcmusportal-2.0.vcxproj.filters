@@ -33,6 +33,9 @@
     <ClCompile Include="src\functions\FileIO\FileRead.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="visualisations\Users.drawio">
@@ -55,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="src\functions\FileIO\FileIO.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
