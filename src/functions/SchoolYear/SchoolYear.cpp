@@ -1,10 +1,10 @@
 #include "SchoolYear.h"
 
+
 void CreateSchoolYear()
 {
     unsigned int startYear;
     unsigned int endYear;
-
     std::cout << "Creating a new school year..." << std::endl;
     do
     {
@@ -32,6 +32,11 @@ void CreateSchoolYear()
 
     // Check if the school year already exists
     ListResult schoolYearList = readCSV(schoolYearFile, dataDirectory);
+    if (schoolYearList.list->size == 0)
+    {
+        createNewCSVFile(schoolYearFile, dataDirectory, schoolYearCSVHeader, 4);
+    }
+
     CSVNode *current          = schoolYearList.list->head;
     for (int i = 0; i < schoolYearList.list->size; i++)
     {
@@ -42,12 +47,11 @@ void CreateSchoolYear()
         }
         current = current->next;
     }
-
-    // Format to CSVList
+    // Format to CSVRow
     CSVRow *row     = new CSVRow();
     row->columns    = new std::string[4];
     row->numColumns = 4;
-    row->columns[0] = std::to_string(getNextSchoolYearID());
+    row->columns[0] = std::to_string(getNextIdOfCSV(schoolYearFile, dataDirectory));
     row->columns[1] = schoolYearName;
     row->columns[2] = std::to_string(startYear);
     row->columns[3] = std::to_string(endYear);
@@ -55,24 +59,31 @@ void CreateSchoolYear()
     // Convert the row to the CSVNode
     CSVNode *node = new CSVNode();
     node->data    = row;
-    node->next    = NULL;
+    node->next    = nullptr;
 
-    // Write to file
     CSVList *list = new CSVList();
-
-    // Append the new node to the list
-    if (schoolYearList.list->size != 0)
+    // Append to the list
+    // If the list is empty
+    // Set the header row to the first row
+    if (schoolYearList.list->head->next == nullptr && schoolYearList.list->size == 0)
     {
-        schoolYearList.list->tail->next = node;
-        schoolYearList.list->tail       = node;
-        schoolYearList.list->size++;
+        list->head = schoolYearList.list->head;
+        list->head->next = node;
+        list->size       = schoolYearList.list->size + 1;
     }
     else
     {
-        schoolYearList.list->head = node;
-        schoolYearList.list->tail = node;
-        schoolYearList.list->size = 1;
+        list->head = schoolYearList.list->head;
+        list->tail = node;
+        list->size = schoolYearList.list->size + 1;
+        CSVNode *current = schoolYearList.list->head;
+        while (current->next != nullptr)
+        {
+            current = current->next;
+        }
+        current->next = node;
     }
+
 
     writeDataToCSV(schoolYearFile, dataDirectory, schoolYearList.list);
 
@@ -81,11 +92,42 @@ void CreateSchoolYear()
 
 void DeleteSchoolYear()
 {
-    std::cout << "Deleting a school year..." << std::endl;
-    std::cout << "Enter the ID of the school year you want to delete: ";
-    int id;
-    std::cin >> id;
+    unsigned int id;
+    do
+    {
+        std::cout << "Enter the school year ID: ";
+        std::cin >> id;
+        if (!checkValidSchoolYearID(id))
+        {
+            std::cout << "The school year doesn't exist!" << std::endl;
+            continue;
+        }
+    } while (!checkValidSchoolYearID(id));
 
+    if (checkSchoolYearHasSemester(id))
+    {
+        std::cout << "The school year has semester(s)!" << std::endl;
+        return;
+    }
+
+    if (deleteCSVRow(schoolYearFile, dataDirectory, id) == 0)
+    {
+        std::cout << "School year deleted successfully!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Failed to delete the school year!" << std::endl;
+    }
+
+
+}
+
+bool checkValidYear(unsigned int year)
+{
+    return (year >= 1900 && year <= 9999);
+}
+bool checkValidSchoolYearID(unsigned int id)
+{
     // Read the school year file
     ListResult schoolYearList = readCSV(schoolYearFile, dataDirectory);
 
@@ -95,70 +137,27 @@ void DeleteSchoolYear()
     {
         if (std::stoi(current->data->columns[0]) == id)
         {
-            // Delete the school year
-            if (schoolYearList.list->size == 1)
-            {
-                schoolYearList.list->head = NULL;
-                schoolYearList.list->tail = NULL;
-                schoolYearList.list->size = 0;
-            }
-            else if (current == schoolYearList.list->head)
-            {
-                schoolYearList.list->head = current->next;
-                schoolYearList.list->size--;
-            }
-            else if (current == schoolYearList.list->tail)
-            {
-                CSVNode *prev = schoolYearList.list->head;
-                for (int i = 0; i < schoolYearList.list->size - 2; i++)
-                {
-                    prev = prev->next;
-                }
-                prev->next                = NULL;
-                schoolYearList.list->tail = prev;
-                schoolYearList.list->size--;
-            }
-            else
-            {
-                CSVNode *prev = schoolYearList.list->head;
-                for (int i = 0; i < schoolYearList.list->size - 2; i++)
-                {
-                    prev = prev->next;
-                }
-                prev->next = current->next;
-                schoolYearList.list->size--;
-            }
-
-            // Write the new list to the file
-            writeDataToCSV(schoolYearFile, dataDirectory, schoolYearList.list);
-
-            std::cout << "School year deleted successfully!" << std::endl;
-            return;
+            return true;
         }
         current = current->next;
     }
-
-    std::cout << "The school year doesn't exist!" << std::endl;
+    return false;
 }
 
-bool checkValidYear(unsigned int year)
+bool checkSchoolYearHasSemester(unsigned int id)
 {
-    return (year >= 1900 && year <= 9999);
-}
+    // Read the semester file
+    ListResult semesterList = readCSV(semesterFile, dataDirectory);
 
-int getNextSchoolYearID()
-{
-    // Get the ID of the last school year, and add 1 to it
-    ListResult schoolYearList = readCSV(schoolYearFile, dataDirectory);
-    int actualSize            = schoolYearList.list->size - 1;  // Subtract the header row
-    if (actualSize == 0)
+    // Check if the school year has semester(s)
+    CSVNode *current = semesterList.list->head->next;
+    for (int i = 0; i < semesterList.list->size; i++)
     {
-        return 1;
-    }
-    CSVNode *current = schoolYearList.list->head;
-    for (int i = 0; i < actualSize - 1; i++)
-    {
+        if (std::stoi(current->data->columns[1]) == id)
+        {
+            return true;
+        }
         current = current->next;
     }
-    return std::stoi(current->data->columns[0]) + 1;
+    return false;
 }

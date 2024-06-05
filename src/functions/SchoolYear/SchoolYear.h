@@ -2,12 +2,14 @@
 #define SCHOOLYEAR_H
 
 #include <iostream>
-#include "../FileIO/FileIO.h"
 #include "../../constants.h"
-
+#include "../FileIO/FileIO.h"
+#include "../Misc/Misc.h"
 
 void CreateSchoolYear();
 void DeleteSchoolYear();
 bool checkValidYear(unsigned int year);
-int getNextSchoolYearID();
+bool checkValidSchoolYearID(unsigned int schoolYearID);
+bool checkSchoolYearHasSemester(unsigned int id);
+
 #endif
