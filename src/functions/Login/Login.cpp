@@ -1,8 +1,9 @@
 #include "Login.h"
+#include "../../constants.h"
 
 std::string login()
 {
-    ListResult loginData = readCSV(loginDataFile, loginDataDirectory);
+    ListResult loginData = readCSV(loginDataFile, dataDirectory);
     if (loginData.errorMsg != "")
     {
         std::cout << loginData.errorMsg << std::endl;
@@ -24,7 +25,7 @@ std::string login()
 
 bool findUserInCSVList(CSVList *list, std::string username, std::string password)
 {
-    RowResult searchResult = SearchSingleCSVRecord(loginDataFile, loginDataDirectory, username);
+    RowResult searchResult = SearchSingleCSVRecord(loginDataFile, dataDirectory, username);
     if (searchResult.errorMsg != "")
     {
         std::cout << searchResult.errorMsg << std::endl;

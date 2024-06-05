@@ -47,4 +47,9 @@ RowResult SearchSingleCSVRecord(std::string filename,
                                 std::string searchValue);
 
 void printCSVList(CSVList *list);
+
+void UpdateCSVRecord(std::string filename,
+                     std::string directory,
+                     std::string columnName,
+                     std::string replaceWith);
 #endif

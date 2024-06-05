@@ -1,13 +1,11 @@
 #include "Profile.h"
+#include "../../constants.h"
 #include "../../struct_definitions/User.h"
 #include "../FileIO/FileIO.h"
 
-const std::string profileFile      = "profile.csv";
-const std::string profileDirectory = "./db/";
-
 void GetProfile(std::string username, User &currentUserProfile)
 {
-    RowResult currentUserData = SearchSingleCSVRecord(profileFile, profileDirectory, username);
+    RowResult currentUserData = SearchSingleCSVRecord(profileDataFile, dataDirectory, username);
 
     if (currentUserData.errorMsg != "")
     {
