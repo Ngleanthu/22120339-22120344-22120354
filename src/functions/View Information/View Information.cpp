@@ -1,8 +1,37 @@
 #include "View Information.h"
 
+bool checkValidFileName(std::string name_of_file, std::string directory, std::string name)
+{
+    std::ifstream file;
+    file.open(name_of_file + "." + directory);
+    if (file.is_open())
+    {
+        std::string line;
+        while (std::getline(file, line))
+        {
+            if (line.find(name) != std::string::npos)
+            {
+                file.close();
+                return true;
+            }
+        }
+        file.close();
+        return false;
+    }
+    else
+    {
+        std::cout << "Unable to open file to check!\n";
+    }
+}
+
 void viewListOfClasses(SchoolYear school_year)  // view all the classes in a school year.
 {
-    // To do: Need to read school_year.name to open the correct file !!!
+    //Check if the school_year is valid or not.
+    //if (!checkValidFileName("school_year", "txt", school_year.name))
+    //{
+    //    std::cout << "Unvalid School Year!" << std::endl;
+    //    return;
+    //}
 
     // Read data in a file.
     std::ifstream fin;
@@ -37,11 +66,13 @@ void viewListOfClasses(SchoolYear school_year)  // view all the classes in a sch
     fin.close();
 }
 
-void viewStudentsInClass(const std::string& filename)           // view all the students in class. 
+void viewStudentsInClass(const std::string& filename, int& cnt)           // view all the students in class. 
 {   
 	Student* students = new Student[MAX];
 	std::ifstream file(filename + ".txt");
-	int cnt = 0;
+
+	cnt = 0;
+
 	if (file.is_open())
 	{
 		int i = 0;
@@ -87,11 +118,13 @@ void viewStudentsInClass(const std::string& filename)           // view all the 
 
 	for (int j = 0; j < cnt; ++j)
 	{
-		std::cout << j + 1 << "/ " << students[j].id << " - " << students[j].last_name
-			<< " " << students[j].first_name << " - " << students[j].gender << " - " <<
-			students[j].dob << " - " << students[j].social_id << ". \n";
+        std::cout << j + 1 << "/ " << students[j].id << " - " << students[j].last_name
+            << " " << students[j].first_name << " - " << (students[j].gender == Gender::0 ? "Male" 
+            : students[j].gender == Gender::1 ? "Female" : "Not say") << " - " << students[j].dob 
+            << " - " << students[j].social_id << ". \n";
 	}
-        delete[] students;
+
+    delete[] students;
 }
 
 void viewListOfCourse(Course* head)     // View a list of courses.
@@ -137,11 +170,11 @@ void viewListOfCourse(Course* head)     // View a list of courses.
         }
 }
 
-void viewStudentsInCourse(const std::string &filename)  // view students in a course
+void viewStudentsInCourse(const std::string &filename, int& cnt)  // view students in a course
 {
         Student *students = new Student[MAX];
         std::ifstream file(filename + ".txt");
-        int cnt = 0;
+        cnt = 0;
         if (file.is_open())
         {
                 int i = 0;
@@ -194,37 +227,8 @@ void viewStudentsInCourse(const std::string &filename)  // view students in a co
         delete[] students;
 }
 
-bool checkValidFileName(std::string name_of_file, std::string directory, std::string name)
+void viewScoreBoardOfCourse(std::string course_name, int& cnt)
 {
-    std::ifstream file;
-    file.open(name_of_file + "." + directory);
-    if (file.is_open())
-    {
-        std::string line;
-        while (std::getline(file, line))
-        {
-            if (line.find(name) != std::string::npos)
-            {
-                file.close();
-                return true;
-            }
-        }
-        file.close();
-        return false;
-    }
-    else
-    {
-        std::cout << "Unable to open file to check!\n";
-    }
-}
-
-void viewScoreBoardOfCourse(std::string course_name)
-{
-    std::string course_name;
-    std::cout << "Enter course name: ";
-    std::getline(std::cin, course_name, '\n');
-
-
     while (!checkValidFileName("course", "txt", course_name))
     {
         std::cout << "Unvalid course's name! \n";
@@ -236,7 +240,7 @@ void viewScoreBoardOfCourse(std::string course_name)
     std::ifstream fin;
     fin.open(course_name + "-scoreboard.csv");
     StudentScore* students = new StudentScore[MAX];
-    int cnt = 0;
+    cnt = 0;
     if (fin.is_open())
     {
         int i = 0;
@@ -277,13 +281,15 @@ void viewScoreBoardOfCourse(std::string course_name)
     }
     else
     {
-        std::cerr << "Unable to open file" << std::endl;
+        std::cout << "Unable to open file" << std::endl;
+        return;
     }
 
     std::cout << std::setw(3) << "No " << std::setw(3) << "ID" << std::setw(15)
         << "Name" << std::setw(25) << "Total Mark" << std::setw(15)
         << "Final Mark" << std::setw(15) << "Midterm Mark" << std::setw(15)
         << "Other Mark" << std::endl;
+
     for (int j = 0; j < cnt; ++j)
     {
         std::cout << std::left << std::setw(4) << j + 1 << std::setw(13) << students[j].id << std::setw(15)
