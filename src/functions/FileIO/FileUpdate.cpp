@@ -1,11 +1,14 @@
 #include "FileIO.h"
 
-void updateCSVRecord(std::string filename, std::string directory, std::string columnToSearch, CSVRow *updatedRow)
+void updateCSVRecord(std::string filename,
+                     std::string directory,
+                     std::string columnToSearch,
+                     CSVRow *updatedRow)
 {
     ListResult tempFileData = readCSV(filename, directory);
 
     // Get the headers as well, since it's just updating, we can just get it directly from the file
-    CSVRow *headers = tempFileData.list->head->data;  
+    CSVRow *headers = tempFileData.list->head->data;
 
     if (tempFileData.errorMsg != "")
     {
@@ -18,7 +21,7 @@ void updateCSVRecord(std::string filename, std::string directory, std::string co
 
     while (current != nullptr)
     {
-        if (columnToSearch.compare(current->data->columns[0]))
+        if (columnToSearch.compare(current->data->columns[0]) == 0)
         {
             current->data = updatedRow;
             break;
@@ -37,7 +40,6 @@ void updateCSVRecord(std::string filename, std::string directory, std::string co
     }
 
     current = dataList->head;
-
     while (current != nullptr)
     {
         for (int i = 0; i < current->data->numColumns; i++)

@@ -1,6 +1,9 @@
 #include "FileIO.h"
 
-void createNewCSVFile(std::string filename, std::string directory, std::string *columnNames)
+void createNewCSVFile(std::string filename,
+                      std::string directory,
+                      std::string *columnNames,
+                      int headerRowSize)
 {
     if (std::filesystem::exists(directory + filename))
     {
@@ -21,27 +24,34 @@ void createNewCSVFile(std::string filename, std::string directory, std::string *
         std::cout << "File could not be created" << std::endl;
         return;
     }
-
-    int numColumns = sizeof(columnNames) / sizeof(columnNames[0]);
-    for (int i = 0; i < numColumns; i++)
+    if (columnNames == nullptr)
+    {
+        return;
+    }
+    for (int i = 0; i < headerRowSize; i++)
     {
         file << columnNames[i];
-        if (i != numColumns - 1)
+        if (i != headerRowSize - 1)
         {
             file << ",";
         }
     }
 }
 
-void writeDataToCSV(std::string filename, std::string directory, std::string *header_names, CSVList *list)
+void writeDataToCSV(std::string filename,
+                    std::string directory,
+                    CSVList *list,
+                    std::string *header_names,
+                    int headerRowSize)
 {
+    // Note: this is only useful for writing massive amounts of data to a file
     if (!std::filesystem::exists(directory + filename))
     {
-        createNewCSVFile(filename, directory, header_names);
+        createNewCSVFile(filename, directory, header_names, headerRowSize);
     }
 
     std::ofstream file;
-    file.open(directory + filename); // Ensure the existing data is overwritten with every write
+    file.open(directory + filename);  // Ensure the existing data is overwritten with every write
 
     if (!file.is_open())
     {
@@ -49,16 +59,20 @@ void writeDataToCSV(std::string filename, std::string directory, std::string *he
         return;
     }
 
-    // write headers
-    int numColumns = sizeof(header_names) / sizeof(header_names[0]);
-    for (int i = 0; i < numColumns; i++)
+    // If the header is not null, write it to the file
+    if (header_names != nullptr)
     {
-        file << header_names[i];
-        if (i != numColumns - 1)
+        for (int i = 0; i < headerRowSize; i++)
         {
-            file << ",";
+            file << header_names[i];
+            if (i != headerRowSize - 1)
+            {
+                file << ",";
+            }
         }
+        file << std::endl;
     }
+
 
     CSVNode *current = list->head;
     while (current != nullptr)

@@ -15,6 +15,7 @@ std::string login()
     std::cout << "Enter your password: ";
     std::cin >> password;
 
+    removeHiddenNewlineChar(username);
     if (findUserInCSVList(loginData.list, username, password))
     {
         return username;
@@ -33,10 +34,11 @@ bool findUserInCSVList(CSVList *list, std::string username, std::string password
         return false;
     }
 
-    if (password.compare(searchResult.row->columns[1]))
+    if (searchResult.row->columns[1].compare(password) == 0)
     {
         return true;
     }
+
     else
     {
         std::cout << "Wrong password!" << std::endl;
