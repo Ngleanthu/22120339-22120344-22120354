@@ -12,18 +12,26 @@ void MainMenu(std::string &username)
         do
         {
             std::cout << "1. Account settings" << std::endl
-                      << "2. Class Management" << std::endl
-                      << "3. Course Management" << std::endl
+                      << "2. School year management" << std::endl
+                      << "3. Class Management" << std::endl
+                      << "4. Course Management" << std::endl
                       << "0. Exit" << std::endl
                       << "Enter your choice: ";
             std::cin >> choice;
             if (choice == 1)
             {
                 AccountMenu(username, currentUserProfile);
+                return;
             }
             else if (choice == 2)
-            {}
+            {
+                SchoolYearMenu();
+            }
             else if (choice == 3)
+            {
+                ClassManagementMenu();
+            }
+            else if (choice == 4)
             {}
             else if (choice == 0)
             {
@@ -35,7 +43,7 @@ void MainMenu(std::string &username)
             }
             wait_for_enter();
             clear_screen();
-        } while (choice != 1 && choice != 2 && choice != 3 && choice != 0);
+        } while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 0);
     }
     else
     {
@@ -50,6 +58,7 @@ void MainMenu(std::string &username)
             if (choice == 1)
             {
                 AccountMenu(username, currentUserProfile);
+                return;
             }
             else if (choice == 2)
             {}
@@ -67,41 +76,4 @@ void MainMenu(std::string &username)
             clear_screen();
         } while (choice != 1 && choice != 2 && choice != 3 && choice != 0);
     }
-}
-
-void AccountMenu(std::string &username, User &currentUserProfile)
-{
-    int choice;
-    do
-    {
-        std::cout << "1. View Profile" << std::endl
-                  << "2. Change Password" << std::endl
-                  << "3. Logout" << std::endl
-                  << "0. Back" << std::endl
-                  << "Enter your choice: ";
-        std::cin >> choice;
-        if (choice == 1)
-        {
-            PrintProfile(currentUserProfile);
-        }
-        else if (choice == 2)
-        {
-            changePassword(username);
-        }
-        else if (choice == 3)
-        {
-            Logout(username, currentUserProfile);
-            return;
-        }
-        else if (choice == 0)
-        {
-            return;
-        }
-        else
-        {
-            std::cout << "Invalid input";
-        }
-        wait_for_enter();
-        clear_screen();
-    } while (choice != 1 && choice != 2 && choice != 3 && choice != 0);
 }

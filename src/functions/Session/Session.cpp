@@ -17,11 +17,10 @@ void saveSession(std::string username)
         std::ofstream sessionFile;
         sessionFile.open(SESSION_FILE_DIRECTORY + SESSION_FILE_NAME, std::ios::in | std::ios::app);
         sessionFile.close();
-        return;
     }
 
     std::ofstream sessionFile;
-    sessionFile.open("session.txt");
+    sessionFile.open(SESSION_FILE_DIRECTORY + SESSION_FILE_NAME, std::ios::in | std::ios::out);
 
     if (!sessionFile.is_open())
     {
@@ -38,22 +37,22 @@ void saveSession(std::string username)
 
 void readSession(std::string &username)
 {
-    std::fstream sessionFile;
-
-    if (!std::filesystem::exists("session.txt"))
+    if (!std::filesystem::exists(SESSION_FILE_DIRECTORY + SESSION_FILE_NAME))
     {
+        return;
+    }
+
+    std::fstream sessionFile;
+    sessionFile.open(SESSION_FILE_DIRECTORY + SESSION_FILE_NAME, std::ios::in | std::ios::out);
+    if (!sessionFile.is_open())
+    {
+        std::cout << "Session file is corrupted!" << std::endl;
+        std::cout << "Please log in again." << std::endl;
         return;
     }
 
     if (sessionFile.peek() == std::ifstream::traits_type::eof())
     {
-        return;
-    }
-    sessionFile.open("session.txt");
-    if (!sessionFile.is_open())
-    {
-        std::cout << "Session file is corrupted!" << std::endl;
-        std::cout << "Please log in again." << std::endl;
         return;
     }
 
@@ -72,7 +71,7 @@ void readSession(std::string &username)
         std::cout << "Please log in again." << std::endl;
 
         // Clear session file
-        sessionFile.open("session.txt");
+        sessionFile.open(SESSION_FILE_DIRECTORY + SESSION_FILE_NAME, std::ios::out);
         sessionFile.close();
 
         username     = "";
@@ -84,7 +83,7 @@ void readSession(std::string &username)
 void clearSession()
 {
     std::ofstream sessionFile;
-    sessionFile.open("session.txt");
+    sessionFile.open(SESSION_FILE_DIRECTORY + SESSION_FILE_NAME);
     sessionFile.close();
 }
 bool checkTimeout(unsigned long long int timeoutEpoch)
