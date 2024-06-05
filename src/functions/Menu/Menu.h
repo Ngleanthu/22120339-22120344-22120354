@@ -9,4 +9,18 @@
 #include "../Profile/Profile.h"
 
 void MainMenu(std::string &username);
+
 void AccountMenu(std::string &username, User &currentUserProfile);
+
+void SchoolYearMenu();
+void CreateSchoolYear();
+void DeleteSchoolYear();
+void PromptNewSchoolYear();
+void promptChoice();
+void PromptNoSchoolYear();
+int getNextSchoolYearID();
+
+void ClassManagementMenu();
+
+
+bool checkValidYear(unsigned int year);

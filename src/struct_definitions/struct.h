@@ -34,7 +34,7 @@ struct Student
     unsigned int social_id;
     Student *studentNext = nullptr;
 };
-struct Class
+struct ClassList
 {
     unsigned int id;
     std::string name;
@@ -42,10 +42,11 @@ struct Class
     std::string enter_year;
     unsigned int max_students     = 50;
     unsigned int current_students = 0;
-    Class *classNext              = nullptr;
-    Student *studentList          = nullptr;
+    unsigned int belong_to_schoolyear_id;
+    ClassList *classNext = nullptr;
+    Student *studentList = nullptr;
 };
-struct Course
+struct CourseList
 {
     unsigned int id;
     std::string name;
@@ -57,4 +58,12 @@ struct Course
     // A course can only have so much students, so it's better to use an array here instead
     // Dizzme mùa đăng ký học phần
     Student *student_list;
+};
+struct SchoolYearList
+{
+    unsigned int id;
+    std::string name;
+    unsigned int start_year;
+    unsigned int end_year;
+    SchoolYearList *schoolYearNext = nullptr;
 };

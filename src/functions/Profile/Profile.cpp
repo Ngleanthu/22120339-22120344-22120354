@@ -68,6 +68,7 @@ void PrintProfile(User &userProfile)
               << std::endl;
     std::cout << "Gender: ";
     userProfile.gender == Gender::MALE ? std::cout << "Male" : std::cout << "Female";
+    std::cout << std::endl;
     std::cout << "Social ID: " << userProfile.social_id << std::endl;
     std::cout << "Department: " << userProfile.department << std::endl;
 }
