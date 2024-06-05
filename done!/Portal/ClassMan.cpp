@@ -51,27 +51,27 @@ void ClassMan::Init()
 	memset(_classfocus, 0, 100);
 	memset(_classselected, 0, 100);
 
-	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setSize(sf::Vector2f(300, 40));
+    _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFillColor(sf::Color::Black);
 	
 	_createbox.setSize(sf::Vector2f(300, 40));
-	_createbox.setFillColor(sf::Color::Red);
+    _createbox.setFillColor(sf::Color(40, 116, 166, 240));
 	_createbox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
 	_createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);
 
-	_create.setFont(_data->_assets->GetFont(LIGHT));
+	_create.setFont(_data->_assets->GetFont(KANIT));
 	_create.setCharacterSize(25);
 	_create.setString("Create new class");
 	_create.setPosition(_data->_window->getSize().x / 2 - 110, _data->_window->getSize().y / 2 + 170);
-	_create.setFillColor(sf::Color::Black);
+	_create.setFillColor(sf::Color::White);
 }
 void ClassMan::ProcessInput()
 {
@@ -105,8 +105,10 @@ void ClassMan::ProcessInput()
 }
 void ClassMan::Update()
 {
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_createfocus ? _createbox.setFillColor(sf::Color::Yellow) : _createbox.setFillColor(sf::Color::Red));
+        (_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+                    : _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+        (_createfocus ? _createbox.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _createbox.setFillColor(sf::Color(40, 116, 166, 240)));
 	for (int i = 0; i < size; i++)
 	{
 		(_classfocus[i] ? _class[i].setFillColor(sf::Color::Blue) : _class[i].setFillColor(sf::Color::Red));

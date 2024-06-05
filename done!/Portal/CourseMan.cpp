@@ -54,49 +54,49 @@ void CourseMan::Init()
 	memset(_coursefocus, 0, 100);
 	memset(_courseselected, 0, 100);
 
-	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setSize(sf::Vector2f(300, 40));
+	_exitbutton.setFillColor(sf::Color(214,219,223,240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFillColor(sf::Color::Black);
 
 	_createbox.setSize(sf::Vector2f(300, 40));
-	_createbox.setFillColor(sf::Color::Red);
+    _createbox.setFillColor(sf::Color(40, 116, 166, 240));
 	_createbox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
 	_createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);
 
-	_create.setFont(_data->_assets->GetFont(LIGHT));
+	_create.setFont(_data->_assets->GetFont(KANIT));
 	_create.setCharacterSize(25);
 	_create.setString("Create new course");
 	_create.setPosition(_data->_window->getSize().x / 2 - 110, _data->_window->getSize().y / 2 + 170);
-	_create.setFillColor(sf::Color::Black);
+	_create.setFillColor(sf::Color::White);
 
 	_deletebox.setSize(sf::Vector2f(300, 40));
-	_deletebox.setFillColor(sf::Color::Red);
+    _deletebox.setFillColor(sf::Color(40, 116, 166, 240));
 	_deletebox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
 	_deletebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 140);
 
-	_delete.setFont(_data->_assets->GetFont(LIGHT));
+	_delete.setFont(_data->_assets->GetFont(KANIT));
 	_delete.setCharacterSize(25);
 	_delete.setString("Delete course");
 	_delete.setPosition(_data->_window->getSize().x / 2 - 110, _data->_window->getSize().y / 2 + 120);
-	_delete.setFillColor(sf::Color::Black);
+	_delete.setFillColor(sf::Color::White);
 
 	_updatebox.setSize(sf::Vector2f(300, 40));
-	_updatebox.setFillColor(sf::Color::Red);
+    _updatebox.setFillColor(sf::Color(40, 116, 166, 240));
 	_updatebox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
 	_updatebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 90);
 
-	_update.setFont(_data->_assets->GetFont(LIGHT));
+	_update.setFont(_data->_assets->GetFont(KANIT));
 	_update.setCharacterSize(25);
 	_update.setString("Update Score");
 	_update.setPosition(_data->_window->getSize().x / 2 - 110, _data->_window->getSize().y / 2 + 70);
-	_update.setFillColor(sf::Color::Black);
+	_update.setFillColor(sf::Color::White);
 
 	_status.setCharacterSize(20);
 	_status.setFont(_data->_assets->GetFont(LIGHT));
@@ -138,10 +138,14 @@ void CourseMan::ProcessInput()
 }
 void CourseMan::Update()
 {
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_createfocus ? _createbox.setFillColor(sf::Color::Yellow) : _createbox.setFillColor(sf::Color::Red));
-	(_deletefocus ? _deletebox.setFillColor(sf::Color::Yellow) : _deletebox.setFillColor(sf::Color::Red));
-	(_updatefocus ? _updatebox.setFillColor(sf::Color::Yellow) : _updatebox.setFillColor(sf::Color::Red));
+        (_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+                    : _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+        (_createfocus ? _createbox.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _createbox.setFillColor(sf::Color(40, 116, 166, 240)));
+        (_deletefocus ? _deletebox.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _deletebox.setFillColor(sf::Color(40, 116, 166, 240)));
+        (_updatefocus ? _updatebox.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _updatebox.setFillColor(sf::Color(40, 116, 166, 240)));
 	for (int i = 0; i < size; i++)
 	{
 		(_coursefocus[i] ? _course[i].setFillColor(sf::Color::Blue) : _course[i].setFillColor(sf::Color::Red));
