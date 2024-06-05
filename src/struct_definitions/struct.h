@@ -50,8 +50,8 @@ struct Class
 
 struct Course
 {
-    unsigned int id;
-    std::string name;
+    unsigned int course_id;
+    std::string course_name;
     std::string code;
     std::string teacher_name;
     unsigned int credits;
@@ -75,4 +75,13 @@ struct SchoolYear {
     Class* pClass = nullptr;
     Semester* pSemester = nullptr;
     SchoolYear* yearNext = nullptr;
+};
+
+struct StudentScore {
+    std::string id;
+    std::string full_name;
+    float total_mark;
+    float final_mark;
+    float midterm_mark;
+    float other_mark;
 };
