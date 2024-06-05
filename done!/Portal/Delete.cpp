@@ -2,6 +2,7 @@
 #include<Windows.h>
 #include"CourseMan.h"
 #include"CourseView.h"
+#include<string>
 DeleteCourse::DeleteCourse(Data* data) : _data(data), _boxfocus(0), _blink(1), _exitfocus(0),
 _submitfocus(0), _exitselected(0), _submitselected(0) , l(0)
 {
@@ -343,6 +344,33 @@ void DeleteStudent::Update()
 		{
 			if (_get[i] == _getbox)
 			{
+				std::string gett;
+				std::ifstream f1("Student\\" + _getbox + ".txt");
+				std::string t[100];
+				int sz = 0;
+				while (!f1.eof())
+				{
+					getline(f1, gett);
+					if (gett.empty())
+					{
+						continue;
+					}
+					t[sz] = gett;
+					sz++;
+
+				}
+				f1.close();
+
+				std::ofstream f2("Student\\" + _getbox + ".txt");
+				for (int j = 0; j < sz; j++)
+				{
+					if (t[j] != tmp)
+					{
+						f2 << t[j] << std::endl;
+					}
+
+				}
+				f2.close();
 				ok = 0;
 			}
 			else
