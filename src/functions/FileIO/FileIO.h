@@ -48,9 +48,8 @@ RowResult SearchSingleCSVRecord(std::string filename,
 
 void printCSVList(CSVList *list);
 
-void updateCSVRecord(std::string filename,
+void UpdateCSVRecord(std::string filename,
                      std::string directory,
-                     std::string columnToSearch,
-                     CSVRow *updatedRow);
-
+                     std::string columnName,
+                     std::string replaceWith);
 #endif

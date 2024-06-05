@@ -20,7 +20,6 @@ void GetProfile(std::string username, User &currentUserProfile)
     currentUserProfile.gender     = static_cast<Gender>(std::stoi(currentUserData.row->columns[4]));
     currentUserProfile.social_id  = currentUserData.row->columns[5];
     currentUserProfile.department = currentUserData.row->columns[6];
-    currentUserProfile.is_staff   = std::stoi(currentUserData.row->columns[7]) == 1 ? true : false;
 }
 
 void SplitDates(std::string date, Date &dateObject)
@@ -66,8 +65,7 @@ void PrintProfile(User &userProfile)
     std::cout << "Date of birth: " << userProfile.date_of_birth.day << "/"
               << userProfile.date_of_birth.month << "/" << userProfile.date_of_birth.year
               << std::endl;
-    std::cout << "Gender: ";
-    userProfile.gender == Gender::MALE ? std::cout << "Male" : std::cout << "Female";
+    std::cout << "Gender: " << userProfile.gender << std::endl;
     std::cout << "Social ID: " << userProfile.social_id << std::endl;
     std::cout << "Department: " << userProfile.department << std::endl;
 }
