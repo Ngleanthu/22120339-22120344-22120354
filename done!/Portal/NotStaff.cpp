@@ -229,7 +229,7 @@ void NotStaff::Update()
 	if (_changepassselected)
 	{
 		std::ofstream file("username.txt");
-		file << username;
+		file << tmp;
 		_changepassselected = 0;
 		_data->_states->AddState(new ChangePass(_data));
 	}
@@ -237,7 +237,7 @@ void NotStaff::Update()
 	if (_studentselected)
 	{
 		std::ofstream file("Studentbuf.txt");
-		file << username;
+		file << tmp;
 		file.close();
 		_data->_states->AddState(new StudentInfo(_data));
 		_studentselected = 0;
@@ -246,7 +246,7 @@ void NotStaff::Update()
 	if (_courseselected)
 	{
 		std::ofstream file("Studentbuf.txt");
-		file << username;
+		file << tmp;
 		file.close();
 		_data->_states->AddState(new StudentCourse(_data));
 		_courseselected = 0;
@@ -254,7 +254,7 @@ void NotStaff::Update()
 	if (_scoreselected)
 	{
 		std::ofstream file("Studentbuf.txt");
-		file << username;
+		file << tmp;
 		file.close();
 		_data->_states->AddState(new ScoreView1(_data));
 		_scoreselected = 0;

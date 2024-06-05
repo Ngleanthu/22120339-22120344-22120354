@@ -64,8 +64,8 @@ void SplashScreen::ProcessInput()
 		}
 		if (event.type == sf::Event::MouseMoved)
 		{
-			_loginfocus = (_loginbutton.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
-			_registerfocus = (_registerbutton.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+			_loginfocus = (_loginbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+			_registerfocus = (_registerbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
