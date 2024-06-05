@@ -1,5 +1,4 @@
 #include "Login.h"
-#include "../../constants.h"
 
 std::string login()
 {
@@ -26,15 +25,11 @@ std::string login()
 bool findUserInCSVList(CSVList *list, std::string username, std::string password)
 {
     RowResult searchResult = SearchSingleCSVRecord(loginDataFile, dataDirectory, username);
-    if (searchResult.errorMsg != "")
-    {
-        std::cout << searchResult.errorMsg << std::endl;
-        return false;
-    }
-
     if (searchResult.row == nullptr)
     {
         std::cout << "This user does not exist!" << std::endl;
+        wait_for_enter();
+        clear_screen();
         return false;
     }
 
@@ -45,6 +40,8 @@ bool findUserInCSVList(CSVList *list, std::string username, std::string password
     else
     {
         std::cout << "Wrong password!" << std::endl;
+        wait_for_enter();
+        clear_screen();
         return false;
     }
 }

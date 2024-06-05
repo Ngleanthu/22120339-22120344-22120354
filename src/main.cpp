@@ -12,6 +12,8 @@ void runLogic()
 {
     std::string loggedInUsername;
 
+    std::cout << "Welcome to Student Management System!" << std::endl;
+
     readSession(loggedInUsername);
     if (!loggedInUsername.empty())
     {
@@ -20,7 +22,6 @@ void runLogic()
         return;
     }
 
-    std::cout << "Welcome to Student Management System!" << std::endl;
     std::cout << "Please log in to continue." << std::endl;
 
     loggedInUsername = login();
@@ -29,7 +30,6 @@ void runLogic()
         std::cout << "Login failed!" << std::endl;
         return;
     }
-
     saveSession(loggedInUsername);
     std::cout << "Login successful!" << std::endl;
 
