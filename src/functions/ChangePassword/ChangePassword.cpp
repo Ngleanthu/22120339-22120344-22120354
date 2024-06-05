@@ -13,7 +13,8 @@ void changePassword(std::string username)
     std::string newPassword;
     std::string retypePassword;
 
-    do {
+    do
+    {
         std::cout << "Enter your old password: ";
         std::cin >> oldPassword;
         if (oldPassword.compare(userRow.row->columns[1]))
@@ -21,9 +22,9 @@ void changePassword(std::string username)
             std::cout << "Wrong password!" << std::endl;
         }
     } while (oldPassword.compare(userRow.row->columns[1]));
-    
 
-    do {
+    do
+    {
         std::cout << "Enter your new password: ";
         std::cin >> newPassword;
         std::cout << "Retype your new password: ";
@@ -33,8 +34,8 @@ void changePassword(std::string username)
             std::cout << "Password does not match!" << std::endl;
         }
     } while (newPassword.compare(retypePassword));
-    
 
     userRow.row->columns[1] = newPassword;
-    
+
+    updateCSVRecord(loginDataFile, dataDirectory, username, userRow.row);
 }

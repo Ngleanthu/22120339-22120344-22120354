@@ -26,13 +26,21 @@ ListResult readCSV(std::string filename, std::string directory)
     std::stringstream headerStream(header);
     std::string columnName;
 
+    CSVList *dataList = createCSVList();
+
     int numColumns = 0;
     while (std::getline(headerStream, columnName, ','))
     {
+        // Add the header name to the head of the dataList
         numColumns++;
-    }
 
-    CSVList *dataList = createCSVList();
+        CSVRow *rowData     = new CSVRow();
+        rowData->columns    = new std::string[numColumns];
+        rowData->numColumns = numColumns;
+
+        rowData->columns[0] = columnName;
+        AddCSVRecord(dataList, rowData);
+    }
 
     std::string data;
     int row = 0;
@@ -131,6 +139,9 @@ RowResult SearchSingleCSVRecord(std::string filename,
     CSVList *dataList = tempFileData.list;
     CSVNode *current  = dataList->head;
 
+    // skip the header row
+    current = current->next;
+
     while (current != nullptr)
     {
         if (searchValue == current->data->columns[0])
@@ -143,6 +154,7 @@ RowResult SearchSingleCSVRecord(std::string filename,
         current = current->next;
     }
     searchResult.errorMsg = "Record not found";
+    searchResult.row      = nullptr;
     return searchResult;
 }
 
