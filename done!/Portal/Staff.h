@@ -8,9 +8,13 @@ private:
 	Data* _data;
 	sf::Text _username;
 	sf::Text _logout;
+    sf::RectangleShape _logoutbox;
+    sf::Sprite _schoolbackground;
+    sf::RectangleShape _background;
 	bool _logoutfocus;
 	bool _logoutselected;
 	sf::Text _changepass;
+    sf::RectangleShape _changepassbox;
 	bool _changepassfocus;
 	bool _changepassselected;
 	std::string username;

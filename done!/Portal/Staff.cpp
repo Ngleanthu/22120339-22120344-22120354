@@ -16,7 +16,16 @@ Staff::~Staff()
 void Staff::Init()
 { 
 	_data->_assets->AddFont(LIGHT, "Asset\\Light.ttf");
+    _data->_assets->AddTexture(SCHOOL_LOGO, "Asset\\school_background.jpg");
 
+	_background.setSize(sf::Vector2f(2000, 2000));
+    _background.setPosition(0.0f, 0.0f);
+    _background.setFillColor(sf::Color::White);
+
+	_schoolbackground.setTexture(_data->_assets->GetTexture(SCHOOL_LOGO));
+    _schoolbackground.setScale(0.65f, 0.65f);
+    /*_schoolbackground.setOrigin(sf::Vector2f(_schoolbackground.getGlobalBounds().width / 2, _schoolbackground.getGlobalBounds().height / 2));*/
+    _schoolbackground.setPosition(0.0f, 0.0f);
 
 	_username.setFont(_data->_assets->GetFont(LIGHT));
 	_username.setPosition(100, 20);
@@ -27,37 +36,45 @@ void Staff::Init()
 	_username.setString("Hello , " + username);
 	_username.setFillColor(sf::Color::Black);
 
-	_logout.setCharacterSize(20);
-	_logout.setFont(_data->_assets->GetFont(LIGHT));
-	_logout.setPosition(_data->_window->getSize().x - 190, 20);
-	_logout.setString("Logout");
-	_logout.setFillColor(sf::Color::Red);
+	_logoutbox.setSize(sf::Vector2f(210, 40));
+    _logoutbox.setFillColor(sf::Color(214, 219, 223, 240));
+    _logoutbox.setPosition(_data->_window->getSize().x - 220, 75);
 
-	_changepass.setCharacterSize(20);
-	_changepass.setFont(_data->_assets->GetFont(LIGHT));
-	_changepass.setPosition(_data->_window->getSize().x - 190, 50);
+    _logout.setFont(_data->_assets->GetFont(KANIT));
+	_logout.setPosition(_data->_window->getSize().x - 200, 70);
+	_logout.setString("Logout");
+	_logout.setFillColor(sf::Color::Black);
+
+
+	_changepassbox.setSize(sf::Vector2f(210, 40));
+    _changepassbox.setFillColor(sf::Color(40, 116, 166, 240));
+    _changepassbox.setPosition(_data->_window->getSize().x - 220, 25);
+
+	_changepass.setCharacterSize(25);
+    _changepass.setFont(_data->_assets->GetFont(KANIT));
+	_changepass.setPosition(_data->_window->getSize().x - 220, 20);
 	_changepass.setString("Change password");
-	_changepass.setFillColor(sf::Color::Red);
+	_changepass.setFillColor(sf::Color::White);
 
 	_studentbox.setSize(sf::Vector2f(400, 60));
-	_studentbox.setFillColor(sf::Color::White);
+    _studentbox.setFillColor(sf::Color(40, 116, 166, 240));
 	_studentbox.setOrigin(sf::Vector2f(_studentbox.getGlobalBounds().width / 2, _studentbox.getGlobalBounds().height / 2));
-	_studentbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
+	_studentbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 +350 );
 
-	_student.setFont(_data->_assets->GetFont(LIGHT));
+	_student.setFont(_data->_assets->GetFont(KANIT));
 	_student.setString("Student management");
-	_student.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 120);
-	_student.setFillColor(sf::Color::Black);
+	_student.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 +330);
+	_student.setFillColor(sf::Color::White);
 
 	_coursebox.setSize(sf::Vector2f(400, 60));
-	_coursebox.setFillColor(sf::Color::White);
+    _coursebox.setFillColor(sf::Color(40, 116, 166, 240));
 	_coursebox.setOrigin(sf::Vector2f(_studentbox.getGlobalBounds().width / 2, _studentbox.getGlobalBounds().height / 2));
-	_coursebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
+	_coursebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 +280);
 
-	_course.setFont(_data->_assets->GetFont(LIGHT));
+	_course.setFont(_data->_assets->GetFont(KANIT));
 	_course.setString("Course management");
-	_course.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 20);
-	_course.setFillColor(sf::Color::Black);
+	_course.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 +260);
+	_course.setFillColor(sf::Color::White);
 
 }
 void Staff::ProcessInput()
@@ -71,8 +88,8 @@ void Staff::ProcessInput()
 		}
 		if (event.type == sf::Event::MouseMoved)
 		{
-			_logoutfocus = (_logout.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
-			_changepassfocus = (_changepass.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+			_logoutfocus = (_logoutbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+			_changepassfocus = (_changepassbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_studentfocus = (_studentbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_coursefocus = (_coursebox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 		}
@@ -87,11 +104,12 @@ void Staff::ProcessInput()
 }
 void Staff::Update()
 {
-	(_logoutfocus ? _logout.setFillColor(sf::Color::Blue) : _logout.setFillColor(sf::Color::Red));
-	(_changepassfocus ? _changepass.setFillColor(sf::Color::Blue) : _changepass.setFillColor(sf::Color::Red));
-	(_studentfocus ? _studentbox.setFillColor(sf::Color::Yellow) : _studentbox.setFillColor(sf::Color::White));
-	(_coursefocus ? _coursebox.setFillColor(sf::Color::Yellow) : _coursebox.setFillColor(sf::Color::White));
-	
+    (_logoutfocus ? _logoutbox.setFillColor(sf::Color(214, 219, 223, 100)) : _logoutbox.setFillColor(sf::Color(214, 219, 223, 240)));
+    (_changepassfocus ? _changepassbox.setFillColor(sf::Color(40, 116, 166, 100)) : _changepassbox.setFillColor(sf::Color(40, 116, 166, 240)));
+    (_studentfocus ? _studentbox.setFillColor(sf::Color(40, 116, 166, 100)) : _studentbox.setFillColor(sf::Color(40, 116, 166, 240)));
+    (_coursefocus ? _coursebox.setFillColor(sf::Color(40, 116, 166, 100)) : _coursebox.setFillColor(sf::Color(40, 116, 166, 240)));
+                     
+                       
 	if (_logoutselected)
 	{
 		_data->_states->RemoveState();
@@ -121,7 +139,11 @@ void Staff::Draw()
 {
 	_data->_window->clear(sf::Color::Cyan);
 	_data->_window->draw(_username);
+    _data->_window->draw(_background);
+    _data->_window->draw(_schoolbackground);
+    _data->_window->draw(_logoutbox);
 	_data->_window->draw(_logout);
+    _data->_window->draw(_changepassbox);
 	_data->_window->draw(_changepass);
 	_data->_window->draw(_studentbox);
 	_data->_window->draw(_student);

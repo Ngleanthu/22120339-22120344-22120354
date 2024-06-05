@@ -1,6 +1,7 @@
 #include "System.h"
 #include"SplashScreen.h"
 #include"Staff.h"
+#include"NotStaff.h"
 System::System() : _data(new Data) 
 {
 	_data->_window->create(sf::VideoMode(1600, 900), "Portal", sf::Style::Close);
