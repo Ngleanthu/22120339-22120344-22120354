@@ -16,7 +16,7 @@ void runLogic()
     if (!loggedInUsername.empty())
     {
         std::cout << "Welcome back, " << loggedInUsername << "!" << std::endl;
-        Menu(loggedInUsername);
+        MainMenu(loggedInUsername);
         return;
     }
 
@@ -33,7 +33,7 @@ void runLogic()
     saveSession(loggedInUsername);
     std::cout << "Login successful!" << std::endl;
 
-    Menu(loggedInUsername);
+    MainMenu(loggedInUsername);
     // TODO: Hiển thị menu:
     // TODO: Gồm: xem profile người dùng hiện tại (từ file CSV), Logout, đổi pass
     // TODO: Và menu cho các phần liên quan đến Giáo vụ

@@ -3,6 +3,7 @@
 const int SESSION_TIMEOUT_HOURS          = 3;
 const std::string SESSION_FILE_NAME      = "session.txt";
 const std::string SESSION_FILE_DIRECTORY = "./";
+
 void saveSession(std::string username)
 {
     unsigned long long int savedEpoch = std::chrono::duration_cast<std::chrono::seconds>(
@@ -77,6 +78,12 @@ void readSession(std::string &username)
     }
 }
 
+void clearSession()
+{
+    std::ofstream sessionFile;
+    sessionFile.open("session.txt");
+    sessionFile.close();
+}
 bool checkTimeout(unsigned long long int timeoutEpoch)
 {
     unsigned long long int currentEpoch = std::chrono::duration_cast<std::chrono::seconds>(
