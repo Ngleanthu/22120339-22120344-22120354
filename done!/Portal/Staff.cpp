@@ -23,9 +23,8 @@ void Staff::Init()
     _background.setFillColor(sf::Color::White);
 
 	_schoolbackground.setTexture(_data->_assets->GetTexture(SCHOOL_LOGO));
-    _schoolbackground.setScale(0.65f, 0.65f);
-    /*_schoolbackground.setOrigin(sf::Vector2f(_schoolbackground.getGlobalBounds().width / 2, _schoolbackground.getGlobalBounds().height / 2));*/
-    _schoolbackground.setPosition(0.0f, 0.0f);
+    _schoolbackground.setScale(0.66f, 0.69f);
+	_schoolbackground.setPosition(sf::Vector2f(0.0f, 0.0f));
 
 	_username.setFont(_data->_assets->GetFont(LIGHT));
 	_username.setPosition(100, 20);
@@ -36,44 +35,55 @@ void Staff::Init()
 	_username.setString("Hello , " + username);
 	_username.setFillColor(sf::Color::Black);
 
-	_logoutbox.setSize(sf::Vector2f(210, 40));
+	_logoutbox.setSize(sf::Vector2f(200.0f, 40.0f));
     _logoutbox.setFillColor(sf::Color(214, 219, 223, 240));
-    _logoutbox.setPosition(_data->_window->getSize().x - 220, 75);
+	_logoutbox.setOrigin(sf::Vector2f(_logoutbox.getGlobalBounds().width / 2, _logoutbox.getGlobalBounds().height / 2));
+	_logoutbox.setPosition(sf::Vector2f(_data->_window->getSize().x - 120.0f, 90.0f));
 
     _logout.setFont(_data->_assets->GetFont(KANIT));
-	_logout.setPosition(_data->_window->getSize().x - 200, 70);
-	_logout.setString("Logout");
+	_logout.setString("Log Out");
+	sf::FloatRect textbox = _logout.getLocalBounds();
+	_logout.setOrigin(textbox.left + textbox.width / 2.0f, textbox.top + textbox.height / 2.0f);
+	_logout.setPosition(sf::Vector2f(_data->_window->getSize().x - 120.0f, 95.0f));
+	_logout.setCharacterSize(23);
 	_logout.setFillColor(sf::Color::Black);
 
 
-	_changepassbox.setSize(sf::Vector2f(210, 40));
+	_changepassbox.setSize(sf::Vector2f(200.0f, 40.0f));
     _changepassbox.setFillColor(sf::Color(40, 116, 166, 240));
-    _changepassbox.setPosition(_data->_window->getSize().x - 220, 25);
+	_changepassbox.setOrigin(sf::Vector2f(_changepassbox.getGlobalBounds().width / 2, _changepassbox.getGlobalBounds().height / 2));
+	_changepassbox.setPosition(sf::Vector2f(_data->_window->getSize().x - 120.0f, 40.0f));
 
-	_changepass.setCharacterSize(25);
+	_changepass.setCharacterSize(23);
     _changepass.setFont(_data->_assets->GetFont(KANIT));
-	_changepass.setPosition(_data->_window->getSize().x - 220, 20);
 	_changepass.setString("Change password");
+	textbox = _changepass.getLocalBounds();
+	_changepass.setOrigin(textbox.left + textbox.width / 2.0f, textbox.top + textbox.height / 2.0f);
+	_changepass.setPosition(sf::Vector2f(_data->_window->getSize().x - 120.0f, 45.0f));
 	_changepass.setFillColor(sf::Color::White);
 
 	_studentbox.setSize(sf::Vector2f(400, 60));
     _studentbox.setFillColor(sf::Color(40, 116, 166, 240));
 	_studentbox.setOrigin(sf::Vector2f(_studentbox.getGlobalBounds().width / 2, _studentbox.getGlobalBounds().height / 2));
-	_studentbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 +350 );
+	_studentbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 370.0f);
 
 	_student.setFont(_data->_assets->GetFont(KANIT));
-	_student.setString("Student management");
-	_student.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 +330);
+	_student.setString("STUDENT MANAGEMENT");
+	sf::FloatRect mangage_rect = _student.getLocalBounds();
+	_student.setOrigin(mangage_rect.left + mangage_rect.width / 2.0f, mangage_rect.top + mangage_rect.height / 2.0f);
+	_student.setPosition(sf::Vector2f(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 370.0f));
 	_student.setFillColor(sf::Color::White);
 
 	_coursebox.setSize(sf::Vector2f(400, 60));
     _coursebox.setFillColor(sf::Color(40, 116, 166, 240));
 	_coursebox.setOrigin(sf::Vector2f(_studentbox.getGlobalBounds().width / 2, _studentbox.getGlobalBounds().height / 2));
-	_coursebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 +280);
+	_coursebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300);
 
 	_course.setFont(_data->_assets->GetFont(KANIT));
-	_course.setString("Course management");
-	_course.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 +260);
+	_course.setString("COURSE MANAGEMENT");
+	mangage_rect = _course.getLocalBounds();
+	_course.setOrigin(mangage_rect.left + mangage_rect.width / 2.0f, mangage_rect.top + mangage_rect.height / 2.0f);
+	_course.setPosition(sf::Vector2f(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300.0f));
 	_course.setFillColor(sf::Color::White);
 
 }
@@ -137,9 +147,8 @@ void Staff::Update()
 }
 void Staff::Draw()
 {
-	_data->_window->clear(sf::Color::Cyan);
-	_data->_window->draw(_username);
     _data->_window->draw(_background);
+	_data->_window->draw(_username);
     _data->_window->draw(_schoolbackground);
     _data->_window->draw(_logoutbox);
 	_data->_window->draw(_logout);
@@ -149,6 +158,5 @@ void Staff::Draw()
 	_data->_window->draw(_student);
 	_data->_window->draw(_coursebox);
 	_data->_window->draw(_course);
-	
 	_data->_window->display();
 }

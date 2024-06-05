@@ -27,15 +27,15 @@ void NotStaff::Init()
 	_profilepic.setOrigin(sf::Vector2f(_profilepic.getGlobalBounds().width / 2, _profilepic.getGlobalBounds().height / 2));
 	_profilepic.setPosition(sf::Vector2f(_background.getGlobalBounds().width / 2 - 100.0f, _background.getGlobalBounds().height / 2 - 390.0f));
 
-	_studentbox.setSize(sf::Vector2f(400, 60));
-	_studentbox.setFillColor(sf::Color::White);
-	_studentbox.setOrigin(sf::Vector2f(_studentbox.getGlobalBounds().width / 2, _studentbox.getGlobalBounds().height / 2));
-	_studentbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
+	//_studentbox.setSize(sf::Vector2f(400, 60));
+	//_studentbox.setFillColor(sf::Color::White);
+	//_studentbox.setOrigin(sf::Vector2f(_studentbox.getGlobalBounds().width / 2, _studentbox.getGlobalBounds().height / 2));
+	//_studentbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
 
-	_student.setFont(_data->_assets->GetFont(LIGHT));
-	_student.setString("Student Profile");
-	_student.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 120);
-	_student.setFillColor(sf::Color::Black);
+	//_student.setFont(_data->_assets->GetFont(LIGHT));
+	//_student.setString("Student Profile");
+	//_student.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 120);
+	//_student.setFillColor(sf::Color::Black);
 
 
 	_id.setFont(_data->_assets->GetFont(LIGHT));

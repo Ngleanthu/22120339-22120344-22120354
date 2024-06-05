@@ -48,7 +48,7 @@ void SchoolYear::Init()
 	memset(_yearselected, 0, 100);
 
 	_exitbutton.setSize(sf::Vector2f(300, 40));
-    _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
+	_exitbutton.setFillColor(sf::Color::Black);
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
@@ -56,7 +56,7 @@ void SchoolYear::Init()
 	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
-	_exit.setFillColor(sf::Color::Black);
+	_exit.setFillColor(sf::Color::Red);
 
 	_createbox.setSize(sf::Vector2f(300, 40));
     _createbox.setFillColor(sf::Color(40, 116, 166, 240));
@@ -101,7 +101,7 @@ void SchoolYear::ProcessInput()
 }
 void SchoolYear::Update()
 {
-    (_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100)): _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));          
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
     (_createfocus ? _createbox.setFillColor(sf::Color(40, 116, 166, 100)) : _createbox.setFillColor(sf::Color(40, 116, 166, 240)));
 	for (int i = 0; i < size; i++)
 	{

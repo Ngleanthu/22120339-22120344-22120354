@@ -18,64 +18,74 @@ void ChangePass::Init()
 	getline(file, username);
 	file.clear();
 	file.close();
+
+	_changeform.setSize(sf::Vector2f(500, 600));
+	_changeform.setFillColor(sf::Color(153, 204, 255, 180));
+	_changeform.setOrigin(sf::Vector2f(_changeform.getGlobalBounds().width / 2, _changeform.getGlobalBounds().height / 2));
+	_changeform.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
 	
 	_oldpassbox.setSize(sf::Vector2f(300, 40));
 	_oldpassbox.setFillColor(sf::Color::White);
 	_oldpassbox.setOrigin(sf::Vector2f(_oldpassbox.getGlobalBounds().width / 2, _oldpassbox.getGlobalBounds().height / 2));
-	_oldpassbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
+	_oldpassbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 135);
 	_oldpassbox.setOutlineThickness(1);
-	_oldpassbox.setOutlineColor(sf::Color::Red);
+	_oldpassbox.setOutlineColor(sf::Color::Black);
 
 	_passwordbox.setSize(sf::Vector2f(300, 40));
 	_passwordbox.setFillColor(sf::Color::White);
 	_passwordbox.setOrigin(sf::Vector2f(_passwordbox.getGlobalBounds().width / 2, _passwordbox.getGlobalBounds().height / 2));
-	_passwordbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
+	_passwordbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 35);
 	_passwordbox.setOutlineThickness(1);
-	_passwordbox.setOutlineColor(sf::Color::Red);
+	_passwordbox.setOutlineColor(sf::Color::Black);
 
 	_passwordbox2.setSize(sf::Vector2f(300, 40));
 	_passwordbox2.setFillColor(sf::Color::White);
 	_passwordbox2.setOrigin(sf::Vector2f(_passwordbox2.getGlobalBounds().width / 2, _passwordbox2.getGlobalBounds().height / 2));
-	_passwordbox2.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
+	_passwordbox2.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 65);
 	_passwordbox2.setOutlineThickness(1);
-	_passwordbox2.setOutlineColor(sf::Color::Red);
+	_passwordbox2.setOutlineColor(sf::Color::Black);
 
-	_oldpass.setFont(_data->_assets->GetFont(LIGHT));
-	_oldpass.setString("Current password");
-	_oldpass.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
+	_oldpass.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_oldpass.setString("Current password: ");
+	_oldpass.setCharacterSize(25);
+	_oldpass.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 195);
 	_oldpass.setFillColor(sf::Color::Black);
 
-	_password.setFont(_data->_assets->GetFont(LIGHT));
-	_password.setString("Expected password");
-	_password.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 60);
+	_password.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_password.setString("New password: ");
+	_password.setCharacterSize(25);
+	_password.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 95);
 	_password.setFillColor(sf::Color::Black);
 
-	_password2.setFont(_data->_assets->GetFont(LIGHT));
-	_password2.setString("Confirm password");
-	_password2.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 40);
+	_password2.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_password2.setString("Confirm password: ");
+	_password2.setCharacterSize(25);
+	_password2.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 5);
 	_password2.setFillColor(sf::Color::Black);
 
-	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color::Red);
+	_submitbutton.setSize(sf::Vector2f(160, 40));
+	_submitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
 
-	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setSize(sf::Vector2f(160, 40));
+	_exitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 200);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
-	_submit.setString("Submit");
+	_submit.setFont(_data->_assets->GetFont(KANIT));
+	_submit.setString("SUBMIT");
+	_submit.setCharacterSize(24);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 145);
-	_submit.setFillColor(sf::Color::Black);
+	_submit.setFillColor(sf::Color::White);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("EXIT");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 195);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFillColor(sf::Color::White);
 
 	_showoldpass.setFont(_data->_assets->GetFont(LIGHT));
 	_showoldpass.setCharacterSize(24);
@@ -95,10 +105,12 @@ void ChangePass::Init()
 	_showpassword2.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 85);
 	_showpassword2.setString("");
 
-
-	_status.setCharacterSize(20);
-	_status.setFont(_data->_assets->GetFont(LIGHT));
-	_status.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 245);
+	_status.setCharacterSize(24);
+	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_status.setStyle(sf::Text::Italic);
+	sf::FloatRect textRect = _status.getLocalBounds();
+	_status.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+	_status.setPosition(_data->_window->getSize().x / 2 - 285, _data->_window->getSize().y / 2 + 270);
 	_status.setFillColor(sf::Color::Red);
 }
 void ChangePass::ProcessInput()
@@ -197,8 +209,8 @@ void ChangePass::Update()
 	_showoldpass.setString(_getoldpass + ((_blink && _oldpassfocus) ? "|" : ""));
 	_showpassword.setString(showpassword + ((_blink && _passwordfocus) ? "|" : ""));
 	_showpassword2.setString(showpassword2 + ((_blink && _passwordfocus2) ? "|" : ""));
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_submitfocus ? _submitbutton.setFillColor(sf::Color::Yellow) : _submitbutton.setFillColor(sf::Color::Red));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _exitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
+	(_submitfocus ? _submitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _submitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
 	if (_exitselected)
 	{
 		_data->_states->RemoveState();
@@ -230,6 +242,7 @@ void ChangePass::Update()
 void ChangePass::Draw()
 {
 	_data->_window->clear(sf::Color::White);
+	_data->_window->draw(_changeform);
 	_data->_window->draw(_oldpassbox);
 	_data->_window->draw(_passwordbox);
 	_data->_window->draw(_passwordbox2);
