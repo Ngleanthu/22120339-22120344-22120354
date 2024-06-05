@@ -4,6 +4,26 @@
 
 const int MAX = 150;
 
+struct Class {
+	std::string class_name;
+	Student* pStudent = nullptr;
+	Class* class_next = nullptr;
+};
+
+struct Semester
+{
+	std::string semester_name;
+	Date start_date, end_date;
+	Date start_reg, end_reg;
+	Semester* sem_next = nullptr;
+};
+
+struct SchoolYear {
+	std::string year_name;
+	Semester* pSemester = nullptr;
+	SchoolYear* year_next = nullptr;
+};
+
 struct Student {
 	std::string id;
 	std::string first_name;

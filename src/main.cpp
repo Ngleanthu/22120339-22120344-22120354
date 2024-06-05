@@ -12,9 +12,9 @@ void runLogic()
 {
     std::string loggedInUsername;
 
-    readSession(loggedInUsername);
     std::cout << "Welcome to Student Management System!" << std::endl;
 
+    readSession(loggedInUsername);
     if (!loggedInUsername.empty())
     {
         std::cout << "Welcome back, " << loggedInUsername << "!" << std::endl;
