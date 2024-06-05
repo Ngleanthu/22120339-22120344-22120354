@@ -17,11 +17,11 @@ void changePassword(std::string username)
     {
         std::cout << "Enter your old password: ";
         std::cin >> oldPassword;
-        if (oldPassword.compare(userRow.row->columns[1]))
+        if (oldPassword.compare(userRow.row->columns[1]) != 0)
         {
             std::cout << "Wrong password!" << std::endl;
         }
-    } while (oldPassword.compare(userRow.row->columns[1]));
+    } while (oldPassword.compare(userRow.row->columns[1]) != 0);
 
     do
     {
@@ -29,11 +29,11 @@ void changePassword(std::string username)
         std::cin >> newPassword;
         std::cout << "Retype your new password: ";
         std::cin >> retypePassword;
-        if (newPassword.compare(retypePassword))
+        if (retypePassword.compare(newPassword) != 0)
         {
             std::cout << "Password does not match!" << std::endl;
         }
-    } while (newPassword.compare(retypePassword));
+    } while (retypePassword.compare(newPassword) != 0);
 
     userRow.row->columns[1] = newPassword;
 

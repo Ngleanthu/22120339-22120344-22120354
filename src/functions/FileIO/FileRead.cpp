@@ -21,27 +21,42 @@ ListResult readCSV(std::string filename, std::string directory)
         exit(0);
     }
 
+    CSVList *dataList = createCSVList();
+
     std::string header;
     std::getline(file, header);
     std::stringstream headerStream(header);
     std::string columnName;
 
-    CSVList *dataList = createCSVList();
-
     int numColumns = 0;
     while (std::getline(headerStream, columnName, ','))
     {
-        // Add the header name to the head of the dataList
         numColumns++;
-
-        CSVRow *rowData     = new CSVRow();
-        rowData->columns    = new std::string[numColumns];
-        rowData->numColumns = numColumns;
-
-        rowData->columns[0] = columnName;
-        AddCSVRecord(dataList, rowData);
     }
 
+    // Seek back to the top of the file
+    file.seekg(0, std::ios::beg);
+
+    // Get the header row and put it to the top of the list
+    std::string headerRow;
+    std::getline(file, headerRow);
+    std::stringstream headerRowStream(headerRow);
+
+    CSVRow *headerRowData     = new CSVRow();
+    headerRowData->columns    = new std::string[numColumns];
+    headerRowData->numColumns = numColumns;
+    std::string headerColumnValue;
+    int headerColumn = 0;
+
+    while (std::getline(headerRowStream, headerColumnValue, ','))
+    {
+        removeHiddenNewlineChar(headerColumnValue);
+        headerRowData->columns[headerColumn] = headerColumnValue;
+        headerColumn++;
+    }
+    AddCSVRecord(dataList, headerRowData);
+
+    // Read the rest of the file
     std::string data;
     int row = 0;
     while (std::getline(file, data))
@@ -75,18 +90,17 @@ ListResult readCSV(std::string filename, std::string directory)
                         quotedCellValue.erase(quotedCellValue.length() - 1, 1);
                     }
                 }
-
                 columnValue = quotedCellValue;
             }
-
+            removeHiddenNewlineChar(columnValue);
             rowData->columns[column] = columnValue;
             column++;
         }
-
         AddCSVRecord(dataList, rowData);
         row++;
     }
     result.list = dataList;
+    result.errorMsg = "";
     return result;
 }
 
@@ -123,7 +137,6 @@ RowResult SearchSingleCSVRecord(std::string filename,
                                 std::string searchValue)
 {
     ListResult tempFileData = readCSV(filename, directory);
-
     RowResult searchResult;
 
     if (tempFileData.errorMsg != "")
@@ -165,7 +178,7 @@ void printCSVList(CSVList *list)
     {
         for (int i = 0; i < current->data->numColumns; i++)
         {
-            std::cout << current->data->columns[i] << " ";
+            std::cout << current->data->columns[i] << "\t";
         }
         std::cout << std::endl;
         current = current->next;

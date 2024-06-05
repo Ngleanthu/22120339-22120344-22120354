@@ -13,10 +13,19 @@ struct Student {
 	std::string social_id;
 };
 
+struct StudentScore {
+	std::string id;
+	std::string full_name;
+	float total_mark;
+	float final_mark;
+	float midterm_mark;
+	float other_mark;
+};
+
 bool checkValidFileName(std::string name_of_file, std::string directory, std::string name);
 
-void viewListOfClasses(std::string year_name);
-void viewStudentsInClass(std::string class_name, int& cnt);
+void viewListOfClasses(SchoolYear school_year);
+void viewStudentsInClass(const std::string& filename, int& cnt);
 void viewListOfCourse(Course* head);
-void viewStudentsInCourse(std::string course_name, int& cnt);
+void viewStudentsInCourse(const std::string& filename, int& cnt);
 void viewScoreBoardOfCourse(std::string course_name, int& cnt);

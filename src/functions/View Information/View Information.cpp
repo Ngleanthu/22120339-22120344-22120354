@@ -24,65 +24,52 @@ bool checkValidFileName(std::string name_of_file, std::string directory, std::st
     }
 }
 
-void viewListOfClasses(std::string year_name)  // view all the classes in a school year.
+void viewListOfClasses(SchoolYear school_year)  // view all the classes in a school year.
 {
     //Check if the school_year is valid or not.
-    if (!checkValidFileName("school_year", "txt", year_name))
-    {
-        std::cout << "Unvalid School Year!" << std::endl;
-        return;
-    }
+    //if (!checkValidFileName("school_year", "txt", school_year.name))
+    //{
+    //    std::cout << "Unvalid School Year!" << std::endl;
+    //    return;
+    //}
 
     // Read data in a file.
     std::ifstream fin;
-    fin.open(year_name + ".txt");
+    fin.open("D://school_year.txt");
 
-    if (!fin.is_open())
-    {
-        std::cout << "Unable to open file" << std::endl;
-        return;
-    }
+    if (!fin.is_open()) std::cout << "Cannot open file!";
 
-    SchoolYear* pYear = new SchoolYear;
-    pYear->pClass = nullptr;
-    Class* cur = pYear->pClass;
+    LLNode* class_l = nullptr;
+    LLNode* cur = class_l;
 
     while (!fin.eof())
     {
-        Class* tmp = new Class;
-        std::getline(fin, tmp->class_id, '-');
-        std::getline(fin, tmp->class_name);
-        tmp->classNext = nullptr;
+        LLNode* tmp = new LLNode;
+        std::getline(fin, tmp->name);
+        tmp->next = nullptr;
         if (cur == nullptr)
         {
-            pYear->pClass = cur = tmp;
+            class_l = cur = tmp;
         }
         else
         {
-            cur->classNext = tmp;
+            cur->next = tmp;
             cur = tmp;
         }
     }
 
-    std::cout << "List of classes in " << year_name << ": \n";
-    for (; pYear->pClass != nullptr; pYear->pClass = pYear->pClass->classNext)
+    for (; class_l != nullptr; class_l = class_l->next)
     {
-        std::cout << pYear->pClass->class_id << " - " << pYear->pClass->class_name << "\n";
+        std::cout << "\n" << class_l->name;
     }
 
     fin.close();
 }
 
-void viewStudentsInClass(std::string class_name, int& cnt)           // view all the students in class. 
+void viewStudentsInClass(const std::string& filename, int& cnt)           // view all the students in class. 
 {   
-    if (!checkValidFileName("class", "txt", class_name))
-    {
-        std::cout << "Unvalid Class!" << std::endl;
-        return;
-    }
-
 	Student* students = new Student[MAX];
-	std::ifstream file(class_name + ".txt");
+	std::ifstream file(filename + ".txt");
 
 	cnt = 0;
 
@@ -126,8 +113,7 @@ void viewStudentsInClass(std::string class_name, int& cnt)           // view all
 	}
 	else
 	{
-		std::cout << "Unable to open file" << std::endl;
-        return;
+		std::cerr << "Unable to open file" << std::endl;
 	}
 
 	for (int j = 0; j < cnt; ++j)
@@ -143,112 +129,102 @@ void viewStudentsInClass(std::string class_name, int& cnt)           // view all
 
 void viewListOfCourse(Course* head)     // View a list of courses.
 {
-    std::ifstream fin;
-    fin.open("course.txt");
-
-    if (!fin.is_open())
-    {
-        std::cout << "Unable to open file" << std::endl;
-        return;
-    }
-
-    Course *head    = nullptr;
-    Course *curr = head;
-    while (!fin.eof())
-    {
-        Course *new_node = new Node;
-        getline(fin, new_node->id, ',');
-        getline(fin, new_node->name);
-
-        new_node->next = nullptr;
-        if (head == nullptr)
+        std::ifstream fin;
+        fin.open("Course.txt");
+        if (!fin.is_open())
         {
-                head = curr = new_node;
+                std::cout << "Cannot open file !";
+        }
+        Course *head    = nullptr;
+        Course *curr = head;
+        while (!fin.eof())
+        {
+                Course *new_node = new Node;
+                getline(fin, new_node->id, ',');
+                getline(fin, new_node->name);
+
+                new_node->next = nullptr;
+                if (head == nullptr)
+                {
+                        head = curr = new_node;
+                }
+                else
+                {
+                        curr->course_next = new_node;
+                        curr       = new_node;
+                }
+        }
+
+        while (a)
+        {
+                std::cout << head->name << "-" << head->id << std::endl;
+                head = head->course_next;
+        }
+      
+        while (head != nullptr)
+        {
+                Course *curr = head;
+                head         = head->course_next;
+                delete curr;
+        
+        }
+}
+
+void viewStudentsInCourse(const std::string &filename, int& cnt)  // view students in a course
+{
+        Student *students = new Student[MAX];
+        std::ifstream file(filename + ".txt");
+        cnt = 0;
+        if (file.is_open())
+        {
+                int i = 0;
+                std::string line;
+                std::getline(file, line);
+                while (std::getline(file, line))
+                {
+                        std::stringstream ss(line);
+                        std::string token;
+
+                        Student stu;
+
+                        std::getline(ss, token, ',');
+
+                        std::getline(ss, token, ',');
+                        stu.id = token;
+
+                        std::getline(ss, token, ',');
+                        stu.first_name = token;
+
+                        std::getline(ss, token, ',');
+                        stu.last_name = token;
+
+                        std::getline(ss, token, ',');
+                        stu.gender = token;
+
+                        std::getline(ss, token, ',');
+                        stu.dob = token;
+
+                        std::getline(ss, token);
+                        stu.social_id = token;
+
+                        students[i] = stu;
+                        i++;
+                }
+                cnt = i;
+                file.close();
         }
         else
         {
-                curr->course_next = new_node;
-                curr       = new_node;
+                std::cerr << "Unable to open file" << std::endl;
         }
-    }
 
-    while (a)
-    {
-            std::cout << head->name << "-" << head->id << std::endl;
-            head = head->course_next;
-    }
-      
-    while (head != nullptr)
-    {
-            Course *curr = head;
-            head         = head->course_next;
-            delete curr;
-        
-    }
-}
-
-void viewStudentsInCourse(std::string course_name, int& cnt)  // view students in a course
-{
-    if (!checkValidFileName("course", "txt", course_name))
-    {
-        std::cout << "Unvalid Class!" << std::endl;
-        return;
-    }
-
-    Student *students = new Student[MAX];
-
-    std::ifstream file(course_name + ".txt");
-    cnt = 0;
-    if (file.is_open())
-    {
-        int i = 0;
-        std::string line;
-        std::getline(file, line);
-        while (std::getline(file, line))
+        for (int j = 0; j < cnt; ++j)
         {
-            std::stringstream ss(line);
-            std::string token;
-
-            Student stu;
-
-            std::getline(ss, token, ',');
-
-            std::getline(ss, token, ',');
-            stu.id = token;
-
-            std::getline(ss, token, ',');
-            stu.first_name = token;
-
-            std::getline(ss, token, ',');
-            stu.last_name = token;
-
-            std::getline(ss, token, ',');
-            stu.gender = token;
-
-            std::getline(ss, token, ',');
-            stu.dob = token;
-
-            std::getline(ss, token);
-            stu.social_id = token;
-
-            students[i] = stu;
-            i++;
+                std::cout << j + 1 << "/ " << students[j].id << " - " << students[j].last_name
+                          << " " << students[j].first_name << " - " << students[j].gender << " - "
+                          << students[j].dob << " - " << students[j].social_id << ". \n";
         }
-        cnt = i;
-        file.close();
-    }
-    else
-    {
-        std::cout << "Unable to open file" << std::endl;
-    }
-
-    for (int j = 0; j < cnt; ++j)
-    {
-        std::cout << j + 1 << "/ " << students[j].id << " - " << students[j].last_name
-        << " " << students[j].first_name << " - " << students[j].gender << " - "
-        << students[j].dob << " - " << students[j].social_id << ". \n";
-    }
-    delete[] students;
+        delete[] students;
 }
 
 void viewScoreBoardOfCourse(std::string course_name, int& cnt)

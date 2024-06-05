@@ -18,7 +18,6 @@ enum DayOfWeek
     SATURDAY  = 5,
     SUNDAY    = 6
 };
-
 struct Date
 {
     unsigned int day;
@@ -28,30 +27,28 @@ struct Date
 
 struct Student
 {
-    std::string id;
-    std::string student_name;
+    unsigned int id;
+    std::string name;
     Date dob;
     Gender gender;
-    std::string social_id;
+    unsigned int social_id;
     Student *studentNext = nullptr;
 };
-
 struct Class
 {
-    std::string class_id;
-    std::string class_name;
-    //std::string code;
-    //std::string enter_year;
+    unsigned int id;
+    std::string name;
+    std::string code;
+    std::string enter_year;
     unsigned int max_students     = 50;
     unsigned int current_students = 0;
     Class *classNext              = nullptr;
-    Student *pStudent          = nullptr;
+    Student *studentList          = nullptr;
 };
-
 struct Course
 {
-    unsigned int course_id;
-    std::string course_name;
+    unsigned int id;
+    std::string name;
     std::string code;
     std::string teacher_name;
     unsigned int credits;
@@ -60,28 +57,4 @@ struct Course
     // A course can only have so much students, so it's better to use an array here instead
     // Dizzme mùa đăng ký học phần
     Student *student_list;
-};
-
-struct Semester
-{
-    std::string semester_name;
-    Date start_date, end_date;
-    Date start_reg, end_reg;
-    Semester* semesterNext = nullptr;
-};
-
-struct SchoolYear {
-    std::string year_name;
-    Class* pClass = nullptr;
-    Semester* pSemester = nullptr;
-    SchoolYear* yearNext = nullptr;
-};
-
-struct StudentScore {
-    std::string id;
-    std::string full_name;
-    float total_mark;
-    float final_mark;
-    float midterm_mark;
-    float other_mark;
 };

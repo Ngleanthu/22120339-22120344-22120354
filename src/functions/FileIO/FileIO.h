@@ -6,6 +6,7 @@
 #include <iostream>
 #include <istream>
 #include <string>
+#include "../Misc/Misc.h"
 
 struct CSVRow
 {
@@ -16,20 +17,23 @@ struct CSVRow
 struct CSVNode
 {
     CSVRow *data;
-    CSVNode *next;
+    CSVNode *next = nullptr;
+
 };
 
 struct CSVList
 {
-    CSVNode *head;
-    CSVNode *tail;
+    CSVNode *head = nullptr;
+    CSVNode *tail = nullptr;
     int size;
+
 };
 
 struct ListResult
 {
-    CSVList *list;
+    CSVList *list = nullptr;
     std::string errorMsg;
+
 };
 
 struct RowResult
@@ -37,6 +41,7 @@ struct RowResult
     CSVRow *row;
     std::string errorMsg;
     int numColumns = 0;
+
 };
 
 ListResult readCSV(std::string filename, std::string directory);
@@ -52,5 +57,12 @@ void updateCSVRecord(std::string filename,
                      std::string directory,
                      std::string columnToSearch,
                      CSVRow *updatedRow);
+
+void createNewCSVFile(std::string filename, std::string directory, std::string *columnNames = nullptr, int headerRowSize = 0);
+void writeDataToCSV(std::string filename,
+                    std::string directory,
+                    CSVList *list,
+                    std::string *header_names = nullptr,
+                    int headerRowSize = 0);
 
 #endif
