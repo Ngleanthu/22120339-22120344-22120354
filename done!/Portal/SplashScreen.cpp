@@ -13,30 +13,45 @@ SplashScreen::~SplashScreen()
 }
 void SplashScreen::Init()
 {
-	_data->_assets->AddTexture(HCMUS, "Asset\\hcmus.png");
-	_data->_assets->AddFont(LIGHT , "Asset\\Light.ttf");
+	_data->_assets->AddTexture(HCMUS, "Asset\\hcmus-background.png");
+	_data->_assets->AddFont(LIGHT, "Asset\\Light.ttf");
+	_data->_assets->AddTexture(LOGO_HCMUS, "Asset\\logo-khtn.png");
+	_data->_assets->AddFont(HELVETICA_BOLD, "Asset\\Helvetica-Bold.ttf");
+	_data->_assets->AddFont(CHIVOMONO_LIGHT, "Asset\\ChivoMono-Light.ttf");
+	_data->_assets->AddFont(CHIVOMONO_REGULAR, "Asset\\ChivoMono-Regular.ttf");
+	_data->_assets->AddFont(KANIT, "Asset\\Kanit-Regular.ttf");
 
 	_logo.setTexture(_data->_assets->GetTexture(HCMUS));
 	_logo.setOrigin(_logo.getLocalBounds().width / 2, _logo.getLocalBounds().height / 2);
 	_logo.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
 
+	_loginbox.setSize(sf::Vector2f(400.0f, 100.0f));
+	_loginbox.setOrigin(_loginbox.getLocalBounds().width / 2, _loginbox.getLocalBounds().height / 2);
+	_loginbox.setPosition(sf::Vector2f(1133.0f, 324.0f));
+	_loginbox.setFillColor(sf::Color(0, 76, 153, 255));
 
-	_loginbutton.setFont(_data->_assets->GetFont(LIGHT));
-	_loginbutton.setPosition(_data->_window->getSize().x - 175, 0);
-	_loginbutton.setString("Login");
+	_loginbutton.setFont(_data->_assets->GetFont(KANIT));
+	_loginbutton.setString("LOG IN");
+	_loginbutton.setStyle(sf::Text::Bold);
 	_loginbutton.setFillColor(sf::Color::White);
-	_loginbutton.setOutlineColor(sf::Color::Yellow);
-	_loginbutton.setOutlineThickness(0.5);
+	_loginbutton.setCharacterSize(40);
+	sf::FloatRect textRect = _loginbutton.getLocalBounds();
+	_loginbutton.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+	_loginbutton.setPosition(sf::Vector2f(1133.0f, 324.0f));
 
-	_registerbutton.setFont(_data->_assets->GetFont(LIGHT));
-	_registerbutton.setPosition(_data->_window->getSize().x - 250, 50);
-	_registerbutton.setCharacterSize(22);
-	_registerbutton.setString("Create student account\n      (for staff only)");
+	_registerbox.setSize(sf::Vector2f(400.0f, 100.0f));
+	_registerbox.setOrigin(_registerbox.getLocalBounds().width / 2, _registerbox.getLocalBounds().height / 2);
+	_registerbox.setPosition(sf::Vector2f(1133.0f, 454.0f));
+	_registerbox.setFillColor(sf::Color(0, 76, 153, 255));
+
+	_registerbutton.setFont(_data->_assets->GetFont(KANIT));
+	_registerbutton.setCharacterSize(30);
+	_registerbutton.setString("Create student account\n        (for staff only)");
+	_registerbutton.setStyle(sf::Text::Bold);
 	_registerbutton.setFillColor(sf::Color::White);
-	_registerbutton.setOutlineColor(sf::Color::Yellow);
-	_registerbutton.setOutlineThickness(0.5);
-
-
+	textRect = _registerbutton.getLocalBounds();
+	_registerbutton.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+	_registerbutton.setPosition(sf::Vector2f(1133.0f, 454.0f));
 }
 void SplashScreen::ProcessInput()
 {
@@ -63,8 +78,8 @@ void SplashScreen::ProcessInput()
 }
 void SplashScreen::Update()
 {
-	(_loginfocus ? _loginbutton.setFillColor(sf::Color::Red) : _loginbutton.setFillColor(sf::Color::White));
-	(_registerfocus ? _registerbutton.setFillColor(sf::Color::Red) : _registerbutton.setFillColor(sf::Color::White));
+	(_loginfocus ? _loginbox.setFillColor(sf::Color(51, 153, 255, 255)) : _loginbox.setFillColor(sf::Color(0, 76, 153, 255)));
+	(_registerfocus ? _registerbox.setFillColor(sf::Color(51, 153, 255, 255)) : _registerbox.setFillColor(sf::Color(0, 76, 153, 255)));
 	if (_loginselected)
 	{
 		_data->_states->AddState(new LoginForm(_data));
@@ -80,8 +95,9 @@ void SplashScreen::Draw()
 {
 	_data->_window->clear();
 	_data->_window->draw(_logo);
+	_data->_window->draw(_loginbox);
 	_data->_window->draw(_loginbutton);
+	_data->_window->draw(_registerbox);
 	_data->_window->draw(_registerbutton);
 	_data->_window->display();
-
 }

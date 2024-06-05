@@ -6,7 +6,9 @@ class SplashScreen : public State
 private:
 	Data* _data;
 	sf::Sprite _logo;
+	sf::RectangleShape _loginbox;
 	sf::Text _loginbutton;
+	sf::RectangleShape _registerbox;
 	sf::Text _registerbutton;
 	bool _loginfocus;
 	bool _registerfocus;

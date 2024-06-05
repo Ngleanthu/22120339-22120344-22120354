@@ -50,7 +50,7 @@ void StudentInfo::Init()
 	_info[1].setString("First name : " + _info[1].getString());
 	_info[2].setString("Last name : " + _info[2].getString());
 	_info[3].setString("Gender : " + _info[3].getString());
-	_info[4].setString("Dob : " + _info[4].getString());
+	_info[4].setString("DOB : " + _info[4].getString());
 	_info[5].setString("Social ID : " + _info[5].getString());
 	
 }

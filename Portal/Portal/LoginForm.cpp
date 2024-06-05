@@ -172,6 +172,12 @@ void LoginForm::Update()
 				std::ofstream file("username.txt");
 				file << _getusername;
 			}
+			else
+			{
+				_data->_states->AddState(new NotStaff(_data), 1);
+				std::ofstream file("username.txt");
+				file << _getusername;
+			}
 		}
 		else
 		{
