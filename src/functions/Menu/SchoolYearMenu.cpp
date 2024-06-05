@@ -1,34 +1,35 @@
 #include "Menu.h"
-std::string schoolYearHeader[] = {"id", "school_year", "start_year", "end_year"};
 
-bool skipInitialPrompt = false;
-bool displaying = true;
+bool skipInitialPromptSchoolYear = false;
+bool displayingSchoolYearMenu = true;
 void SchoolYearMenu()
 {
-    while (displaying)
+    while (displayingSchoolYearMenu)
     {
         std::filesystem::path schoolYearDB = dataDirectory + schoolYearFile;
 
         if (!std::filesystem::exists(schoolYearDB))
         {
-            createNewCSVFile(schoolYearFile, dataDirectory, schoolYearHeader,
-                             sizeof(schoolYearHeader) / sizeof(schoolYearHeader[0]));
+            createNewCSVFile(schoolYearFile, dataDirectory, schoolYearCSVHeader, 4);
         }
 
         // Read the school year file, and display the list of school years
         ListResult schoolYearList = readCSV(schoolYearFile, dataDirectory);
 
-        if (schoolYearList.list->size - 1 == 0 && !skipInitialPrompt)
+        if (schoolYearList.list->size <= 0 && !skipInitialPromptSchoolYear)
         {
             PromptNoSchoolYear();
         }
 
-        std::cout << "Currently there are " << schoolYearList.list->size - 1
-                  << " school years: " << std::endl;
+        std::cout << "Currently there are " << schoolYearList.list->size
+                  << " school year";
+        if (schoolYearList.list->size > 1)
+            std::cout << "s";
+        std::cout << ":" << std::endl;
         std::cout << "----------------------------------------" << std::endl;
         printCSVList(schoolYearList.list);
         std::cout << "----------------------------------------" << std::endl;
-        promptChoice();
+        PromptChoiceSchoolYear();
     }
 }
 
@@ -44,7 +45,7 @@ void PromptNoSchoolYear()
     }
     else if (choice == 'N' || choice == 'n')
     {
-        skipInitialPrompt = true;
+        skipInitialPromptSchoolYear = true;
         return;
     }
     else
@@ -54,7 +55,7 @@ void PromptNoSchoolYear()
     }
 }
 
-void promptChoice()
+void PromptChoiceSchoolYear()
 {
     do
     {
@@ -78,7 +79,7 @@ void promptChoice()
         }
         else if (choice == 0)
         {
-            displaying = false;
+            displayingSchoolYearMenu = false;
             return;
         }
         else

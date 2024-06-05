@@ -1,7 +1,5 @@
 #include "Profile.h"
-#include "../../constants.h"
-#include "../../struct_definitions/User.h"
-#include "../FileIO/FileIO.h"
+
 
 void GetProfile(std::string username, User &currentUserProfile)
 {
@@ -23,40 +21,7 @@ void GetProfile(std::string username, User &currentUserProfile)
     currentUserProfile.is_staff   = std::stoi(currentUserData.row->columns[7]) == 1 ? true : false;
 }
 
-void SplitDates(std::string date, Date &dateObject)
-{
-    std::string temp;
-    int i          = 0;
-    char delimiter = '-';
-    while (date[i] != delimiter)
-    {
-        temp += date[i];
-        i++;
-    }
-    dateObject.year = std::stoi(temp);
 
-    temp = "";
-    i++;
-
-    while (date[i] != delimiter)
-    {
-        temp += date[i];
-        i++;
-    }
-
-    dateObject.month = std::stoi(temp);
-
-    temp = "";
-    i++;
-
-    while (i < date.length())
-    {
-        temp += date[i];
-        i++;
-    }
-
-    dateObject.day = std::stoi(temp);
-}
 
 void PrintProfile(User &userProfile)
 {
