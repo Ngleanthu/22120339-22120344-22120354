@@ -1,3 +1,4 @@
+#pragma once
 #ifndef FILEIO_H
 #define FILEIO_H
 
@@ -7,6 +8,7 @@
 #include <istream>
 #include <string>
 #include "../Misc/Misc.h"
+
 
 struct CSVRow
 {
@@ -18,6 +20,7 @@ struct CSVNode
 {
     CSVRow *data;
     CSVNode *next = nullptr;
+    CSVNode *prev = nullptr;
 
 };
 
@@ -58,11 +61,12 @@ void updateCSVRecord(std::string filename,
                      std::string columnToSearch,
                      CSVRow *updatedRow);
 
-void createNewCSVFile(std::string filename, std::string directory, std::string *columnNames = nullptr, int headerRowSize = 0);
+void createNewCSVFile(std::string filename, std::string directory, const std::string *columnNames = nullptr, int headerRowSize = 0);
 void writeDataToCSV(std::string filename,
                     std::string directory,
                     CSVList *list,
-                    std::string *header_names = nullptr,
+                    const std::string *header_names = nullptr,
                     int headerRowSize = 0);
-
+bool deleteCSVRow(std::string filename, std::string directory, int delId);
+void deleteCSVFile(std::string filename, std::string directory);
 #endif

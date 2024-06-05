@@ -13,8 +13,9 @@ void MainMenu(std::string &username)
         {
             std::cout << "1. Account settings" << std::endl
                       << "2. School year management" << std::endl
-                      << "3. Class Management" << std::endl
-                      << "4. Course Management" << std::endl
+                      << "3. Semester Management" << std::endl
+                      << "4. Class Management" << std::endl
+                      << "5. Course Management" << std::endl
                       << "0. Exit" << std::endl
                       << "Enter your choice: ";
             std::cin >> choice;
@@ -29,9 +30,13 @@ void MainMenu(std::string &username)
             }
             else if (choice == 3)
             {
-                ClassManagementMenu();
+                SemesterMenu();
             }
             else if (choice == 4)
+            {
+                ClassManagementMenu();
+            }
+            else if (choice == 5)
             {}
             else if (choice == 0)
             {

@@ -101,6 +101,7 @@ ListResult readCSV(std::string filename, std::string directory)
     }
     result.list = dataList;
     result.errorMsg = "";
+    result.list->size=row;
     return result;
 }
 
@@ -118,6 +119,7 @@ void AddCSVRecord(CSVList *list, CSVRow *data)
     CSVNode *node = new CSVNode();
     node->data    = data;
     node->next    = nullptr;
+    node->prev    = nullptr;
 
     if (list->head == nullptr)
     {
@@ -127,6 +129,7 @@ void AddCSVRecord(CSVList *list, CSVRow *data)
     else
     {
         list->tail->next = node;
+        node->prev       = list->tail;
         list->tail       = node;
     }
     list->size++;

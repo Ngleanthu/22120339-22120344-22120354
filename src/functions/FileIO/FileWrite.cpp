@@ -2,7 +2,7 @@
 
 void createNewCSVFile(std::string filename,
                       std::string directory,
-                      std::string *columnNames,
+                      const std::string *columnNames,
                       int headerRowSize)
 {
     if (std::filesystem::exists(directory + filename))
@@ -41,7 +41,7 @@ void createNewCSVFile(std::string filename,
 void writeDataToCSV(std::string filename,
                     std::string directory,
                     CSVList *list,
-                    std::string *header_names,
+                    const std::string *header_names,
                     int headerRowSize)
 {
     // Note: this is only useful for writing massive amounts of data to a file

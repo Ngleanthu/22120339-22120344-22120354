@@ -66,5 +66,6 @@ struct SchoolYearList
     std::string name;
     unsigned int start_year;
     unsigned int end_year;
+    unsigned int max_semester;
     SchoolYearList *schoolYearNext = nullptr;
 };
