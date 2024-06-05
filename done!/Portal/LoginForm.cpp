@@ -1,6 +1,6 @@
 #include "LoginForm.h"
 #include"Staff.h"
-
+#include"NotStaff.h"
 LoginForm::LoginForm(Data* data): _data(data), _usernamefocus(0), _passwordfocus(0), _blink(1), _exitfocus(0),
 	_submitfocus(0) , _exitselected(0) , _submitselected(0)
 {
@@ -169,6 +169,12 @@ void LoginForm::Update()
 			if (isStaff(_getusername))
 			{
 				_data->_states->AddState(new Staff(_data) , 1);
+				std::ofstream file("username.txt");
+				file << _getusername;
+			}
+			else
+			{
+				_data->_states->AddState(new NotStaff(_data), 1);
 				std::ofstream file("username.txt");
 				file << _getusername;
 			}
