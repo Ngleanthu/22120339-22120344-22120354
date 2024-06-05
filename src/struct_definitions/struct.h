@@ -18,6 +18,7 @@ enum DayOfWeek
     SATURDAY  = 5,
     SUNDAY    = 6
 };
+
 struct Date
 {
     unsigned int day;
@@ -27,19 +28,19 @@ struct Date
 
 struct Student
 {
-    unsigned int id;
-    std::string name;
+    std::string id;
+    std::string student_name;
     Date dob;
     Gender gender;
-    unsigned int social_id;
+    std::string social_id;
     Student *studentNext = nullptr;
 };
 struct ClassList
 {
-    unsigned int id;
-    std::string name;
-    std::string code;
-    std::string enter_year;
+    std::string class_id;
+    std::string class_name;
+    //std::string code;
+    //std::string enter_year;
     unsigned int max_students     = 50;
     unsigned int current_students = 0;
     unsigned int belong_to_schoolyear_id;
@@ -48,8 +49,8 @@ struct ClassList
 };
 struct CourseList
 {
-    unsigned int id;
-    std::string name;
+    unsigned int course_id;
+    std::string course_name;
     std::string code;
     std::string teacher_name;
     unsigned int credits;
