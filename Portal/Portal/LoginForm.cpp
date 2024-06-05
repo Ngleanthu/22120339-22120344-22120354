@@ -1,6 +1,7 @@
 #include "LoginForm.h"
+#include"Staff.h"
 
-LoginForm::LoginForm(Data *data): _data(data), _usernamefocus(0), _passwordfocus(0), _blink(1), _exitfocus(0),
+LoginForm::LoginForm(Data* data): _data(data), _usernamefocus(0), _passwordfocus(0), _blink(1), _exitfocus(0),
 	_submitfocus(0) , _exitselected(0) , _submitselected(0)
 {
 
@@ -12,6 +13,8 @@ LoginForm::~LoginForm()
 void LoginForm::Init()
 {
 
+
+	time = sf::Time::Zero;
 
 	_usernamebox.setSize(sf::Vector2f(300, 40));
 	_usernamebox.setFillColor(sf::Color::White);
@@ -55,7 +58,7 @@ void LoginForm::Init()
 
 	_exit.setFont(_data->_assets->GetFont(LIGHT));
 	_exit.setString("Exit");
-	_exit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
+	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 145);
 	_exit.setFillColor(sf::Color::Red);
 
@@ -70,8 +73,11 @@ void LoginForm::Init()
 	_showpassword.setFillColor(sf::Color::Black);
 	_showpassword.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 15);
 	_showpassword.setString("");
-	time = sf::Time::Zero;
-
+	
+	_status.setCharacterSize(20);
+	_status.setFont(_data->_assets->GetFont(LIGHT));
+	_status.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 245);
+	_status.setFillColor(sf::Color::Red);
 }
 void LoginForm::ProcessInput()
 {
@@ -93,10 +99,11 @@ void LoginForm::ProcessInput()
 			_usernamefocus = (_usernamebox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_passwordfocus = (_passwordbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_exitselected = (_exitfocus ? 1 : 0);
+			_submitselected = (_submitfocus ? 1 : 0);
 			_blink = 1;
 		}
 		
-		if (event.type == sf::Event::TextEntered)
+		if (event.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
 			if (event.text.unicode < 128)
 			{
@@ -153,6 +160,24 @@ void LoginForm::Update()
 	if (_exitselected)
 	{
 		_data->_states->RemoveState();
+		_exitselected = 0;
+	}
+	if (_submitselected || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
+		if (LoginSuccess(_getusername, _getpassword))
+		{
+			if (isStaff(_getusername))
+			{
+				_data->_states->AddState(new Staff(_data) , 1);
+				std::ofstream file("username.txt");
+				file << _getusername;
+			}
+		}
+		else
+		{
+			_status.setString("Username haven't existed or wrong password!");
+		}
+		_submitselected = 0;
 	}
 }
 void LoginForm::Draw()
@@ -168,5 +193,6 @@ void LoginForm::Draw()
 	_data->_window->draw(_exit);
 	_data->_window->draw(_showusername);
 	_data->_window->draw(_showpassword);
+	_data->_window->draw(_status);
 	_data->_window->display();
 }

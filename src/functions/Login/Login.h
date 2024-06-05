@@ -3,10 +3,9 @@
 #pragma once
 
 #include <string>
+#include "../../constants.h"
 #include "../FileIO/FileIO.h"
-
-const std::string loginDataFile      = "login.csv";
-const std::string loginDataDirectory = "../../db/";
+#include "../Misc/Misc.h"
 
 std::string login();
 bool findUserInCSVList(CSVList *list, std::string username, std::string password);
