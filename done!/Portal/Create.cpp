@@ -20,7 +20,7 @@ void CreateYear::Init()
 	_box.setOrigin(sf::Vector2f(_box.getGlobalBounds().width / 2, _box.getGlobalBounds().height / 2));
 	_box.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
 	_box.setOutlineThickness(1);
-	_box.setOutlineColor(sf::Color::Red);
+    _box.setOutlineColor(sf::Color(40, 116, 166, 240));
 
 	_text.setFont(_data->_assets->GetFont(LIGHT));
 	_text.setString("School Year");
@@ -28,7 +28,7 @@ void CreateYear::Init()
 	_text.setFillColor(sf::Color::Black);
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color::Red);
+    _submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
 
@@ -37,17 +37,17 @@ void CreateYear::Init()
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
+	_submit.setFont(_data->_assets->GetFont(KANIT));
 	_submit.setString("Submit");
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 95);
-	_submit.setFillColor(sf::Color::Black);
+	_submit.setFillColor(sf::Color::White);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 145);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFillColor(sf::Color::Black);
 
 	_showbox.setFont(_data->_assets->GetFont(LIGHT));
 	_showbox.setCharacterSize(24);
@@ -116,8 +116,10 @@ void CreateYear::Update()
 		clock.restart();
 	}
 	_showbox.setString(_getbox + ((_blink && _boxfocus) ? "|" : ""));
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_submitfocus ? _submitbutton.setFillColor(sf::Color::Yellow) : _submitbutton.setFillColor(sf::Color::Red));
+        (_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+                    : _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+        (_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
 	if (_boxfocus || !_getbox.empty())
 	{
 		_example.setFillColor(sf::Color::Color(0, 0, 0, 0));
@@ -201,7 +203,7 @@ void Create::Init()
 	_box.setOrigin(sf::Vector2f(_box.getGlobalBounds().width / 2, _box.getGlobalBounds().height / 2));
 	_box.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
 	_box.setOutlineThickness(1);
-	_box.setOutlineColor(sf::Color::Red);
+    _box.setOutlineColor(sf::Color(40, 116, 166, 240));
 
 	_text.setFont(_data->_assets->GetFont(LIGHT));
 	_text.setString("Class name");
@@ -209,26 +211,26 @@ void Create::Init()
 	_text.setFillColor(sf::Color::Black);
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color::Red);
+    _submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+    _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
+	_submit.setFont(_data->_assets->GetFont(KANIT));
 	_submit.setString("Submit");
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 95);
-	_submit.setFillColor(sf::Color::Black);
+	_submit.setFillColor(sf::Color::White);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 145);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFillColor(sf::Color::Black);
 
 	_showbox.setFont(_data->_assets->GetFont(LIGHT));
 	_showbox.setCharacterSize(24);
@@ -298,8 +300,10 @@ void Create::Update()
 		clock.restart();
 	}
 	_showbox.setString(_getbox + ((_blink && _boxfocus) ? "|" : ""));
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_submitfocus ? _submitbutton.setFillColor(sf::Color::Yellow) : _submitbutton.setFillColor(sf::Color::Red));
+        (_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+                    : _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+        (_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
 	if (_boxfocus || !_getbox.empty())
 	{
 		_example.setFillColor(sf::Color::Color(0, 0, 0, 0));
@@ -368,7 +372,7 @@ void AddStudent::Init()
 		_box[i].setOrigin(sf::Vector2f(_box[i].getGlobalBounds().width / 2, _box[i].getGlobalBounds().height / 2));
 		_box[i].setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 350 + 100 * i);
 		_box[i].setOutlineThickness(1);
-		_box[i].setOutlineColor(sf::Color::Red);
+        _box[i].setOutlineColor(sf::Color(40, 116, 166, 240));
 		_text[i].setFont(_data->_assets->GetFont(LIGHT));
 		_text[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 410 + 100*i);
 		_text[i].setFillColor(sf::Color::Black);
@@ -388,26 +392,26 @@ void AddStudent::Init()
 	
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color::Red);
+    _submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+    _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 350);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
+	_submit.setFont(_data->_assets->GetFont(KANIT));
 	_submit.setString("Submit");
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 295);
-	_submit.setFillColor(sf::Color::Black);
+    _submit.setFillColor(sf::Color(40, 116, 166, 240));
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 345);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFillColor(sf::Color::Black);
 
 	_status.setCharacterSize(20);
 	_status.setFont(_data->_assets->GetFont(LIGHT));
@@ -484,8 +488,10 @@ void AddStudent::Update()
 		_showbox[i].setString(_getbox[i] + ((_blink && _boxfocus[i]) ? "|" : ""));
 	}
 	
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_submitfocus ? _submitbutton.setFillColor(sf::Color::Yellow) : _submitbutton.setFillColor(sf::Color::Red));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+                    : _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+    (_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
 	
 	if (_exitselected)
 	{
@@ -575,7 +581,7 @@ void CreateSemester::Init()
 		_box[i].setOrigin(sf::Vector2f(_box[i].getGlobalBounds().width / 2, _box[i].getGlobalBounds().height / 2));
 		_box[i].setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 350 + 100 * i);
 		_box[i].setOutlineThickness(1);
-		_box[i].setOutlineColor(sf::Color::Red);
+        _box[i].setOutlineColor(sf::Color(40, 116, 166, 240));
 		_text[i].setFont(_data->_assets->GetFont(LIGHT));
 		_text[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 410 + 100 * i);
 		_text[i].setFillColor(sf::Color::Black);
@@ -593,23 +599,23 @@ void CreateSemester::Init()
 
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color::Red);
+    _submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+    _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 350);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
+	_submit.setFont(_data->_assets->GetFont(KANIT));
 	_submit.setString("Submit");
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 295);
-	_submit.setFillColor(sf::Color::Black);
+	_submit.setFillColor(sf::Color::White);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 345);
 	_exit.setFillColor(sf::Color::Red);
@@ -680,8 +686,10 @@ void CreateSemester::Update()
 		_showbox[i].setString(_getbox[i] + ((_blink && _boxfocus[i]) ? "|" : ""));
 	}
 
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_submitfocus ? _submitbutton.setFillColor(sf::Color::Yellow) : _submitbutton.setFillColor(sf::Color::Red));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+                    : _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+    (_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
 
 	if (_exitselected)
 	{
@@ -763,7 +771,7 @@ void AddCourse::Init()
 		_box[i].setOrigin(sf::Vector2f(_box[i].getGlobalBounds().width / 2, _box[i].getGlobalBounds().height / 2));
 		_box[i].setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 350 + 75 * i);
 		_box[i].setOutlineThickness(1);
-		_box[i].setOutlineColor(sf::Color::Red);
+        _box[i].setOutlineColor(sf::Color(40, 116, 166, 240));
 		_text[i].setFont(_data->_assets->GetFont(LIGHT));
 		_text[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 410 + 75 * i);
 		_text[i].setFillColor(sf::Color::Black);
@@ -784,26 +792,26 @@ void AddCourse::Init()
 
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color::Red);
+    _submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+    _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 350);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
+	_submit.setFont(_data->_assets->GetFont(KANIT));
 	_submit.setString("Submit");
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 295);
-	_submit.setFillColor(sf::Color::Black);
+	_submit.setFillColor(sf::Color::White);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 345);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFillColor(sf::Color::Black);
 	
 	_status.setCharacterSize(20);
 	_status.setFont(_data->_assets->GetFont(LIGHT));
@@ -873,8 +881,10 @@ void AddCourse::Update()
 		_showbox[i].setString(_getbox[i] + ((_blink && _boxfocus[i]) ? "|" : ""));
 	}
 
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_submitfocus ? _submitbutton.setFillColor(sf::Color::Yellow) : _submitbutton.setFillColor(sf::Color::Red));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+                    : _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+    (_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100))
+                      : _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
 
 	if (_exitselected)
 	{
