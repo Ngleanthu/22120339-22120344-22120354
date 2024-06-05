@@ -9,7 +9,7 @@ ListResult readCSV(std::string filename, std::string directory)
     {
         result.list = nullptr;
         std::cout << "File does not exist" << std::endl;
-        return result;
+        exit(0);
     }
 
     std::ifstream file;
@@ -18,7 +18,7 @@ ListResult readCSV(std::string filename, std::string directory)
     {
         result.list = nullptr;
         std::cout << "File could not be opened" << std::endl;
-        return result;
+        exit(0);
     }
 
     std::string header;
