@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "../../struct_definitions/User.h"
+#include "../Misc/Misc.h"
 #include "../Profile/Profile.h"
 
 const std::string profileFile      = "profile.csv";
@@ -23,15 +24,16 @@ void Menu(std::string username)
             std::cin >> choice;
             if (choice == 1)
             {
-				
-			}
-            if (choice == 2)
+                PrintProfile(currentUserProfile);
+            }
+            else if (choice == 2)
             {}
             else
             {
                 std::cout << "Invalid input";
             }
-            system("cls");
+            wait_for_enter();
+            clear_screen();
         } while (choice != 1 && choice != 2 && choice != 3);
     }
     else
@@ -44,14 +46,17 @@ void Menu(std::string username)
                       << "Enter your choice : ";
             std::cin >> choice;
             if (choice == 1)
-            {}
-            if (choice == 2)
+            {
+                PrintProfile(currentUserProfile);
+            }
+            else if (choice == 2)
             {}
             else
             {
                 std::cout << "Invalid input";
             }
-            system("cls");
+            wait_for_enter();
+            clear_screen();
         } while (choice != 1 && choice != 2 && choice != 3);
     }
 }

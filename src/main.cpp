@@ -1,17 +1,38 @@
-#include "functions/FileIO/FileIO.h"
-#include "functions/Login/Login.h"
 #include "global.h"
-#include "functions/Menu/Menu.h"
+
 int main()
 {
-    std::string loggedInUsername = login();
-
-    if (loggedInUsername == "")
+    while (true)
     {
-        std::cout << "Login failed" << std::endl;
-        return 0;
+        runLogic();
     }
-    std::cout << "Login successful" << std::endl;
+}
+
+void runLogic()
+{
+    std::string loggedInUsername;
+
+    readSession(loggedInUsername);
+    if (!loggedInUsername.empty())
+    {
+        std::cout << "Welcome back, " << loggedInUsername << "!" << std::endl;
+        Menu(loggedInUsername);
+        return;
+    }
+
+    std::cout << "Welcome to Student Management System!" << std::endl;
+    std::cout << "Please log in to continue." << std::endl;
+
+    loggedInUsername = login();
+    if (loggedInUsername.empty())
+    {
+        std::cout << "Login failed!" << std::endl;
+        return;
+    }
+
+    saveSession(loggedInUsername);
+    std::cout << "Login successful!" << std::endl;
+
     Menu(loggedInUsername);
     // TODO: Hiển thị menu:
     // TODO: Gồm: xem profile người dùng hiện tại (từ file CSV), Logout, đổi pass

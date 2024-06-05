@@ -49,7 +49,6 @@ ListResult readCSV(std::string filename, std::string directory)
 
         while (std::getline(dataStream, columnValue, ','))
         {
-            std::cout << columnValue << std::endl;
             if (columnValue.length() > 0 && (columnValue[0] == '"' || columnValue[0] == '\''))
             {
                 // If the cell is quoted, read in characters until we find the matching end quote
