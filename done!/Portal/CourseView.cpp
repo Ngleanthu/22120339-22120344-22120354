@@ -296,21 +296,21 @@ void CourseView1::Init()
 {
 
 	cur = 0;
-	_title.setFont(_data->_assets->GetFont(LIGHT));
-	_title.setString("Info");
+	_title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_title.setString("INFORMATION");
 	_title.setFillColor(sf::Color::Red);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("EXIT");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
-	_exit.setFillColor(sf::Color::Red);
-
+	_exit.setFillColor(sf::Color::White);
 	
 
 	std::string _getbuffer;
@@ -367,7 +367,7 @@ void CourseView1::ProcessInput()
 }
 void CourseView1::Update()
 {
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _exitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
 	if (_exitselected)
 	{
 		std::ofstream f("Studentbuf.txt");

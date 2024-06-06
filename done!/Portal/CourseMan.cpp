@@ -55,12 +55,12 @@ void CourseMan::Init()
 	memset(_courseselected, 0, 100);
 
 	_exitbutton.setSize(sf::Vector2f(300, 40));
-	_exitbutton.setFillColor(sf::Color(214,219,223,240));
+	_exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
-	_exit.setString("Back");
+	_exit.setString("BACK");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
 	_exit.setFillColor(sf::Color::Black);
@@ -73,7 +73,8 @@ void CourseMan::Init()
 	_create.setFont(_data->_assets->GetFont(KANIT));
 	_create.setCharacterSize(25);
 	_create.setString("Create new course");
-	_create.setPosition(_data->_window->getSize().x / 2 - 110, _data->_window->getSize().y / 2 + 170);
+	_create.setOrigin(sf::Vector2f(_create.getGlobalBounds().width / 2, _create.getGlobalBounds().height / 2));
+	_create.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);
 	_create.setFillColor(sf::Color::White);
 
 	_deletebox.setSize(sf::Vector2f(300, 40));
@@ -278,17 +279,16 @@ void StudentCourse::Init()
 	memset(_courseselected, 0, 100);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_exit.setString("EXIT");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
-	_exit.setFillColor(sf::Color::Red);
-
-	
+	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 245);
+	_exit.setFillColor(sf::Color::White);
 }
 void StudentCourse::ProcessInput()
 {
@@ -321,7 +321,7 @@ void StudentCourse::ProcessInput()
 }
 void StudentCourse::Update()
 {
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _exitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
 	
 	for (int i = 0; i < size; i++)
 	{

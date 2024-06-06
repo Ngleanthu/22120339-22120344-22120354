@@ -18,10 +18,6 @@ private:
 	bool _changepassfocus;
 	bool _changepassselected;
 	std::string username;
-	sf::RectangleShape _studentbox;
-	sf::Text _student;
-	bool _studentfocus;
-	bool _studentselected;
 	sf::RectangleShape _coursebox;
 	sf::Text _course;
 	bool _coursefocus;

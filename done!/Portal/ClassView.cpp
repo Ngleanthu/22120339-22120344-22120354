@@ -41,38 +41,38 @@ void ClassView::Init()
 		}
 		_No[cur].setFont(_data->_assets->GetFont(LIGHT));
 		_No[cur].setFillColor(sf::Color::Black);
-		_No[cur].setPosition(0, cur * 30 + 30);
+		_No[cur].setPosition(0, cur * 50 + 30);
 		_No[cur].setString(No);
 
 		_id[cur].setFont(_data->_assets->GetFont(LIGHT));
 		_id[cur].setFillColor(sf::Color::Black);
-		_id[cur].setPosition(90, cur * 30 + 30);
+		_id[cur].setPosition(90, cur * 50 + 30);
 		_id[cur].setString(id);
 
 		_Fname[cur].setFont(_data->_assets->GetFont(LIGHT));
 		_Fname[cur].setFillColor(sf::Color::Black);
-		_Fname[cur].setPosition(310, cur * 30 + 30);
+		_Fname[cur].setPosition(310, cur * 50 + 30);
 		_Fname[cur].setString(Fname);
-		_Fname->setCharacterSize(25);
+		_Fname[cur].setCharacterSize(25);
 
 		_Lname[cur].setFont(_data->_assets->GetFont(LIGHT));
 		_Lname[cur].setFillColor(sf::Color::Black);
-		_Lname[cur].setPosition(550, cur * 30 + 30);
+		_Lname[cur].setPosition(550, cur * 50 + 30);
 		_Lname[cur].setString(Lname);
 
 		_gender[cur].setFont(_data->_assets->GetFont(LIGHT));
 		_gender[cur].setFillColor(sf::Color::Black);
-		_gender[cur].setPosition(800, cur * 30 + 30);
+		_gender[cur].setPosition(800, cur * 50 + 30);
 		_gender[cur].setString(gender);
 
 		_dob[cur].setFont(_data->_assets->GetFont(LIGHT));
 		_dob[cur].setFillColor(sf::Color::Black);
-		_dob[cur].setPosition(1010, cur * 30 + 30);
+		_dob[cur].setPosition(1010, cur * 50 + 30);
 		_dob[cur].setString(dob);
 
 		_Sid[cur].setFont(_data->_assets->GetFont(LIGHT));
 		_Sid[cur].setFillColor(sf::Color::Black);
-		_Sid[cur].setPosition(1280, cur * 30 + 30);
+		_Sid[cur].setPosition(1280, cur * 50 + 30);
 		_Sid[cur].setString(Sid);
 		cur++;
 		std::ifstream check("Account\\" + id + ".txt");

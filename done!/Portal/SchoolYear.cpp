@@ -53,7 +53,7 @@ void SchoolYear::Init()
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
-	_exit.setString("Back");
+	_exit.setString("EXIT");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
 	_exit.setFillColor(sf::Color::Black);

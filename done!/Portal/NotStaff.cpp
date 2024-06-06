@@ -4,8 +4,7 @@
 #include"StudentInfo.h"
 #include"CourseMan.h"
 #include"ScoreView.h"
-NotStaff::NotStaff(Data* data) : _data(data), _logoutfocus(0), _logoutselected(0), _changepassfocus(0), _changepassselected(0), _studentfocus(0),
-_studentselected(0), _coursefocus(0), _courseselected(0), _scorefocus(0), _scoreselected(0)
+NotStaff::NotStaff(Data* data) : _data(data), _logoutfocus(0), _logoutselected(0), _changepassfocus(0), _changepassselected(0), _coursefocus(0), _courseselected(0), _scorefocus(0), _scoreselected(0)
 {
 
 }
@@ -26,17 +25,6 @@ void NotStaff::Init()
 	_profilepic.setScale(0.18f, 0.18f);
 	_profilepic.setOrigin(sf::Vector2f(_profilepic.getGlobalBounds().width / 2, _profilepic.getGlobalBounds().height / 2));
 	_profilepic.setPosition(sf::Vector2f(_background.getGlobalBounds().width / 2 - 100.0f, _background.getGlobalBounds().height / 2 - 390.0f));
-
-	//_studentbox.setSize(sf::Vector2f(400, 60));
-	//_studentbox.setFillColor(sf::Color::White);
-	//_studentbox.setOrigin(sf::Vector2f(_studentbox.getGlobalBounds().width / 2, _studentbox.getGlobalBounds().height / 2));
-	//_studentbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
-
-	//_student.setFont(_data->_assets->GetFont(LIGHT));
-	//_student.setString("Student Profile");
-	//_student.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 120);
-	//_student.setFillColor(sf::Color::Black);
-
 
 	_id.setFont(_data->_assets->GetFont(LIGHT));
 	_id.setString("ID: ");
@@ -197,7 +185,6 @@ void NotStaff::ProcessInput()
 		{
 			_logoutfocus = (_logoutbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_changepassfocus = (_changepassbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
-			_studentfocus = (_studentbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_coursefocus = (_coursebox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_scorefocus = (_scorebox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 		}
@@ -205,7 +192,6 @@ void NotStaff::ProcessInput()
 		{
 			_logoutselected = (_logoutfocus ? 1 : 0);
 			_changepassselected = (_changepassfocus ? 1 : 0);
-			_studentselected = (_studentfocus ? 1 : 0);
 			_courseselected = (_coursefocus ? 1 : 0);
 			_scoreselected = (_scorefocus ? 1 : 0);
 		}
@@ -215,7 +201,6 @@ void NotStaff::Update()
 {
 	(_logoutfocus ? _logoutbox.setFillColor(sf::Color(214, 219, 223, 100)) : _logoutbox.setFillColor(sf::Color(214, 219, 223, 240)));
 	(_changepassfocus ? _changepassbox.setFillColor(sf::Color(40, 116, 166, 100)) : _changepassbox.setFillColor(sf::Color(40, 116, 166, 240)));
-	(_studentfocus ? _studentbox.setFillColor(sf::Color::Yellow) : _studentbox.setFillColor(sf::Color::White));
 	(_coursefocus ? _coursebox.setFillColor(sf::Color(40, 116, 166, 100)) : _coursebox.setFillColor(sf::Color(40, 116, 166, 240)));
 	(_scorefocus ? _scorebox.setFillColor(sf::Color(40, 116, 166, 100)) : _scorebox.setFillColor(sf::Color(40, 116, 166, 240)));
 	if (_logoutselected)
@@ -234,15 +219,6 @@ void NotStaff::Update()
 		_data->_states->AddState(new ChangePass(_data));
 	}
 
-	if (_studentselected)
-	{
-		std::ofstream file("Studentbuf.txt");
-		file << tmp;
-		file.close();
-		_data->_states->AddState(new StudentInfo(_data));
-		_studentselected = 0;
-	}
-
 	if (_courseselected)
 	{
 		std::ofstream file("Studentbuf.txt");
@@ -251,6 +227,7 @@ void NotStaff::Update()
 		_data->_states->AddState(new StudentCourse(_data));
 		_courseselected = 0;
 	}
+
 	if (_scoreselected)
 	{
 		std::ofstream file("Studentbuf.txt");
