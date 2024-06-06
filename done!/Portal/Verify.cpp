@@ -13,39 +13,44 @@ void Verify::Init()
 {
 	time = sf::Time::Zero;
 
-	_box.setSize(sf::Vector2f(300, 40));
+	_box.setSize(sf::Vector2f(300, 50));
 	_box.setFillColor(sf::Color::White);
 	_box.setOrigin(sf::Vector2f(_box.getGlobalBounds().width / 2, _box.getGlobalBounds().height / 2));
 	_box.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
 	_box.setOutlineThickness(1);
 	_box.setOutlineColor(sf::Color::Red);
 
-	_text.setFont(_data->_assets->GetFont(LIGHT));
-	_text.setString("Verify code");
+	_text.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_text.setString("Verify code: ");
+	_text.setCharacterSize(25);
 	_text.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
 	_text.setFillColor(sf::Color::Black);
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color::Red);
+	_submitbutton.setFillColor(sf::Color(0, 76, 153, 200));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setFillColor(sf::Color(0, 76, 153, 200));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
-	_submit.setString("Submit");
+	_submit.setFont(_data->_assets->GetFont(KANIT));
+	_submit.setString("SUBMIT");
+	_submit.setCharacterSize(24);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 95);
-	_submit.setFillColor(sf::Color::Black);
+	_submit.setFillColor(sf::Color::White);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
-	_exit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 145);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("EXIT");
+	_exit.setCharacterSize(24);
+	sf::FloatRect textRect = _exit.getLocalBounds();
+	_exit.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+	//_exit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
+	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
+	_exit.setFillColor(sf::Color::White);
 
 	_showbox.setFont(_data->_assets->GetFont(LIGHT));
 	_showbox.setCharacterSize(24);
@@ -111,8 +116,8 @@ void Verify::Update()
 		clock.restart();
 	}
 	_showbox.setString(_getbox + ((_blink && _boxfocus) ? "|" : ""));
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_submitfocus ? _submitbutton.setFillColor(sf::Color::Yellow) : _submitbutton.setFillColor(sf::Color::Red));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _exitbutton.setFillColor(sf::Color(0, 76, 153, 200)));
+	(_submitfocus ? _submitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _submitbutton.setFillColor(sf::Color(0, 76, 153, 200)));
 	if (_exitselected)
 	{
 		_data->_states->RemoveState();

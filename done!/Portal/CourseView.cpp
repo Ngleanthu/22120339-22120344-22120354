@@ -5,7 +5,7 @@
 #include"StudentInfo.h"
 #include"ScoreView.h"
 CourseView::CourseView(Data* data) : _data(data) , _exitfocus(0), _exitselected(0), _createfocus(0), _createselected(0), _deletefocus(0),
-_deleteselected(0) , _exportfocus(0) , _exportselected(0)
+_deleteselected(0) , _exportfocus(0) , _exportselected(0), _scorefocus(0), _scoreselected(0)
 {
 
 }

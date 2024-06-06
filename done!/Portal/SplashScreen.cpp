@@ -20,14 +20,21 @@ void SplashScreen::Init()
 	_data->_assets->AddFont(CHIVOMONO_LIGHT, "Asset\\ChivoMono-Light.ttf");
 	_data->_assets->AddFont(CHIVOMONO_REGULAR, "Asset\\ChivoMono-Regular.ttf");
 	_data->_assets->AddFont(KANIT, "Asset\\Kanit-Regular.ttf");
+	_data->_assets->AddTexture(LOGIN, "Asset\\log-in-pic.png");
 
-	_logo.setTexture(_data->_assets->GetTexture(HCMUS));
+	//_logo.setTexture(_data->_assets->GetTexture(HCMUS));
+	//_logo.setOrigin(_logo.getLocalBounds().width / 2, _logo.getLocalBounds().height / 2);
+	//_logo.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
+
+	_logo.setTexture(_data->_assets->GetTexture(LOGIN));
+	//_logo.setScale(0.65f, 0.65f);
 	_logo.setOrigin(_logo.getLocalBounds().width / 2, _logo.getLocalBounds().height / 2);
 	_logo.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
 
 	_loginbox.setSize(sf::Vector2f(400.0f, 100.0f));
 	_loginbox.setOrigin(_loginbox.getLocalBounds().width / 2, _loginbox.getLocalBounds().height / 2);
-	_loginbox.setPosition(sf::Vector2f(1133.0f, 324.0f));
+	//_loginbox.setPosition(sf::Vector2f(1133.0f, 324.0f));
+	_loginbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
 	_loginbox.setFillColor(sf::Color(0, 76, 153, 255));
 
 	_loginbutton.setFont(_data->_assets->GetFont(KANIT));
@@ -37,11 +44,13 @@ void SplashScreen::Init()
 	_loginbutton.setCharacterSize(40);
 	sf::FloatRect textRect = _loginbutton.getLocalBounds();
 	_loginbutton.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-	_loginbutton.setPosition(sf::Vector2f(1133.0f, 324.0f));
+	//_loginbutton.setPosition(sf::Vector2f(1133.0f, 324.0f));
+	_loginbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
 
 	_registerbox.setSize(sf::Vector2f(400.0f, 100.0f));
 	_registerbox.setOrigin(_registerbox.getLocalBounds().width / 2, _registerbox.getLocalBounds().height / 2);
-	_registerbox.setPosition(sf::Vector2f(1133.0f, 454.0f));
+	//_registerbox.setPosition(sf::Vector2f(1133.0f, 454.0f));
+	_registerbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 130);
 	_registerbox.setFillColor(sf::Color(0, 76, 153, 255));
 
 	_registerbutton.setFont(_data->_assets->GetFont(KANIT));
@@ -51,7 +60,8 @@ void SplashScreen::Init()
 	_registerbutton.setFillColor(sf::Color::White);
 	textRect = _registerbutton.getLocalBounds();
 	_registerbutton.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-	_registerbutton.setPosition(sf::Vector2f(1133.0f, 454.0f));
+	//_registerbutton.setPosition(sf::Vector2f(1133.0f, 454.0f));
+	_registerbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 130);
 }
 void SplashScreen::ProcessInput()
 {
@@ -78,8 +88,8 @@ void SplashScreen::ProcessInput()
 }
 void SplashScreen::Update()
 {
-	(_loginfocus ? _loginbox.setFillColor(sf::Color(51, 153, 255, 255)) : _loginbox.setFillColor(sf::Color(0, 76, 153, 255)));
-	(_registerfocus ? _registerbox.setFillColor(sf::Color(51, 153, 255, 255)) : _registerbox.setFillColor(sf::Color(0, 76, 153, 255)));
+	(_loginfocus ? _loginbox.setFillColor(sf::Color(0, 76, 153, 120)) : _loginbox.setFillColor(sf::Color(0, 76, 153, 255)));
+	(_registerfocus ? _registerbox.setFillColor(sf::Color(0, 76, 153, 120)) : _registerbox.setFillColor(sf::Color(0, 76, 153, 255)));
 	if (_loginselected)
 	{
 		_data->_states->AddState(new LoginForm(_data));
