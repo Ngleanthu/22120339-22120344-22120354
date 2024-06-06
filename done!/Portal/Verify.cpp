@@ -13,7 +13,7 @@ void Verify::Init()
 {
 	time = sf::Time::Zero;
 
-	_box.setSize(sf::Vector2f(300, 40));
+	_box.setSize(sf::Vector2f(350, 50));
 	_box.setFillColor(sf::Color::White);
 	_box.setOrigin(sf::Vector2f(_box.getGlobalBounds().width / 2, _box.getGlobalBounds().height / 2));
 	_box.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
@@ -23,22 +23,24 @@ void Verify::Init()
 	_text.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_text.setString("Verify code: ");
 	_text.setCharacterSize(25);
-	_text.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
+	_text.setPosition(_data->_window->getSize().x / 2 - 170, _data->_window->getSize().y / 2 - 160);
 	_text.setFillColor(sf::Color::Black);
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-    _submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
+	_submitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-    _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
+	_exitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
 
 	_submit.setFont(_data->_assets->GetFont(KANIT));
 	_submit.setString("SUBMIT");
 	_submit.setCharacterSize(24);
+	sf::FloatRect textRect = _submit.getLocalBounds();
+	_exit.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 95);
 	_submit.setFillColor(sf::Color::White);
@@ -46,21 +48,21 @@ void Verify::Init()
 	_exit.setFont(_data->_assets->GetFont(KANIT));
 	_exit.setString("EXIT");
 	_exit.setCharacterSize(24);
-	sf::FloatRect textRect = _exit.getLocalBounds();
+	textRect = _exit.getLocalBounds();
 	_exit.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 	//_exit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
-	_exit.setFillColor(sf::Color::Black);
+	_exit.setFillColor(sf::Color::White);
 
-	_showbox.setFont(_data->_assets->GetFont(LIGHT));
+	_showbox.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_showbox.setCharacterSize(24);
 	_showbox.setFillColor(sf::Color::Black);
-	_showbox.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 115);
+	_showbox.setPosition(_data->_window->getSize().x / 2 - 170, _data->_window->getSize().y / 2 - 115);
 	_showbox.setString("");
 
 	_status.setCharacterSize(20);
-	_status.setFont(_data->_assets->GetFont(LIGHT));
-	_status.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 245);
+	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_status.setStyle(sf::Text::Italic);
 	_status.setFillColor(sf::Color::Red);
 }
 void Verify::ProcessInput()
@@ -116,8 +118,8 @@ void Verify::Update()
 		clock.restart();
 	}
 	_showbox.setString(_getbox + ((_blink && _boxfocus) ? "|" : ""));
-    (_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100)): _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
-    (_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100)): _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _exitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
+	(_submitfocus ? _submitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _submitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
 	if (_exitselected)
 	{
 		_data->_states->RemoveState();
@@ -131,7 +133,10 @@ void Verify::Update()
 		}
 		else
 		{
-			_status.setString("Wrong code");
+			_status.setString("Wrong code!");
+			sf::FloatRect textRect = _status.getLocalBounds();
+			_status.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+			_status.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 200);
 		}
 		_submitselected = 0;
 	}

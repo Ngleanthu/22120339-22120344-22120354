@@ -90,19 +90,19 @@ void ChangePass::Init()
 	_showoldpass.setFont(_data->_assets->GetFont(LIGHT));
 	_showoldpass.setCharacterSize(24);
 	_showoldpass.setFillColor(sf::Color::Black);
-	_showoldpass.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 115);
+	_showoldpass.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 150);
 	_showoldpass.setString("");
 
 	_showpassword.setFont(_data->_assets->GetFont(LIGHT));
 	_showpassword.setCharacterSize(24);
 	_showpassword.setFillColor(sf::Color::Black);
-	_showpassword.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 15);
+	_showpassword.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 50);
 	_showpassword.setString("");
 
 	_showpassword2.setFont(_data->_assets->GetFont(LIGHT));
 	_showpassword2.setCharacterSize(24);
 	_showpassword2.setFillColor(sf::Color::Black);
-	_showpassword2.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 85);
+	_showpassword2.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 50);
 	_showpassword2.setString("");
 
 	_status.setCharacterSize(24);
@@ -115,7 +115,6 @@ void ChangePass::Init()
 }
 void ChangePass::ProcessInput()
 {
-
 	sf::Event event;
 	while (_data->_window->pollEvent(event))
 	{

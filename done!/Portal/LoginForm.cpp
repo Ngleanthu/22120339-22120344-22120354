@@ -88,12 +88,9 @@ void LoginForm::Init()
 	_showpassword.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 15);
 	_showpassword.setString("");
 
-	_status.setCharacterSize(24);
+	_status.setCharacterSize(22);
 	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_status.setStyle(sf::Text::Italic);
-	sf::FloatRect textRect = _status.getLocalBounds();
-	_status.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-	_status.setPosition(_data->_window->getSize().x / 2 - 285, _data->_window->getSize().y / 2 + 270);
 	_status.setFillColor(sf::Color::Red);
 
 }
@@ -203,7 +200,10 @@ void LoginForm::Update()
 		}
 		else
 		{
+			sf::FloatRect textRect = _status.getLocalBounds();
+			_status.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 			_status.setString("Username haven't existed or wrong password!");
+			_status.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 270);
 		}
 		_submitselected = 0;
 	}

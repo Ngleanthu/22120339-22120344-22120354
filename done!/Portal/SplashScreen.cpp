@@ -81,10 +81,8 @@ void SplashScreen::ProcessInput()
 		{
 			_loginselected = (_loginfocus ? 1 : 0);
 			_registerselected = (_registerfocus ? 1 : 0);
-		}
-		
+		}	
 	}
-
 }
 void SplashScreen::Update()
 {

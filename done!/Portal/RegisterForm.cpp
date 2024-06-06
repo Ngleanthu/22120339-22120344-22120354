@@ -14,7 +14,7 @@ void RegisterForm::Init()
 
 	time = sf::Time::Zero;
 
-	_registerform.setSize(sf::Vector2f(500, 600));
+	_registerform.setSize(sf::Vector2f(550, 600));
     _registerform.setFillColor(sf::Color(153, 204, 255, 180));
     _registerform.setOrigin(sf::Vector2f(_registerform.getGlobalBounds().width / 2, _registerform.getGlobalBounds().height / 2));
     _registerform.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
@@ -22,83 +22,88 @@ void RegisterForm::Init()
 	_usernamebox.setSize(sf::Vector2f(300, 40));
 	_usernamebox.setFillColor(sf::Color::White);
 	_usernamebox.setOrigin(sf::Vector2f(_usernamebox.getGlobalBounds().width / 2, _usernamebox.getGlobalBounds().height / 2));
-	_usernamebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
+	_usernamebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 150);
 	_usernamebox.setOutlineThickness(1);
 	_usernamebox.setOutlineColor(sf::Color::Black);
 
 	_passwordbox.setSize(sf::Vector2f(300, 40));
 	_passwordbox.setFillColor(sf::Color::White);
 	_passwordbox.setOrigin(sf::Vector2f(_passwordbox.getGlobalBounds().width / 2, _passwordbox.getGlobalBounds().height / 2));
-	_passwordbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2);
+	_passwordbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 50);
 	_passwordbox.setOutlineThickness(1);
 	_passwordbox.setOutlineColor(sf::Color::Black);
 
 	_passwordbox2.setSize(sf::Vector2f(300, 40));
 	_passwordbox2.setFillColor(sf::Color::White);
 	_passwordbox2.setOrigin(sf::Vector2f(_passwordbox2.getGlobalBounds().width / 2, _passwordbox2.getGlobalBounds().height / 2));
-	_passwordbox2.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
+	_passwordbox2.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 50);
 	_passwordbox2.setOutlineThickness(1);
 	_passwordbox2.setOutlineColor(sf::Color::Black);
 
-	_username.setFont(_data->_assets->GetFont(KANIT));
-	_username.setString("Username");
-	_username.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
+	_username.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_username.setString("Username: ");
+	_username.setCharacterSize(25);
+	_username.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 210);
 	_username.setFillColor(sf::Color::Black);
 
-	_password.setFont(_data->_assets->GetFont(KANIT));
-	_password.setString("Password");
-	_password.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 60);
+	_password.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_password.setString("Password: ");
+	_password.setCharacterSize(25);
+	_password.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 110);
 	_password.setFillColor(sf::Color::Black);
 
-	_password2.setFont(_data->_assets->GetFont(KANIT));
-	_password2.setString("Confirm password");
-	_password2.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 40);
+	_password2.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_password2.setString("Confirm password: ");
+	_password2.setCharacterSize(25);
+	_password2.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 10);
 	_password2.setFillColor(sf::Color::Black);
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-    _submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
+    _submitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 160);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-    _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
+    _exitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 210);
 
 	_submit.setFont(_data->_assets->GetFont(KANIT));
-	_submit.setString("Submit");
+	_submit.setString("SUBMIT");
+	_submit.setCharacterSize(24);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 155);
 	_submit.setFillColor(sf::Color::White);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
-	_exit.setString("Exit");
+	_exit.setString("EXIT");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 205);
-	_exit.setFillColor(sf::Color::Black);
+	_exit.setFillColor(sf::Color::White);
 
-	_showusername.setFont(_data->_assets->GetFont(KANIT));
+	_showusername.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_showusername.setCharacterSize(24);
 	_showusername.setFillColor(sf::Color::Black);
-	_showusername.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 115);
+	_showusername.setPosition(_data->_window->getSize().x / 2 - 152, _data->_window->getSize().y / 2 - 165);
 	_showusername.setString("");
 
-	_showpassword.setFont(_data->_assets->GetFont(KANIT));
+	_showpassword.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_showpassword.setCharacterSize(24);
 	_showpassword.setFillColor(sf::Color::Black);
-	_showpassword.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 15);
+	_showpassword.setPosition(_data->_window->getSize().x / 2 - 152, _data->_window->getSize().y / 2 - 65);
 	_showpassword.setString("");
 
-	_showpassword2.setFont(_data->_assets->GetFont(KANIT));
+	_showpassword2.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_showpassword2.setCharacterSize(24);
 	_showpassword2.setFillColor(sf::Color::Black);
-	_showpassword2.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 85);
+	_showpassword2.setPosition(_data->_window->getSize().x / 2 - 152, _data->_window->getSize().y / 2 + 36);
 	_showpassword2.setString("");
 	
 
-	_status.setCharacterSize(20);
-    _status.setFont(_data->_assets->GetFont(KANIT));
-	_status.setPosition(_data->_window->getSize().x / 2 - 150 , _data->_window->getSize().y / 2 + 245);
+	_status.setCharacterSize(22);
+	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_status.setStyle(sf::Text::Italic);
 	_status.setFillColor(sf::Color::Red);
 }
 void RegisterForm::ProcessInput()
@@ -197,8 +202,8 @@ void RegisterForm::Update()
 	_showusername.setString(_getusername + ((_blink && _usernamefocus) ? "|" : ""));
 	_showpassword.setString(showpassword + ((_blink && _passwordfocus) ? "|" : ""));
 	_showpassword2.setString(showpassword2 + ((_blink && _passwordfocus2) ? "|" : ""));
-    (_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100)): _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
-    (_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100)): _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _exitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
+	(_submitfocus ? _submitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _submitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
 	if (_exitselected)
 	{
 		_data->_states->RemoveState();
@@ -223,6 +228,9 @@ void RegisterForm::Update()
 		{
 			_status.setString("Username has been existed");
 		}
+		sf::FloatRect textRect = _status.getLocalBounds();
+		_status.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+		_status.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 265);
 		_submitselected = 0;
 
 	}
