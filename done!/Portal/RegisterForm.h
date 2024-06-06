@@ -7,6 +7,7 @@ private:
 	Data* _data;
 	sf::Time time;
 	sf::Clock clock;
+    sf::RectangleShape _registerform;
 	sf::RectangleShape _usernamebox;
 	sf::RectangleShape _passwordbox;
 	sf::RectangleShape _passwordbox2;
