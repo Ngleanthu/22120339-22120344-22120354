@@ -1,7 +1,7 @@
 #pragma once
 #include "global.h"
 #include <sstream>
-
+#include <struct.h>
 const int MAX = 150;
 
 struct Student {

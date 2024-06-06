@@ -59,6 +59,7 @@ struct CourseList
     // A course can only have so much students, so it's better to use an array here instead
     // Dizzme mùa đăng ký học phần
     Student *student_list;
+    Course *course_next;
 };
 struct SchoolYearList
 {
