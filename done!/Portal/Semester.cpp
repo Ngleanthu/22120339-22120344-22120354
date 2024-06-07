@@ -25,11 +25,16 @@ void Semester::Init()
 		{
 			continue;
 		}
+		_semesterbox[size].setSize(sf::Vector2f(700.0f, 50.0f));
+        _semesterbox[size].setFillColor(sf::Color(40, 116, 166, 240));
+        _semesterbox[size].setOrigin(sf::Vector2f(_semesterbox[size].getGlobalBounds().width / 2 ,_semesterbox[size].getGlobalBounds().height / 2));
+        _semesterbox[size].setPosition(movex * 700 + 400, movey * 60 + 120);
+
 		_getsemester[size] = get;
-		_semester[size].setFont(_data->_assets->GetFont(LIGHT));
-		_semester[size].setFillColor(sf::Color::Red);
+		_semester[size].setFont(_data->_assets->GetFont(KANIT));
+		_semester[size].setFillColor(sf::Color::White);
 		_semester[size].setCharacterSize(25);
-		_semester[size].setString("*" + get);
+		_semester[size].setString(get);
 		_semester[size].setPosition(movex * 50 + 100, movey * 50 + 100);
 		movey++;
 		if (_semester[size].getPosition().y > 500)
@@ -51,7 +56,7 @@ void Semester::Init()
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
-	_exit.setString("EXIT");
+	_exit.setString("Back");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
 	_exit.setFillColor(sf::Color::Black);
@@ -83,7 +88,7 @@ void Semester::ProcessInput()
 			_createfocus = (_createbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			for (int i = 0; i < size; i++)
 			{
-				_semesterfocus[i] = (_semester[i].getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+				_semesterfocus[i] = (_semesterbox[i].getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			}
 
 		}
@@ -104,7 +109,7 @@ void Semester::Update()
     (_createfocus ? _createbox.setFillColor(sf::Color(40, 116, 166, 100)) : _createbox.setFillColor(sf::Color(40, 116, 166, 240)));
 	for (int i = 0; i < size; i++)
 	{
-		(_semesterfocus[i] ? _semester[i].setFillColor(sf::Color::Blue) : _semester[i].setFillColor(sf::Color::Red));
+		(_semesterfocus[i] ? _semesterbox[i].setFillColor(sf::Color(40, 116, 166, 100)) : _semesterbox[i].setFillColor(sf::Color(40, 116, 166, 240)));
 	}
 	for (int i = 0; i < size; i++)
 	{
@@ -135,6 +140,7 @@ void Semester::Draw()
 	_data->_window->draw(_title);
 	for (int i = 0; i < size; i++)
 	{
+		_data->_window->draw(_semesterbox[i]);
 		_data->_window->draw(_semester[i]);
 	}
 	_data->_window->draw(_exitbutton);

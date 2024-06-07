@@ -13,6 +13,7 @@ private:
 	bool _semesterselected[100];
 	int size;
 	sf::RectangleShape _exitbutton;
+	sf::RectangleShape _semesterbox[100];
 	sf::Text _exit;
 	bool _exitfocus;
 	bool _exitselected;

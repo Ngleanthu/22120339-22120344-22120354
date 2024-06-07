@@ -32,12 +32,18 @@ void ClassMan::Init()
 		{
 			continue;
 		}
+		_classbox[size].setSize(sf::Vector2f(150.0f, 50.0f));
+        _classbox[size].setFillColor(sf::Color(40, 116, 166, 240));
+        _classbox[size].setOrigin(sf::Vector2f(_classbox[size].getGlobalBounds().width / 2 ,_classbox[size].getGlobalBounds().height / 2));
+        _classbox[size].setPosition(movex * 700 + 200, movey * 60 + 120);
+
 		_getclass[size] = get;
-		_class[size].setFont(_data->_assets->GetFont(LIGHT));
-		_class[size].setFillColor(sf::Color::Red);
+		_class[size].setFont(_data->_assets->GetFont(KANIT));
+		_class[size].setFillColor(sf::Color::White);
 		_class[size].setCharacterSize(25);
-		_class[size].setString("*" + get);
-		_class[size].setPosition(movex * 50 + 100, movey * 50 + 100);
+		_class[size].setString(get);
+		_class[size].setOrigin(sf::Vector2f(_class[size].getGlobalBounds().width / 2 ,_class[size].getGlobalBounds().height / 2));
+		_class[size].setPosition(movex * 700 + 200, movey * 60 + 120);
 		movey++;
 		if (_class[size].getPosition().y > 500)
 		{
@@ -88,7 +94,7 @@ void ClassMan::ProcessInput()
 			_createfocus = (_createbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			for (int i = 0; i < size; i++)
 			{
-				_classfocus[i] = (_class[i].getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+				_classfocus[i] = (_classbox[i].getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			}
 			
 		}
@@ -111,7 +117,7 @@ void ClassMan::Update()
                       : _createbox.setFillColor(sf::Color(40, 116, 166, 240)));
 	for (int i = 0; i < size; i++)
 	{
-		(_classfocus[i] ? _class[i].setFillColor(sf::Color::Blue) : _class[i].setFillColor(sf::Color::Red));
+		(_classfocus[i] ? _classbox[i].setFillColor(sf::Color(40, 116, 166, 100)) : _classbox[i].setFillColor(sf::Color(40, 116, 166, 240)));
 	}
 	for (int i = 0; i < size; i++)
 	{
@@ -143,6 +149,7 @@ void ClassMan::Draw()
 	_data->_window->draw(_title);
 	for (int i = 0; i < size; i++)
 	{
+		_data->_window->draw(_classbox[i]);
 		_data->_window->draw(_class[i]);
 	}
 	_data->_window->draw(_exitbutton);

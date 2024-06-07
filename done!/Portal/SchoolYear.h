@@ -12,6 +12,7 @@ private:
 	bool _yearselected[100];
 	int size;
 	sf::RectangleShape _exitbutton;
+	sf::RectangleShape _yearbox[50];
 	sf::Text _exit;
 	bool _exitfocus;
 	bool _exitselected;

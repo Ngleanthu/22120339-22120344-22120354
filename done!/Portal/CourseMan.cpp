@@ -44,11 +44,12 @@ void CourseMan::Init()
         _coursebox[size].setPosition(movex * 700 + 300, movey * 60 + 120);
 
         _getcourse[size] = get;
-        _course[size].setFont(_data->_assets->GetFont(LIGHT));
+        _course[size].setFont(_data->_assets->GetFont(KANIT));
         _course[size].setFillColor(sf::Color::White);
         _course[size].setCharacterSize(25);
-        _course[size].setString("*" + get);
-        _course[size].setPosition(movex * 700 + 100, movey * 60 + 100);
+        _course[size].setString(get);
+        _course[size].setOrigin(sf::Vector2f(_course[size].getGlobalBounds().width / 2 ,_course[size].getGlobalBounds().height / 2));
+        _course[size].setPosition(movex * 700 + 300, movey * 60 + 110);
         movey++;
         if (_course[size].getPosition().y > 700)
         {

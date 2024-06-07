@@ -10,6 +10,7 @@ private:
 	sf::Text _class[100] ;
 	bool _classfocus[100];
 	bool _classselected[100];
+	sf::RectangleShape _classbox[100];
 	int size;
 	sf::RectangleShape _exitbutton;
 	sf::Text _exit;

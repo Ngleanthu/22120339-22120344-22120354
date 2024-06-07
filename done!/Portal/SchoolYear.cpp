@@ -28,12 +28,19 @@ void SchoolYear::Init()
 		{
 			continue;
 		}
+
+		_yearbox[size].setSize(sf::Vector2f(150.0f, 50.0f));
+        _yearbox[size].setFillColor(sf::Color(40, 116, 166, 240));
+        _yearbox[size].setOrigin(sf::Vector2f(_yearbox[size].getGlobalBounds().width / 2 ,_yearbox[size].getGlobalBounds().height / 2));
+        _yearbox[size].setPosition(movex * 700 + 200, movey * 60 + 120);
+
 		_getyear[size] = get;
-		_year[size].setFont(_data->_assets->GetFont(LIGHT));
-		_year[size].setFillColor(sf::Color::Red);
+		_year[size].setFont(_data->_assets->GetFont(KANIT));
+		_year[size].setFillColor(sf::Color::White);
 		_year[size].setCharacterSize(25);
-		_year[size].setString("*" + get);
-		_year[size].setPosition(movex * 50 + 100, movey * 50 + 100);
+		_year[size].setString(get);
+		_year[size].setOrigin(sf::Vector2f(_year[size].getGlobalBounds().width / 2 ,_year[size].getGlobalBounds().height / 2));
+		_year[size].setPosition(movex * 700 + 200, movey * 60 + 110);
 		movey++;
 		if (_year[size].getPosition().y > 500)
 		{
@@ -84,7 +91,7 @@ void SchoolYear::ProcessInput()
 			_createfocus = (_createbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			for (int i = 0; i < size; i++)
 			{
-				_yearfocus[i] = (_year[i].getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+				_yearfocus[i] = (_yearbox[i].getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			}
 
 		}
@@ -105,7 +112,7 @@ void SchoolYear::Update()
     (_createfocus ? _createbox.setFillColor(sf::Color(40, 116, 166, 100)) : _createbox.setFillColor(sf::Color(40, 116, 166, 240)));
 	for (int i = 0; i < size; i++)
 	{
-		(_yearfocus[i] ? _year[i].setFillColor(sf::Color::Blue) : _year[i].setFillColor(sf::Color::Red));
+		(_yearfocus[i] ? _yearbox[i].setFillColor(sf::Color(40, 116, 166, 100)) : _yearbox[i].setFillColor(sf::Color(40, 116, 166, 240)));
 	}
 	for (int i = 0; i < size; i++)
 	{
@@ -136,6 +143,7 @@ void SchoolYear::Draw()
 	_data->_window->draw(_title);
 	for (int i = 0; i < size; i++)
 	{
+		_data->_window->draw(_yearbox[i]);
 		_data->_window->draw(_year[i]);
 	}
 	_data->_window->draw(_exitbutton);
