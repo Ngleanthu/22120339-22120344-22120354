@@ -43,7 +43,7 @@ void ClassMan::Init()
 		_class[size].setCharacterSize(25);
 		_class[size].setString(get);
 		_class[size].setOrigin(sf::Vector2f(_class[size].getGlobalBounds().width / 2 ,_class[size].getGlobalBounds().height / 2));
-		_class[size].setPosition(movex * 700 + 200, movey * 60 + 120);
+		_class[size].setPosition(movex * 700 + 200, movey * 60 + 110);
 		movey++;
 		if (_class[size].getPosition().y > 500)
 		{

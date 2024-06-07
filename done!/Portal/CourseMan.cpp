@@ -248,7 +248,7 @@ void StudentCourse::Init()
     getline(f, get);
     f.close();
     _title.setFont(_data->_assets->GetFont(LIGHT));
-    _title.setString("Course view");
+    _title.setString("MY COURSES");
     _title.setPosition(0, 0);
     _title.setCharacterSize(40);
     _title.setFillColor(sf::Color::Black);
@@ -266,13 +266,20 @@ void StudentCourse::Init()
         {
             continue;
         }
+
+        _coursebox[size].setSize(sf::Vector2f(400.0f, 50.0f));
+        _coursebox[size].setFillColor(sf::Color(40, 116, 166, 240));
+        _coursebox[size].setOrigin(sf::Vector2f(_coursebox[size].getGlobalBounds().width / 2 ,_coursebox[size].getGlobalBounds().height / 2));
+        _coursebox[size].setPosition(movex * 700 + 300, movey * 60 + 120);
+
         _getcourse[size] = get;
-        _course[size].setFont(_data->_assets->GetFont(LIGHT));
-        _course[size].setFillColor(sf::Color::Red);
+        _course[size].setFont(_data->_assets->GetFont(KANIT));
+        _course[size].setFillColor(sf::Color::White);
         _course[size].setCharacterSize(25);
-        _course[size].setString("*" +
-                                get.substr(get.find("(") + 1, get.find(")") - get.find("(") - 1));
-        _course[size].setPosition(movex * 50 + 100, movey * 50 + 100);
+        _course[size].setString("*" + get
+                                /*get.substr(get.find("(") + 1, get.find(")") - get.find("(") - 1)*/);
+        _course[size].setOrigin(sf::Vector2f(_course[size].getGlobalBounds().width / 2 ,_course[size].getGlobalBounds().height / 2));
+        _course[size].setPosition(movex * 700 + 300, movey * 60 + 110);
         movey++;
         if (_course[size].getPosition().y > 500)
         {
@@ -318,7 +325,7 @@ void StudentCourse::ProcessInput()
 
             for (int i = 0; i < size; i++)
             {
-                _coursefocus[i] = (_course[i].getGlobalBounds().contains(
+                _coursefocus[i] = (_coursebox[i].getGlobalBounds().contains(
                                        sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x,
                                                     sf::Mouse::getPosition(*_data->_window).y))
                                        ? 1
@@ -343,8 +350,8 @@ void StudentCourse::Update()
 
     for (int i = 0; i < size; i++)
     {
-        (_coursefocus[i] ? _course[i].setFillColor(sf::Color::Blue)
-                         : _course[i].setFillColor(sf::Color::Red));
+        (_coursefocus[i] ? _coursebox[i].setFillColor(sf::Color(40, 116, 166, 100))
+                         : _coursebox[i].setFillColor(sf::Color(40, 116, 166, 240)));
     }
     for (int i = 0; i < size; i++)
     {
@@ -369,6 +376,7 @@ void StudentCourse::Draw()
     _data->_window->draw(_title);
     for (int i = 0; i < size; i++)
     {
+        _data->_window->draw(_coursebox[i]);
         _data->_window->draw(_course[i]);
     }
     _data->_window->draw(_exitbutton);

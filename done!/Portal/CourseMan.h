@@ -47,6 +47,7 @@ private:
 	sf::Text _title;
 	std::string _getcourse[100];
 	sf::Text _course[100];
+	sf::RectangleShape _coursebox[100];
 	bool _coursefocus[100];
 	bool _courseselected[100];
 	int size;
