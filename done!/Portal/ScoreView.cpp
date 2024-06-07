@@ -156,20 +156,24 @@ void ScoreView1::Init()
 	cur = 0;
 
 	_title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
-	_title.setString("         Course ID      Midterm Final   Other  Total   GPA");
-	_title.setCharacterSize(24);
-	_title.setFillColor(sf::Color::Red);
+	_title.setString("Course ID    Midterm  Final  Other  Total");
+	_title.setCharacterSize(25);
+	_title.setStyle(sf::Text::Bold);
+	_title.setPosition(430, 110);
+	_title.setFillColor(sf::Color::Black);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setFillColor(sf::Color(0, 76, 153, 255));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
-	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
+	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 210);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("EXIT");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 205);
+	_exit.setFillColor(sf::Color::White);
+
 	float gpa = 0;
 	bool ok = 1;
 	std::ifstream f("Studentbuf.txt");
@@ -193,92 +197,101 @@ void ScoreView1::Init()
 		_cell1[cur].setFillColor(sf::Color(214, 219, 223, 240));
 		_cell1[cur].setOutlineColor(sf::Color::Black);
 		_cell1[cur].setOutlineThickness(1);
-		_cell1[cur].setPosition(130, cur * 50 + 40);
+		_cell1[cur].setPosition(425, cur * 50 + 150);
 
-		_cell2[cur].setSize(sf::Vector2f(100.0f, 40.0f));
+		_cell2[cur].setSize(sf::Vector2f(110.0f, 40.0f));
 		_cell2[cur].setFillColor(sf::Color(214, 219, 223, 240));
 		_cell2[cur].setOutlineColor(sf::Color::Black);
 		_cell2[cur].setOutlineThickness(1);
-		_cell2[cur].setPosition(340, cur * 50 + 40);
+		_cell2[cur].setPosition(640, cur * 50 + 150);
 
-		_cell3[cur].setSize(sf::Vector2f(100.0f, 40.0f));
+		_cell3[cur].setSize(sf::Vector2f(110.0f, 40.0f));
 		_cell3[cur].setFillColor(sf::Color(214, 219, 223, 240));
 		_cell3[cur].setOutlineColor(sf::Color::Black);
 		_cell3[cur].setOutlineThickness(1);
-		_cell3[cur].setPosition(450, cur * 50 + 40);
+		_cell3[cur].setPosition(760, cur * 50 + 150);
 
-		_cell4[cur].setSize(sf::Vector2f(100.0f, 40.0f));
+		_cell4[cur].setSize(sf::Vector2f(110.0f, 40.0f));
 		_cell4[cur].setFillColor(sf::Color(214, 219, 223, 240));
 		_cell4[cur].setOutlineColor(sf::Color::Black);
 		_cell4[cur].setOutlineThickness(1);
-		_cell4[cur].setPosition(560, cur * 50 + 40);
+		_cell4[cur].setPosition(880, cur * 50 + 150);
 
-		_cell5[cur].setSize(sf::Vector2f(100.0f, 40.0f));
+		_cell5[cur].setSize(sf::Vector2f(110.0f, 40.0f));
 		_cell5[cur].setFillColor(sf::Color(214, 219, 223, 240));
 		_cell5[cur].setOutlineColor(sf::Color::Black);
 		_cell5[cur].setOutlineThickness(1);
-		_cell5[cur].setPosition(670, cur * 50 + 40);
+		_cell5[cur].setPosition(1000, cur * 50 + 150);
 
-		_cell6[cur].setSize(sf::Vector2f(100.0f, 40.0f));
-		_cell6[cur].setFillColor(sf::Color(214, 219, 223, 240));
-		_cell6[cur].setOutlineColor(sf::Color::Black);
-		_cell6[cur].setOutlineThickness(1);
-		_cell6[cur].setPosition(780, cur * 50 + 40);
-
-		_id[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_id[cur].setFont(_data->_assets->GetFont(KANIT));
 		_id[cur].setFillColor(sf::Color::Black);
-		_id[cur].setPosition(130, cur * 50 + 40);
+		_id[cur].setPosition(445, cur * 50 + 150);
 		_id[cur].setString(id.substr(id.find("(") + 1, id.find(")") - id.find("(") - 1));
 
 
-		_mterm[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_mterm[cur].setFont(_data->_assets->GetFont(KANIT));
 		_mterm[cur].setFillColor(sf::Color::Black);
-		_mterm[cur].setPosition(350, cur * 50 + 40);
+		_mterm[cur].setPosition(685, cur * 50 + 150);
 		_mterm[cur].setString(mterm);
 
-		_final[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_final[cur].setFont(_data->_assets->GetFont(KANIT));
 		_final[cur].setFillColor(sf::Color::Black);
-		_final[cur].setPosition(470, cur * 50 + 40);
+		_final[cur].setPosition(805, cur * 50 + 150);
 		_final[cur].setString(final);
 
-		_other[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_other[cur].setFont(_data->_assets->GetFont(KANIT));
 		_other[cur].setFillColor(sf::Color::Black);
-		_other[cur].setPosition(570, cur * 50 + 40);
+		_other[cur].setPosition(925, cur * 50 + 150);
 		_other[cur].setString(other);
 		if (mterm != "/" && final != "/" && other != "/")
 		{
 			float mark = (std::stof(mterm) + std::stof(final) * 2 + std::stof(other)) / 4;
 			mark = round(mark * 10) / 10;
 			
-			_finalmark[cur].setFont(_data->_assets->GetFont(LIGHT));
+			_finalmark[cur].setFont(_data->_assets->GetFont(KANIT));
 			_finalmark[cur].setFillColor(sf::Color::Black);
-			_finalmark[cur].setPosition(680, cur * 50 + 40);
+			_finalmark[cur].setPosition(1030, cur * 50 + 150);
 			_finalmark[cur].setString(std::to_string(mark).substr(0 , 3));
 			gpa += mark;
 		}
 			
 		else
 		{
-			_finalmark[cur].setFont(_data->_assets->GetFont(LIGHT));
+			_finalmark[cur].setFont(_data->_assets->GetFont(KANIT));
 			_finalmark[cur].setFillColor(sf::Color::Black);
-			_finalmark[cur].setPosition(680, cur * 50 + 40);
+			_finalmark[cur].setPosition(1045, cur * 50 + 150);
 			_finalmark[cur].setString("/");
 			ok = 0;
 		}
 		cur++;
 	}
+	
+	_cell6.setSize(sf::Vector2f(180.0f, 40.0f));
+	_cell6.setPosition(920, 60);
+	_cell6.setFillColor(sf::Color(129, 198, 232, 255));
+	//_cell6.setOutlineColor(sf::Color(20, 108, 148, 255));
+	//_cell6.setOutlineThickness(1);
+
+	_gpaText.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_gpaText.setCharacterSize(28);
+	_gpaText.setString("GPA: ");
+	_gpaText.setStyle(sf::Text::Bold);
+	_gpaText.setFillColor(sf::Color::Black);
+	_gpaText.setPosition(930, 62);
+
+
 	if (ok)
 	{
-		_gpa.setFont(_data->_assets->GetFont(LIGHT));
+		_gpa.setFont(_data->_assets->GetFont(KANIT));
 		_gpa.setFillColor(sf::Color::Black);
-		_gpa.setPosition(790, 40);
+		_gpa.setPosition(1010, 60);
 		_gpa.setString(std::to_string(gpa).substr(0, 3));
 	}
 	else
 	{
-		_gpa.setFont(_data->_assets->GetFont(LIGHT));
+		_gpa.setFont(_data->_assets->GetFont(KANIT));
 		_gpa.setFillColor(sf::Color::Black);
-		_gpa.setPosition(790, 40);
+		_gpa.setPosition(1010, 62);
 		_gpa.setString("/");
 	}
 }
@@ -305,7 +318,7 @@ void ScoreView1::ProcessInput()
 }
 void ScoreView1::Update()
 {
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(0, 76, 153, 100)) : _exitbutton.setFillColor(sf::Color(0, 76, 153, 255)));
 	if (_exitselected)
 	{
 		_data->_states->RemoveState();
@@ -324,8 +337,9 @@ void ScoreView1::Draw()
 		_data->_window->draw(_cell3[i]);
 		_data->_window->draw(_cell4[i]);
 		_data->_window->draw(_cell5[i]);
-		_data->_window->draw(_cell6[i]);
 	}
+	_data->_window->draw(_cell6);
+	_data->_window->draw(_gpaText);
 	for (int i = 0; i < cur; i++)
 	{
 		_data->_window->draw(_id[i]);

@@ -40,7 +40,8 @@ private:
 	sf::RectangleShape _cell3[50];
 	sf::RectangleShape _cell4[50];
 	sf::RectangleShape _cell5[50];
-	sf::RectangleShape _cell6[50];
+	sf::RectangleShape _cell6;
+	sf::Text _gpaText;
 	sf::Text _exit;
 	bool _exitfocus;
 	bool _exitselected;
