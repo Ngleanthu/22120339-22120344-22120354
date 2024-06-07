@@ -86,9 +86,9 @@ void CourseView::Init()
 	_score.setFillColor(sf::Color::White);
 
 	_status.setCharacterSize(20);
-	_status.setFont(_data->_assets->GetFont(KANIT));
-	_status.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 290);
-	_status.setFillColor(sf::Color::Black);
+	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_status.setStyle(sf::Text::Italic);
+	_status.setFillColor(sf::Color::Red);
 
 	_coursebox.setSize(sf::Vector2f(600.0f, 300.0f));
 	_coursebox.setFillColor(sf::Color(214, 219, 223, 240));
@@ -238,6 +238,7 @@ void CourseView::Update()
 	}
 	if (_exportselected)
 	{
+		clock.restart();
 		std::ofstream f("Score\\" + _getbuffer + ".csv");
 		f << "No,StudentID,Full Name,Midterm,Final,Other" << std::endl;
 		for (int i = 0; i < cur; i++)
@@ -254,8 +255,19 @@ void CourseView::Update()
 		}
 		f.close();
 		_status.setString("Export success!");
+		_status.setPosition(340, _data->_window->getSize().y / 2 - 10);
 		_exportselected = 0;
 	}
+
+	if (clock.getElapsedTime().asSeconds() > 0.5f)
+	{
+		_status.setFillColor(sf::Color::Transparent);
+	}
+	else
+	{
+		_status.setFillColor(sf::Color::Red);
+	}
+
 	if (_scoreselected)
 	{
 		_data->_states->AddState(new ScoreView(_data));

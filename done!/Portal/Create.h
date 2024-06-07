@@ -64,6 +64,7 @@ public:
 	void Update();
 	void Draw();
 };
+
 class AddStudent : public State 
 {
 private:
@@ -94,6 +95,7 @@ public:
 	void Update();
 	void Draw();
 };
+
 class CreateSemester : public State 
 {
 private:
@@ -127,6 +129,7 @@ public:
 	void Draw();
 	
 };
+
 class AddCourse : public State 
 {
 private:
@@ -161,6 +164,7 @@ public:
 	void Draw();
 	
 };
+
 class AddStudent2 : public State
 {
 private:

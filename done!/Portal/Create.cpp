@@ -24,7 +24,7 @@ void CreateYear::Init()
 
 	_text.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_text.setString("School Year:");
-	_text.setCharacterSize(28);
+	_text.setCharacterSize(25);
 	_text.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
 	_text.setFillColor(sf::Color::Black);
 
@@ -208,8 +208,9 @@ void Create::Init()
 	_box.setOutlineThickness(1);
     _box.setOutlineColor(sf::Color(40, 116, 166, 240));
 
-	_text.setFont(_data->_assets->GetFont(LIGHT));
-	_text.setString("Class name");
+	_text.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_text.setCharacterSize(25);
+	_text.setString("Class name: ");
 	_text.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
 	_text.setFillColor(sf::Color::Black);
 
@@ -375,12 +376,15 @@ void AddStudent::Init()
 		_box[i].setSize(sf::Vector2f(300, 40));
 		_box[i].setFillColor(sf::Color::White);
 		_box[i].setOrigin(sf::Vector2f(_box[i].getGlobalBounds().width / 2, _box[i].getGlobalBounds().height / 2));
-		_box[i].setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 350 + 100 * i);
+		_box[i].setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 350 + 90 * i);
 		_box[i].setOutlineThickness(1);
         _box[i].setOutlineColor(sf::Color(40, 116, 166, 240));
-		_text[i].setFont(_data->_assets->GetFont(LIGHT));
-		_text[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 410 + 100*i);
+
+		_text[i].setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+		_text[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 410 + 90 * i);
 		_text[i].setFillColor(sf::Color::Black);
+		_text[i].setCharacterSize(25);
+
 		_showbox[i].setFont(_data->_assets->GetFont(LIGHT));
 		_showbox[i].setCharacterSize(24);
 		_showbox[i].setFillColor(sf::Color::Black);
@@ -411,7 +415,7 @@ void AddStudent::Init()
 	_submit.setCharacterSize(24);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 295);
-    _submit.setFillColor(sf::Color(40, 116, 166, 240));
+	_submit.setFillColor(sf::Color::White);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
 	_exit.setString("BACK");
@@ -831,7 +835,6 @@ void AddCourse::Init()
 	_exit.setFillColor(sf::Color::Black);
 	
 	_status.setCharacterSize(20);
-	_status.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 245);
 	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_status.setStyle(sf::Text::Italic);
 	_status.setFillColor(sf::Color::Red);
@@ -917,6 +920,8 @@ void AddCourse::Update()
 		if (check)
 		{
 			_status.setString("This course ID has been existed!");
+			_status.setOrigin(sf::Vector2f(_status.getGlobalBounds().width / 2, _status.getGlobalBounds().height / 2));
+			_status.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 245);
 		}
 		else
 		{
@@ -980,10 +985,11 @@ void AddStudent2::Init()
 	_box.setOrigin(sf::Vector2f(_box.getGlobalBounds().width / 2, _box.getGlobalBounds().height / 2));
 	_box.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
 	_box.setOutlineThickness(1);
-	_box.setOutlineColor(sf::Color::Red);
+	_box.setOutlineColor(sf::Color(40, 116, 166, 240));
 
-	_text.setFont(_data->_assets->GetFont(LIGHT));
-	_text.setString("Student ID");
+	_text.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_text.setCharacterSize(25);
+	_text.setString("Student ID: ");
 	_text.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
 	_text.setFillColor(sf::Color::Black);
 
@@ -994,27 +1000,27 @@ void AddStudent2::Init()
 	_showbox.setString("");
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color(0, 76, 153, 255));
+	_submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
-	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300);
+	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
 	_exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
-	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 350);
+	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
+	_submit.setFont(_data->_assets->GetFont(KANIT));
 	_submit.setString("SUBMIT");
 	_submit.setCharacterSize(24);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
-	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 295);
+	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 95);
 	_submit.setFillColor(sf::Color::White);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("EXIT");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("BACK");
 	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 345);
+	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 145);
 	_exit.setFillColor(sf::Color::Black);
 
 	_status.setCharacterSize(20);
