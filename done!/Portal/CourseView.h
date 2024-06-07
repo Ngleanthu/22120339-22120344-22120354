@@ -9,6 +9,7 @@ private:
 	Data* _data;
 	sf::Text _title;
 	int cur;
+	sf::RectangleShape _coursebox;
 	sf::Text _info[8];
 	sf::Text _student[100];
 	bool _studentfocus[100];
@@ -55,6 +56,7 @@ private:
 	sf::Text _info[8];
 	sf::Text _score[3];
 	sf::RectangleShape _exitbutton;
+    sf::RectangleShape _coursebox;
 	sf::Text _exit;
 	bool _exitfocus;
 	bool _exitselected;

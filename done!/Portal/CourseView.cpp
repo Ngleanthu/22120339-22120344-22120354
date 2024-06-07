@@ -83,7 +83,10 @@ void CourseView::Init()
 	_status.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 290);
 	_status.setFillColor(sf::Color::Red);
 
-	
+	_coursebox.setSize(sf::Vector2f(500,260));
+	_coursebox.setFillColor(sf::Color(214, 219, 223, 240));
+	_coursebox.setPosition(0,35);
+
 	
 	std::ifstream f("buffer.txt");
 	getline(f, _getbuffer);
@@ -253,6 +256,7 @@ void CourseView::Draw()
 {
 	_data->_window->clear(sf::Color::White);
 	_data->_window->draw(_title);
+	_data->_window->draw(_coursebox);
 	for (int i = 0; i < 8; i++)
 	{
 		_data->_window->draw(_info[i]);
@@ -297,8 +301,12 @@ void CourseView1::Init()
 
 	cur = 0;
 	_title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
-	_title.setString("INFORMATION");
+	_title.setString("COURSE INFORMATION");
 	_title.setFillColor(sf::Color::Red);
+
+	_coursebox.setSize(sf::Vector2f(500,260));
+	_coursebox.setFillColor(sf::Color(214, 219, 223, 240));
+	_coursebox.setPosition(0,35);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
 	_exitbutton.setFillColor(sf::Color(0, 76, 153, 255));
@@ -331,7 +339,7 @@ void CourseView1::Init()
 		}
 		_info[l].setFont(_data->_assets->GetFont(LIGHT));
 		_info[l].setString(get);
-		_info[l].setPosition(0, 30 + 30 * l);
+		_info[l].setPosition(0, 40 + 30 * l);
 		_info[l].setFillColor(sf::Color::Black);
 		l++;
 	}
@@ -384,6 +392,7 @@ void CourseView1::Draw()
 {
 	_data->_window->clear(sf::Color::White);
 	_data->_window->draw(_title);
+	_data->_window->draw(_coursebox);
 	for (int i = 0; i < 8; i++)
 	{
 		_data->_window->draw(_info[i]);

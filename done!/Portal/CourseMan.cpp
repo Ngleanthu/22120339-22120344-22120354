@@ -266,6 +266,11 @@ void StudentCourse::Init()
         {
             continue;
         }
+        std::string tmp1;
+        std::ifstream fin("Cmanage\\"+ get + ".txt");
+        getline(fin,tmp1,'\n');
+        getline(fin,tmp1,'\n');
+        fin.close();
 
         _coursebox[size].setSize(sf::Vector2f(400.0f, 50.0f));
         _coursebox[size].setFillColor(sf::Color(40, 116, 166, 240));
@@ -276,8 +281,8 @@ void StudentCourse::Init()
         _course[size].setFont(_data->_assets->GetFont(KANIT));
         _course[size].setFillColor(sf::Color::White);
         _course[size].setCharacterSize(25);
-        _course[size].setString("*" + get
-                                /*get.substr(get.find("(") + 1, get.find(")") - get.find("(") - 1)*/);
+        _course[size].setString(tmp1 + "-"
+                               + get.substr(get.find("(") + 1, get.find(")") - get.find("(") - 1));
         _course[size].setOrigin(sf::Vector2f(_course[size].getGlobalBounds().width / 2 ,_course[size].getGlobalBounds().height / 2));
         _course[size].setPosition(movex * 700 + 300, movey * 60 + 110);
         movey++;
