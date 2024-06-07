@@ -41,8 +41,9 @@ void DeleteCourse::Init()
 	_box.setOutlineThickness(1);
     _box.setOutlineColor(sf::Color(40, 116, 166, 240));
 
-	_text.setFont(_data->_assets->GetFont(LIGHT));
-	_text.setString("Course ID");
+	_text.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_text.setString("Course ID: ");
+	_text.setCharacterSize(25);
 	_text.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
 	_text.setFillColor(sf::Color::Black);
 
