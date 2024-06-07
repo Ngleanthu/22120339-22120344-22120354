@@ -57,13 +57,15 @@ void DeleteCourse::Init()
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
 
 	_submit.setFont(_data->_assets->GetFont(KANIT));
-	_submit.setString("Submit");
+	_submit.setString("SUBMIT");
+	_submit.setCharacterSize(24);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 95);
 	_submit.setFillColor(sf::Color::White);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
-	_exit.setString("Back");
+	_exit.setString("BACK");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 145);
 	_exit.setFillColor(sf::Color::Black);
@@ -243,26 +245,28 @@ void DeleteStudent::Init()
 	_text.setFillColor(sf::Color::Black);
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
-	_submitbutton.setFillColor(sf::Color::Red);
+	_submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
 	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
 	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
 
-	_submit.setFont(_data->_assets->GetFont(LIGHT));
-	_submit.setString("Submit");
+	_submit.setFont(_data->_assets->GetFont(KANIT));
+	_submit.setString("SUBMIT");
+	_submit.setCharacterSize(24);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
 	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 95);
-	_submit.setFillColor(sf::Color::Black);
+	_submit.setFillColor(sf::Color::White);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("BACK");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 145);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setFillColor(sf::Color::Black);
 
 	_showbox.setFont(_data->_assets->GetFont(LIGHT));
 	_showbox.setCharacterSize(24);
@@ -328,8 +332,10 @@ void DeleteStudent::Update()
 		clock.restart();
 	}
 	_showbox.setString(_getbox + ((_blink && _boxfocus) ? "|" : ""));
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
-	(_submitfocus ? _submitbutton.setFillColor(sf::Color::Yellow) : _submitbutton.setFillColor(sf::Color::Red));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+		: _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+	(_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100))
+		: _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
 	if (_exitselected)
 	{
 		_data->_states->RemoveState();

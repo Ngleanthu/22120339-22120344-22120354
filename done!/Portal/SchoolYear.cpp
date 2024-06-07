@@ -54,26 +54,28 @@ void SchoolYear::Init()
 	memset(_yearfocus, 0, 100);
 	memset(_yearselected, 0, 100);
 
-	_exitbutton.setSize(sf::Vector2f(300, 40));
+	_exitbutton.setSize(sf::Vector2f(350, 50));
     _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
 	_exit.setString("EXIT");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
 	_exit.setFillColor(sf::Color::Black);
 
-	_createbox.setSize(sf::Vector2f(300, 40));
+	_createbox.setSize(sf::Vector2f(350, 50));
     _createbox.setFillColor(sf::Color(40, 116, 166, 240));
 	_createbox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
 	_createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);
 
 	_create.setFont(_data->_assets->GetFont(KANIT));
 	_create.setCharacterSize(25);
-	_create.setString("Create new school year");
-	_create.setPosition(_data->_window->getSize().x / 2 - 120, _data->_window->getSize().y / 2 + 170);
+	_create.setString("CREATE NEW SCHOOL YEAR");
+	_create.setOrigin(sf::Vector2f(_create.getGlobalBounds().width / 2, _create.getGlobalBounds().height / 2));
+	_create.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 185);
 	_create.setFillColor(sf::Color::White);
 }
 void SchoolYear::ProcessInput()

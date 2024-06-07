@@ -69,6 +69,7 @@ void CourseMan::Init()
 
     _exit.setFont(_data->_assets->GetFont(KANIT));
     _exit.setString("BACK");
+    _exit.setCharacterSize(24);
     _exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
     _exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
     _exit.setFillColor(sf::Color::Black);
@@ -80,7 +81,7 @@ void CourseMan::Init()
 
     _create.setFont(_data->_assets->GetFont(KANIT));
     _create.setCharacterSize(25);
-    _create.setString("Create new course");
+    _create.setString("CREATE NEW COURSE");
     _create.setOrigin(sf::Vector2f(_create.getGlobalBounds().width / 2, _create.getGlobalBounds().height / 2));
     _create.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 180);
     _create.setFillColor(sf::Color::White);
@@ -92,7 +93,7 @@ void CourseMan::Init()
 
     _delete.setFont(_data->_assets->GetFont(KANIT));
     _delete.setCharacterSize(25);
-    _delete.setString("Delete course");
+    _delete.setString("DELETE COURSE");
     _delete.setPosition(_data->_window->getSize().x / 2 - 110,_data->_window->getSize().y / 2 + 120);
     _delete.setFillColor(sf::Color::White);
 
@@ -103,13 +104,13 @@ void CourseMan::Init()
 
     _update.setFont(_data->_assets->GetFont(KANIT));
     _update.setCharacterSize(25);
-    _update.setString("Update Score");
+    _update.setString("UPDATE SCORE");
     _update.setPosition(_data->_window->getSize().x / 2 - 110,
                         _data->_window->getSize().y / 2 + 70);
     _update.setFillColor(sf::Color::White);
 
     _status.setCharacterSize(20);
-    _status.setFont(_data->_assets->GetFont(LIGHT));
+    _status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
     _status.setPosition(_data->_window->getSize().x / 2 - 150,
                         _data->_window->getSize().y / 2 + 300);
     _status.setFillColor(sf::Color::Red);
@@ -259,6 +260,7 @@ void StudentCourse::Init()
     {
         getline(file, get);
     } while (get.empty());
+
     while (!file.eof())
     {
         getline(file, get);

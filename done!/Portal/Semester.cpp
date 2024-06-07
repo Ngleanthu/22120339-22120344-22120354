@@ -35,7 +35,8 @@ void Semester::Init()
 		_semester[size].setFillColor(sf::Color::White);
 		_semester[size].setCharacterSize(25);
 		_semester[size].setString(get);
-		_semester[size].setPosition(movex * 50 + 100, movey * 50 + 100);
+		_semester[size].setOrigin(sf::Vector2f(_semester[size].getGlobalBounds().width / 2, _semester[size].getGlobalBounds().height / 2));
+		_semester[size].setPosition(movex * 700 + 400, movey * 60 + 115);
 		movey++;
 		if (_semester[size].getPosition().y > 500)
 		{
@@ -56,7 +57,8 @@ void Semester::Init()
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
-	_exit.setString("Back");
+	_exit.setString("BACK");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
 	_exit.setFillColor(sf::Color::Black);

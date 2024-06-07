@@ -29,7 +29,8 @@ void CourseView::Init()
 	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
-	_exit.setString("Back");
+	_exit.setString("BACK");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
 	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
 	_exit.setFillColor(sf::Color::Black);
@@ -229,7 +230,7 @@ void CourseView::Update()
 	if (_exportselected)
 	{
 		std::ofstream f("Score\\" + _getbuffer + ".csv");
-		f << "Mo,StudentID,Full Name,Midterm,Final,Other" << std::endl;
+		f << "No,StudentID,Full Name,Midterm,Final,Other" << std::endl;
 		for (int i = 0; i < cur; i++)
 		{
 			std::string s = _student[i].getString();
