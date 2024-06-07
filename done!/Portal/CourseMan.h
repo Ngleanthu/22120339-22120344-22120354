@@ -12,6 +12,7 @@ private:
 	bool _coursefocus[100];
 	bool _courseselected[100];
 	int size;
+    sf::RectangleShape _coursebox[100];
 	sf::RectangleShape _exitbutton;
 	sf::Text _exit;
 	bool _exitfocus;
