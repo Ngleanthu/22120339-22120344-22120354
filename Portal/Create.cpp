@@ -525,8 +525,7 @@ void AddStudent::Update()
 			{
 				file << _getbox[i] << ",";
 			}
-			std::string social_id = "'" + _getbox[6];
-			file << social_id << std::endl;
+			file << _getbox[6] << std::endl;
 			file.close();
 			std::ofstream f("Account\\" + _getbox[1] + ".txt");
 			f << _getbox[1] << std::endl << "123";
