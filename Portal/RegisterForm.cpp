@@ -85,19 +85,19 @@ void RegisterForm::Init()
 	_showusername.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_showusername.setCharacterSize(24);
 	_showusername.setFillColor(sf::Color::Black);
-	_showusername.setPosition(_data->_window->getSize().x / 2 - 152, _data->_window->getSize().y / 2 - 165);
+	_showusername.setPosition(_data->_window->getSize().x / 2 - 153, _data->_window->getSize().y / 2 - 165);
 	_showusername.setString("");
 
 	_showpassword.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_showpassword.setCharacterSize(24);
 	_showpassword.setFillColor(sf::Color::Black);
-	_showpassword.setPosition(_data->_window->getSize().x / 2 - 152, _data->_window->getSize().y / 2 - 65);
+	_showpassword.setPosition(_data->_window->getSize().x / 2 - 153, _data->_window->getSize().y / 2 - 65);
 	_showpassword.setString("");
 
 	_showpassword2.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_showpassword2.setCharacterSize(24);
 	_showpassword2.setFillColor(sf::Color::Black);
-	_showpassword2.setPosition(_data->_window->getSize().x / 2 - 152, _data->_window->getSize().y / 2 + 36);
+	_showpassword2.setPosition(_data->_window->getSize().x / 2 - 153, _data->_window->getSize().y / 2 + 36);
 	_showpassword2.setString("");
 	
 

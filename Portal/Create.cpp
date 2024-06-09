@@ -477,7 +477,7 @@ void AddStudent::ProcessInput()
 						}
 						else
 						{
-							_getbox[i] += static_cast<char>(event.text.unicode);
+							 _getbox[i] += static_cast<char>(event.text.unicode);
 						}
 				}
 				_blink = 1;
@@ -525,7 +525,8 @@ void AddStudent::Update()
 			{
 				file << _getbox[i] << ",";
 			}
-			file << _getbox[6] << std::endl;
+			std::string social_id = "'" + _getbox[6];
+			file << social_id << std::endl;
 			file.close();
 			std::ofstream f("Account\\" + _getbox[1] + ".txt");
 			f << _getbox[1] << std::endl << "123";

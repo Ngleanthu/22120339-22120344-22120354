@@ -121,6 +121,9 @@ void ClassView::Init()
 		_dob[cur].setPosition(1110, cur * 50 + 55);
 		_dob[cur].setString(dob);
 
+		//long long number = std::stoll(Sid);
+
+
 		_Sid[cur].setFont(_data->_assets->GetFont(KANIT));
 		_Sid[cur].setCharacterSize(24);
 		_Sid[cur].setFillColor(sf::Color::Black);

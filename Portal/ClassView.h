@@ -2,6 +2,7 @@
 #include"State.h"
 #include"System.h"
 #include<fstream>
+#include <sstream>
 
 class ClassView : public State
 {
