@@ -12,20 +12,22 @@ ScoreView::~ScoreView()
 void ScoreView::Init()
 {
 	cur = 0;
-	_title.setFont(_data->_assets->GetFont(LIGHT));
-	_title.setString("No      Student ID          Full Name                    Midterm        Final        Other");
+	_title.setFont(_data->_assets->GetFont(KANIT));
+	_title.setString("No      Student ID          Full Name                               Midterm       Final          Other");
 	_title.setFillColor(sf::Color::Red);
+	_title.setPosition(360,0);
+	_title.setCharacterSize(24);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
-	_exitbutton.setFillColor(sf::Color::Black);
+	_exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
-	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
+	_exitbutton.setPosition(1400, 700);
 
-	_exit.setFont(_data->_assets->GetFont(LIGHT));
-	_exit.setString("Exit");
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("BACK");
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
-	_exit.setFillColor(sf::Color::Red);
+	_exit.setPosition(1400,690);
+	_exit.setFillColor(sf::Color::Black);
 
 	std::ifstream f("buffer.txt");
 	getline(f, tmp);
@@ -50,36 +52,81 @@ void ScoreView::Init()
 		{
 			continue;
 		}
-		_No[cur].setFont(_data->_assets->GetFont(LIGHT));
+
+		_cell1[cur].setSize(sf::Vector2f(50.0f, 40.0f));
+		_cell1[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell1[cur].setOutlineColor(sf::Color::Black);
+		_cell1[cur].setOutlineThickness(1);
+		_cell1[cur].setPosition(360, cur * 50 + 40);
+
+		_cell2[cur].setSize(sf::Vector2f(150.0f, 40.0f));
+		_cell2[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell2[cur].setOutlineColor(sf::Color::Black);
+		_cell2[cur].setOutlineThickness(1);
+		_cell2[cur].setPosition(420, cur * 50 + 40);
+
+		_cell3[cur].setSize(sf::Vector2f(300.0f, 40.0f));
+		_cell3[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell3[cur].setOutlineColor(sf::Color::Black);
+		_cell3[cur].setOutlineThickness(1);
+		_cell3[cur].setPosition(580, cur * 50 + 40);
+
+		_cell4[cur].setSize(sf::Vector2f(110.0f, 40.0f));
+		_cell4[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell4[cur].setOutlineColor(sf::Color::Black);
+		_cell4[cur].setOutlineThickness(1);
+		_cell4[cur].setPosition(890, cur * 50 + 40);
+
+		_cell5[cur].setSize(sf::Vector2f(110.0f, 40.0f));
+		_cell5[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell5[cur].setOutlineColor(sf::Color::Black);
+		_cell5[cur].setOutlineThickness(1);
+		_cell5[cur].setPosition(1010, cur * 50 + 40);
+
+		_cell6[cur].setSize(sf::Vector2f(110.0f, 40.0f));
+		_cell6[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell6[cur].setOutlineColor(sf::Color::Black);
+		_cell6[cur].setOutlineThickness(1);
+		_cell6[cur].setPosition(1130, cur * 50 + 40);
+
+		_No[cur].setFont(_data->_assets->GetFont(KANIT));
 		_No[cur].setFillColor(sf::Color::Black);
-		_No[cur].setPosition(0, cur * 30 + 30);
+		_No[cur].setCharacterSize(24);
+		_No[cur].setPosition(375, cur * 50 + 40);
 		_No[cur].setString(No);
 
-		_id[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_id[cur].setFont(_data->_assets->GetFont(KANIT));
 		_id[cur].setFillColor(sf::Color::Black);
-		_id[cur].setPosition(90, cur * 30 + 30);
+		_id[cur].setCharacterSize(24);
+		_id[cur].setPosition(435, cur * 50 + 40);
 		_id[cur].setString(id);
 
-		_name[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_name[cur].setFont(_data->_assets->GetFont(KANIT));
 		_name[cur].setFillColor(sf::Color::Black);
-		_name[cur].setPosition(310, cur * 30 + 30);
+		_name[cur].setPosition(595,cur * 50 + 40);
 		_name[cur].setString(name);
-		_name->setCharacterSize(25);
+		_name[cur].setCharacterSize(24);
 
-		_mterm[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_mterm[cur].setFont(_data->_assets->GetFont(KANIT));
 		_mterm[cur].setFillColor(sf::Color::Black);
-		_mterm[cur].setPosition(650, cur * 30 + 30);
+		_mterm[cur].setPosition(945, cur * 50 + 40);
+		_mterm[cur].setOrigin(sf::Vector2f(_mterm[cur].getGlobalBounds().width / 2 ,_mterm[cur].getGlobalBounds().height / 2));
 		_mterm[cur].setString(mterm);
+		_mterm[cur].setCharacterSize(24);
 
-		_final[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_final[cur].setFont(_data->_assets->GetFont(KANIT));
 		_final[cur].setFillColor(sf::Color::Black);
-		_final[cur].setPosition(800, cur * 30 + 30);
+		_final[cur].setPosition(1065, cur * 50 + 40);
+		_final[cur].setOrigin(sf::Vector2f(_final[cur].getGlobalBounds().width / 2 ,_final[cur].getGlobalBounds().height / 2));
 		_final[cur].setString(final);
+		_final[cur].setCharacterSize(24);
 
-		_other[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_other[cur].setFont(_data->_assets->GetFont(KANIT));
 		_other[cur].setFillColor(sf::Color::Black);
-		_other[cur].setPosition(950, cur * 30 + 30);
+		_other[cur].setOrigin(sf::Vector2f(_other[cur].getGlobalBounds().width / 2 ,_other[cur].getGlobalBounds().height / 2));
+		_other[cur].setPosition(1185,cur * 50 + 40);
 		_other[cur].setString(other);
+		_other[cur].setCharacterSize(24);
 		cur++;
 	}
 
@@ -107,7 +154,7 @@ void ScoreView::ProcessInput()
 }
 void ScoreView::Update()
 {
-	(_exitfocus ? _exitbutton.setFillColor(sf::Color::Yellow) : _exitbutton.setFillColor(sf::Color::Black));
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100)) : _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
 	if (_exitselected)
 	{
 		_data->_states->RemoveState();
@@ -119,6 +166,15 @@ void ScoreView::Draw()
 {
 	_data->_window->clear(sf::Color::White);
 	_data->_window->draw(_title);
+	for (int i = 0; i < cur; ++i)
+	{
+		_data->_window->draw(_cell1[i]);
+		_data->_window->draw(_cell2[i]);
+		_data->_window->draw(_cell3[i]);
+		_data->_window->draw(_cell4[i]);
+		_data->_window->draw(_cell5[i]);
+		_data->_window->draw(_cell6[i]);
+	}
 	for (int i = 0; i < cur; i++)
 	{
 		_data->_window->draw(_No[i]);
