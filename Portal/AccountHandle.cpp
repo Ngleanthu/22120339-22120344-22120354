@@ -50,9 +50,7 @@ bool ChangePassword(std::string username , std::string password , std::string ne
 	getline(file, pass);
 	file.clear();
 	file.close();
-	std::cout << newpass << " ";
-	std::cout << password << " ";
-	std::cout << pass << " ";
+
 	if (pass != password)
 	{
 		return 0;
