@@ -21,7 +21,13 @@ private:
 	sf::Text _create;
 	bool _createfocus;
 	bool _createselected;
-	
+	sf::RectangleShape _cell1[100];
+	sf::RectangleShape _cell2[100];
+	sf::RectangleShape _cell3[100];
+	sf::RectangleShape _cell4[100];
+	sf::RectangleShape _cell5[100];
+	sf::RectangleShape _cell6[100];
+	sf::RectangleShape _cell7[100];
 	
 public:
 	ClassView(Data* data);

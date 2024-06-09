@@ -13,7 +13,7 @@ void ScoreView::Init()
 {
 	cur = 0;
 	_title.setFont(_data->_assets->GetFont(KANIT));
-	_title.setString("No      Student ID          Full Name                               Midterm       Final          Other");
+	_title.setString("No      Student ID       Full Name                                Midterm      Final         Other");
 	_title.setFillColor(sf::Color::Red);
 	_title.setPosition(360,0);
 	_title.setCharacterSize(24);
@@ -21,12 +21,13 @@ void ScoreView::Init()
 	_exitbutton.setSize(sf::Vector2f(150, 40));
 	_exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
-	_exitbutton.setPosition(1400, 700);
+	_exitbutton.setPosition(1500, 850);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
 	_exit.setString("BACK");
+	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(1400,690);
+	_exit.setPosition(1500, 840);
 	_exit.setFillColor(sf::Color::Black);
 
 	std::ifstream f("buffer.txt");

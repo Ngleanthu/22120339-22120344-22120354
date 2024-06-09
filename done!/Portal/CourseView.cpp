@@ -323,12 +323,16 @@ void CourseView1::Init()
 
 	cur = 0;
 	_title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
-	_title.setString("COURSE INFORMATION");
-	_title.setFillColor(sf::Color::Red);
+	_title.setString("COURSE INFORMATION:");
+	_title.setStyle(sf::Text::Bold);
+	_title.setPosition(sf::Vector2f(20.0f, 15.0f));
+	_title.setFillColor(sf::Color::Black);
 
-	_coursebox.setSize(sf::Vector2f(500,260));
+	_coursebox.setSize(sf::Vector2f(600.0f, 300.0f));
 	_coursebox.setFillColor(sf::Color(214, 219, 223, 240));
-	_coursebox.setPosition(0,35);
+	_coursebox.setPosition(sf::Vector2f(20.0f, 70.0f));
+	_coursebox.setOutlineThickness(1);
+	_coursebox.setOutlineColor(sf::Color::Black);
 
 	_exitbutton.setSize(sf::Vector2f(150, 40));
 	_exitbutton.setFillColor(sf::Color(0, 76, 153, 255));
@@ -359,9 +363,9 @@ void CourseView1::Init()
 		{
 			continue;
 		}
-		_info[l].setFont(_data->_assets->GetFont(LIGHT));
+		_info[l].setFont(_data->_assets->GetFont(KANIT));
 		_info[l].setString(get);
-		_info[l].setPosition(0, 40 + 30 * l);
+		_info[l].setPosition(30, 75 + 35 * l);
 		_info[l].setFillColor(sf::Color::Black);
 		l++;
 	}

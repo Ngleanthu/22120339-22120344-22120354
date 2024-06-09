@@ -250,10 +250,11 @@ void StudentCourse::Init()
     std::ifstream f("Studentbuf.txt");
     getline(f, get);
     f.close();
-    _title.setFont(_data->_assets->GetFont(LIGHT));
-    _title.setString("MY COURSES");
-    _title.setPosition(0, 0);
-    _title.setCharacterSize(40);
+    _title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+    _title.setString("MY COURSES:");
+    _title.setStyle(sf::Text::Bold);
+    _title.setPosition(100, 30);
+    _title.setCharacterSize(30);
     _title.setFillColor(sf::Color::Black);
     std::ifstream file("Student\\" + get + ".txt");
     _tmp      = get;
@@ -288,7 +289,7 @@ void StudentCourse::Init()
         _course[size].setString(tmp1 + "-"
                                + get.substr(get.find("(") + 1, get.find(")") - get.find("(") - 1));
         _course[size].setOrigin(sf::Vector2f(_course[size].getGlobalBounds().width / 2 ,_course[size].getGlobalBounds().height / 2));
-        _course[size].setPosition(movex * 700 + 300, movey * 60 + 110);
+        _course[size].setPosition(movex * 500 + 300, movey * 60 + 110);
         movey++;
         if (_course[size].getPosition().y > 500)
         {

@@ -12,10 +12,11 @@ ClassMan::~ClassMan()
 }
 void ClassMan::Init()
 {
-	_title.setFont(_data->_assets->GetFont(LIGHT));
-	_title.setString("Class view");
-	_title.setPosition(0 , 0);
-	_title.setCharacterSize(40);
+	_title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_title.setString("CLASS VIEW:");
+	_title.setStyle(sf::Text::Bold);
+	_title.setPosition(100 , 30);
+	_title.setCharacterSize(30);
 	_title.setFillColor(sf::Color::Black);
 	std::ifstream f("buffer.txt");
 	std::string get;
@@ -32,10 +33,10 @@ void ClassMan::Init()
 		{
 			continue;
 		}
-		_classbox[size].setSize(sf::Vector2f(150.0f, 50.0f));
+		_classbox[size].setSize(sf::Vector2f(200.0f, 60.0f));
         _classbox[size].setFillColor(sf::Color(40, 116, 166, 240));
         _classbox[size].setOrigin(sf::Vector2f(_classbox[size].getGlobalBounds().width / 2 ,_classbox[size].getGlobalBounds().height / 2));
-        _classbox[size].setPosition(movex * 700 + 200, movey * 60 + 120);
+        _classbox[size].setPosition(movex * 250 + 200, movey * 70 + 120);
 
 		_getclass[size] = get;
 		_class[size].setFont(_data->_assets->GetFont(KANIT));
@@ -43,7 +44,7 @@ void ClassMan::Init()
 		_class[size].setCharacterSize(25);
 		_class[size].setString(get);
 		_class[size].setOrigin(sf::Vector2f(_class[size].getGlobalBounds().width / 2 ,_class[size].getGlobalBounds().height / 2));
-		_class[size].setPosition(movex * 700 + 200, movey * 60 + 110);
+		_class[size].setPosition(movex * 250 + 200, movey * 70 + 110);
 		movey++;
 		if (_class[size].getPosition().y > 500)
 		{

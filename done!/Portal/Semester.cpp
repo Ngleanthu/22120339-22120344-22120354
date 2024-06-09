@@ -29,7 +29,7 @@ void Semester::Init()
 		_semesterbox[size].setSize(sf::Vector2f(700.0f, 50.0f));
         _semesterbox[size].setFillColor(sf::Color(40, 116, 166, 240));
         _semesterbox[size].setOrigin(sf::Vector2f(_semesterbox[size].getGlobalBounds().width / 2 ,_semesterbox[size].getGlobalBounds().height / 2));
-        _semesterbox[size].setPosition(movex * 700 + 400, movey * 60 + 120);
+        _semesterbox[size].setPosition(movex * 720 + 400, movey * 60 + 120);
 
 		_getsemester[size] = get;
 		_semester[size].setFont(_data->_assets->GetFont(KANIT));
@@ -37,7 +37,7 @@ void Semester::Init()
 		_semester[size].setCharacterSize(25);
 		_semester[size].setString(get);
 		_semester[size].setOrigin(sf::Vector2f(_semester[size].getGlobalBounds().width / 2, _semester[size].getGlobalBounds().height / 2));
-		_semester[size].setPosition(movex * 700 + 400, movey * 60 + 110);
+		_semester[size].setPosition(movex * 720 + 400, movey * 60 + 110);
 		movey++;
 		if (_semester[size].getPosition().y > 500)
 		{
@@ -52,28 +52,28 @@ void Semester::Init()
 	memset(_semesterfocus, 0, 100);
 	memset(_semesterselected, 0, 100);
 
-	_exitbutton.setSize(sf::Vector2f(300, 40));
+	_exitbutton.setSize(sf::Vector2f(350, 50));
     _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
-	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
+	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 370);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
-	_exit.setString("BACK");
+	_exit.setString("EXIT");
 	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 230);
+	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 360);
 	_exit.setFillColor(sf::Color::Black);
 
-	_createbox.setSize(sf::Vector2f(300, 40));
+	_createbox.setSize(sf::Vector2f(350, 50));
     _createbox.setFillColor(sf::Color(40, 116, 166, 240));
 	_createbox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
-	_createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);
+	_createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 310);
 
 	_create.setFont(_data->_assets->GetFont(KANIT));
 	_create.setCharacterSize(25);
 	_create.setString("CREATE NEW SEMESTER");
 	_create.setOrigin(sf::Vector2f(_create.getGlobalBounds().width / 2, _create.getGlobalBounds().height / 2));
-	_create.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 180);
+	_create.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300);
 	_create.setFillColor(sf::Color::White);
 }
 void Semester::ProcessInput()

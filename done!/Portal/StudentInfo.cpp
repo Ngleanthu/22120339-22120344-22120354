@@ -115,6 +115,12 @@ void StudentInfo::Init()
 	_info[5].setPosition(sf::Vector2f(_data->_window->getSize().x / 2 - 165.0f, 130.0f + 90.0f * 5));
 	_info[5].setFillColor(sf::Color::Black);
 
+	while (!file.eof())
+	{
+		getline(file, get);
+	}
+	file.close();
+
 	_info[0].setString(_info[0].getString());
 	_info[1].setString(_info[1].getString());
 	_info[2].setString(_info[2].getString());

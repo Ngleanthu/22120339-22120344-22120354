@@ -388,16 +388,16 @@ void AddStudent::Init()
 		_showbox[i].setFont(_data->_assets->GetFont(LIGHT));
 		_showbox[i].setCharacterSize(24);
 		_showbox[i].setFillColor(sf::Color::Black);
-		_showbox[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 365 + 100*i);
+		_showbox[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 365 + 90 * i);
 		_showbox[i].setString("");
 	}
-	_text[0].setString("No");
-	_text[1].setString("Student ID");
-	_text[2].setString("First name");
-	_text[3].setString("Last name");
-	_text[4].setString("Gender");
-	_text[5].setString("Date of birth");
-	_text[6].setString("Social ID");
+	_text[0].setString("No:");
+	_text[1].setString("Student ID:");
+	_text[2].setString("First name:");
+	_text[3].setString("Last name:");
+	_text[4].setString("Gender (M/F):");
+	_text[5].setString("Date of birth:");
+	_text[6].setString("Social ID:");
 	
 
 	_submitbutton.setSize(sf::Vector2f(150, 40));
@@ -534,7 +534,7 @@ void AddStudent::Update()
 			std::ofstream f2("StudentScore\\" + _getbox[1] + ".txt");
 			std::fstream f3("Student\\Students.txt", std::ios::app);
 			f3 << std::endl << _getbox[1];
-			for (int i = 1; i < 6; i++)
+			for (int i = 0; i < 6; i++)
 			{
 				f1 << _getbox[i] << ",";
 			}
@@ -1110,7 +1110,7 @@ void AddStudent2::Update()
 			file << _getbox << std::endl;
 			_data->_states->RemoveState();
 			_data->_states->AddState(new CourseView(_data) , 1);
-			std::fstream t("Student\\" + _getbox + ".txt", std::ios::app);
+			std::ofstream t("Student\\" + _getbox + ".txt", std::ios::app);
 			t << std::endl << get ;
 			
 		}

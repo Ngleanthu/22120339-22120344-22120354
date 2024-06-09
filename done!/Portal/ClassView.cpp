@@ -15,8 +15,11 @@ void ClassView::Init()
 	memset(_idfocus, 0, 100);
 	memset(_idselected, 0, 100);
 	cur = 0; 
-	_title.setFont(_data->_assets->GetFont(KANIT));
-	_title.setString("No      StudentID          FirstName             Lastname             Gender               Date of Birth                SocialID");
+	_title.setFont(_data->_assets->GetFont(CHIVOMONO_REGULAR));
+	_title.setStyle(sf::Text::Bold);
+	_title.setPosition(95, 10);
+	_title.setCharacterSize(25);
+	_title.setString("No  Student ID   First Name		 Last Name	Gender	   Date of Birth Social ID");
 	_title.setFillColor(sf::Color::Red);
 	std::string _getbuffer1;
 	std::string _getbuffer2;
@@ -39,42 +42,93 @@ void ClassView::Init()
 		{
 			continue;
 		}
-		_No[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_cell1[cur].setSize(sf::Vector2f(50.0f, 40.0f));
+		_cell1[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell1[cur].setOutlineColor(sf::Color::Black);
+		_cell1[cur].setOutlineThickness(1);
+		_cell1[cur].setPosition(95, cur * 50 + 50);
+
+		_cell2[cur].setSize(sf::Vector2f(200.0f, 40.0f));
+		_cell2[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell2[cur].setOutlineColor(sf::Color::Black);
+		_cell2[cur].setOutlineThickness(1);
+		_cell2[cur].setPosition(155, cur * 50 + 50);
+
+		_cell3[cur].setSize(sf::Vector2f(300.0f, 40.0f));
+		_cell3[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell3[cur].setOutlineColor(sf::Color::Black);
+		_cell3[cur].setOutlineThickness(1);
+		_cell3[cur].setPosition(365, cur * 50 + 50);
+
+		_cell4[cur].setSize(sf::Vector2f(200.0f, 40.0f));
+		_cell4[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell4[cur].setOutlineColor(sf::Color::Black);
+		_cell4[cur].setOutlineThickness(1);
+		_cell4[cur].setPosition(675, cur * 50 + 50);
+
+		_cell5[cur].setSize(sf::Vector2f(200.0f, 40.0f));
+		_cell5[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell5[cur].setOutlineColor(sf::Color::Black);
+		_cell5[cur].setOutlineThickness(1);
+		_cell5[cur].setPosition(885, cur * 50 + 50);
+
+		_cell6[cur].setSize(sf::Vector2f(200.0f, 40.0f));
+		_cell6[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell6[cur].setOutlineColor(sf::Color::Black);
+		_cell6[cur].setOutlineThickness(1);
+		_cell6[cur].setPosition(1095, cur * 50 + 50);		
+		
+		_cell7[cur].setSize(sf::Vector2f(200.0f, 40.0f));
+		_cell7[cur].setFillColor(sf::Color(214, 219, 223, 240));
+		_cell7[cur].setOutlineColor(sf::Color::Black);
+		_cell7[cur].setOutlineThickness(1);
+		_cell7[cur].setPosition(1305, cur * 50 + 50);
+
+		_No[cur].setFont(_data->_assets->GetFont(KANIT));
+		_No[cur].setCharacterSize(24);
 		_No[cur].setFillColor(sf::Color::Black);
-		_No[cur].setPosition(0, cur * 50 + 30);
+		_No[cur].setPosition(110, cur * 50 + 55);
 		_No[cur].setString(No);
 
-		_id[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_id[cur].setFont(_data->_assets->GetFont(KANIT));
+		_id[cur].setCharacterSize(24);
 		_id[cur].setFillColor(sf::Color::Black);
-		_id[cur].setPosition(90, cur * 50 + 30);
+		_id[cur].setPosition(170, cur * 50 + 55);
 		_id[cur].setString(id);
 
-		_Fname[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_Fname[cur].setFont(_data->_assets->GetFont(KANIT));
+		_Fname[cur].setCharacterSize(24);
 		_Fname[cur].setFillColor(sf::Color::Black);
-		_Fname[cur].setPosition(310, cur * 50 + 30);
+		_Fname[cur].setPosition(380, cur * 50 + 55);
 		_Fname[cur].setString(Fname);
 		_Fname[cur].setCharacterSize(25);
 
-		_Lname[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_Lname[cur].setFont(_data->_assets->GetFont(KANIT));
+		_Lname[cur].setCharacterSize(24);
 		_Lname[cur].setFillColor(sf::Color::Black);
-		_Lname[cur].setPosition(550, cur * 50 + 30);
+		_Lname[cur].setPosition(690, cur * 50 + 55);
 		_Lname[cur].setString(Lname);
 
-		_gender[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_gender[cur].setFont(_data->_assets->GetFont(KANIT));
+		_gender[cur].setCharacterSize(24);
 		_gender[cur].setFillColor(sf::Color::Black);
-		_gender[cur].setPosition(800, cur * 50 + 30);
+		_gender[cur].setPosition(900, cur * 50 + 55);
 		_gender[cur].setString(gender);
 
-		_dob[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_dob[cur].setFont(_data->_assets->GetFont(KANIT));
+		_dob[cur].setCharacterSize(24);
 		_dob[cur].setFillColor(sf::Color::Black);
-		_dob[cur].setPosition(1010, cur * 50 + 30);
+		_dob[cur].setPosition(1110, cur * 50 + 55);
 		_dob[cur].setString(dob);
 
-		_Sid[cur].setFont(_data->_assets->GetFont(LIGHT));
+		_Sid[cur].setFont(_data->_assets->GetFont(KANIT));
+		_Sid[cur].setCharacterSize(24);
 		_Sid[cur].setFillColor(sf::Color::Black);
-		_Sid[cur].setPosition(1280, cur * 50 + 30);
+		_Sid[cur].setPosition(1320, cur * 50 + 55);
 		_Sid[cur].setString(Sid);
+
 		cur++;
+
 		std::ifstream check("Account\\" + id + ".txt");
 		if (check)
 		{
@@ -183,6 +237,16 @@ void ClassView::Draw()
 {
 	_data->_window->clear(sf::Color::White);
 	_data->_window->draw(_title);
+	for (int i = 0; i < cur; ++i)
+	{
+		_data->_window->draw(_cell1[i]);
+		_data->_window->draw(_cell2[i]);
+		_data->_window->draw(_cell3[i]);
+		_data->_window->draw(_cell4[i]);
+		_data->_window->draw(_cell5[i]);
+		_data->_window->draw(_cell6[i]);
+		_data->_window->draw(_cell7[i]);
+	}
 	for (int i = 0; i < cur ; i++)
 	{
 		_data->_window->draw(_No[i]);
