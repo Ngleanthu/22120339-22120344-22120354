@@ -165,6 +165,39 @@ public:
 	
 };
 
+class UpdateCourse : public State
+{
+private:
+	Data* _data;
+	sf::Time time;
+	sf::Clock clock;
+	sf::RectangleShape _box[7];
+	sf::Text _text[7];
+	sf::Text _showbox[7];
+	std::string _getbox[7];
+	sf::RectangleShape _submitbutton;
+	sf::RectangleShape _exitbutton;
+	sf::Text _submit;
+	sf::Text _exit;
+	bool _boxfocus[7];
+	bool _blink;
+	bool _exitfocus;
+	bool _submitfocus;
+	bool _exitselected;
+	bool _submitselected;
+	std::string get;
+	std::fstream file;
+	sf::Text _status;
+
+public:
+	UpdateCourse(Data* data);
+	~UpdateCourse();
+	void Init();
+	void ProcessInput();
+	void Update();
+	void Draw();
+};
+
 class AddStudent2 : public State
 {
 private:

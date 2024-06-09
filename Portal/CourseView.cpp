@@ -6,7 +6,7 @@
 #include"ScoreView.h"
 
 CourseView::CourseView(Data* data) : _data(data) , _exitfocus(0), _exitselected(0), _createfocus(0), _createselected(0), _deletefocus(0),
-_deleteselected(0) , _exportfocus(0) , _exportselected(0), _scorefocus(0), _scoreselected(0)
+_deleteselected(0) , _exportfocus(0) , _exportselected(0), _scorefocus(0), _scoreselected(0), _updatefocus(0), _updateselected(0)
 {
 
 }
@@ -29,13 +29,13 @@ void CourseView::Init()
 	_exitbutton.setSize(sf::Vector2f(300, 40));
     _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
-	_exitbutton.setPosition(170, _data->_window->getSize().y / 2 + 150);
+	_exitbutton.setPosition(170, _data->_window->getSize().y / 2 + 200);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
 	_exit.setString("BACK");
 	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(170, _data->_window->getSize().y / 2 + 140);
+	_exit.setPosition(170, _data->_window->getSize().y / 2 + 190);
 	_exit.setFillColor(sf::Color::Black);
 
 	_createbox.setSize(sf::Vector2f(300, 40));
@@ -85,6 +85,18 @@ void CourseView::Init()
 	_score.setOrigin(sf::Vector2f(_score.getGlobalBounds().width / 2, _score.getGlobalBounds().height / 2));
 	_score.setPosition(170, _data->_window->getSize().y / 2 - 60);
 	_score.setFillColor(sf::Color::White);
+
+	_updatebox.setSize(sf::Vector2f(300, 40));
+	_updatebox.setFillColor(sf::Color(40, 116, 166, 240));
+	_updatebox.setOrigin(sf::Vector2f(_updatebox.getGlobalBounds().width / 2, _updatebox.getGlobalBounds().height / 2));
+	_updatebox.setPosition(170, _data->_window->getSize().y / 2 + 150);
+
+	_update.setFont(_data->_assets->GetFont(KANIT));
+	_update.setCharacterSize(25);
+	_update.setString("UPDATE");
+	_update.setOrigin(sf::Vector2f(_update.getGlobalBounds().width / 2, _update.getGlobalBounds().height / 2));
+	_update.setPosition(170, _data->_window->getSize().y / 2 + 140);
+	_update.setFillColor(sf::Color::White);
 
 	_status.setCharacterSize(20);
 	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
@@ -172,6 +184,7 @@ void CourseView::ProcessInput()
 			_deletefocus = (_deletebox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_exportfocus = (_exportbox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			_scorefocus = (_scorebox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+			_updatefocus = (_updatebox.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
 			for (int i = 0; i < cur; i++)
 			{
 				_studentfocus[i] = (_student[i].getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
@@ -184,6 +197,7 @@ void CourseView::ProcessInput()
 			_deleteselected = (_deletefocus ? 1 : 0);
 			_exportselected = (_exportfocus ? 1 : 0);
 			_scoreselected = (_scorefocus ? 1 : 0);
+			_updateselected = (_updatefocus ? 1 : 0);
 			for (int i = 0; i < cur; i++)
 			{
 				_studentselected[i] = (_studentfocus[i] ? 1 : 0);
@@ -203,6 +217,8 @@ void CourseView::Update()
                       : _exportbox.setFillColor(sf::Color(40, 116, 166, 240)));
 	(_scorefocus ? _scorebox.setFillColor(sf::Color(40, 116, 166, 100))
 		: _scorebox.setFillColor(sf::Color(40, 116, 166, 240)));;
+	(_updatefocus ? _updatebox.setFillColor(sf::Color(40, 116, 166, 100))
+		: _updatebox.setFillColor(sf::Color(40, 116, 166, 240)));;
 	for (int i = 0; i < cur; i++)
 	{
 		(_studentfocus[i] ? _student[i].setFillColor(sf::Color::Red) : _student[i].setFillColor(sf::Color::Black));
@@ -275,6 +291,12 @@ void CourseView::Update()
 		_data->_states->AddState(new ScoreView(_data));
 		_scoreselected = 0;
 	}
+
+	if (_updateselected)
+	{
+		_data->_states->AddState(new UpdateCourse(_data));
+		_updateselected = 0;
+	}
 }
 void CourseView::Draw()
 {
@@ -297,6 +319,8 @@ void CourseView::Draw()
 	_data->_window->draw(_delete);
 	_data->_window->draw(_exportbox);
 	_data->_window->draw(_export);
+	_data->_window->draw(_updatebox);
+	_data->_window->draw(_update);
 	_data->_window->draw(_status);
 	_data->_window->draw(_scorebox);
 	_data->_window->draw(_score);

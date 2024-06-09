@@ -35,6 +35,10 @@ private:
 	sf::Text _score;
 	bool _scorefocus;
 	bool _scoreselected;
+	sf::RectangleShape _updatebox;
+	sf::Text _update;
+	bool _updatefocus;
+	bool _updateselected;
 	std::string tmp;
 	sf::Text _status;
 	std::string _getbuffer;

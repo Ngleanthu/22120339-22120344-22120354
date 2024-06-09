@@ -960,7 +960,186 @@ void AddCourse::Draw()
 
 
 
+UpdateCourse::UpdateCourse(Data* data) : _data(data), _blink(1), _exitfocus(0),
+_submitfocus(0), _exitselected(0), _submitselected(0)
+{
+	_boxfocus[7] = { 0 };
+}
+UpdateCourse::~UpdateCourse()
+{
 
+}
+void UpdateCourse::Init()
+{
+
+	std::ifstream f("buffer.txt");
+	getline(f, get);
+	file.open("Cmanage\\" + get + ".txt");
+
+	time = sf::Time::Zero;
+	for (int i = 0; i < 7; i++)
+	{
+		_boxfocus[i] = 0;
+		_box[i].setSize(sf::Vector2f(300, 40));
+		_box[i].setFillColor(sf::Color::White);
+		_box[i].setOrigin(sf::Vector2f(_box[i].getGlobalBounds().width / 2, _box[i].getGlobalBounds().height / 2));
+		_box[i].setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 350 + 75 * i);
+		_box[i].setOutlineThickness(1);
+		_box[i].setOutlineColor(sf::Color(40, 116, 166, 240));
+
+		_text[i].setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+		_text[i].setCharacterSize(25);
+		_text[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 400 + 75 * i);
+		_text[i].setFillColor(sf::Color::Black);
+
+		_showbox[i].setFont(_data->_assets->GetFont(LIGHT));
+		_showbox[i].setCharacterSize(24);
+		_showbox[i].setFillColor(sf::Color::Black);
+		_showbox[i].setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 365 + 75 * i);
+		_showbox[i].setString("");
+	}
+	_text[0].setString("Course name:");
+	_text[1].setString("Class name:");
+	_text[2].setString("Teacher name:");
+	_text[3].setString("Number of credits:");
+	_text[4].setString("Maximum students:");
+	_text[5].setString("Day of the week:");
+	_text[6].setString("Sessions:");
+
+
+	_submitbutton.setSize(sf::Vector2f(150, 40));
+	_submitbutton.setFillColor(sf::Color(40, 116, 166, 240));
+	_submitbutton.setOrigin(sf::Vector2f(_submitbutton.getGlobalBounds().width / 2, _submitbutton.getGlobalBounds().height / 2));
+	_submitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300);
+
+	_exitbutton.setSize(sf::Vector2f(150, 40));
+	_exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
+	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
+	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 350);
+
+	_submit.setFont(_data->_assets->GetFont(KANIT));
+	_submit.setString("SUBMIT");
+	_submit.setCharacterSize(24);
+	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
+	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 295);
+	_submit.setFillColor(sf::Color::White);
+
+	_exit.setFont(_data->_assets->GetFont(KANIT));
+	_exit.setString("BACK");
+	_exit.setCharacterSize(24);
+	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
+	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 345);
+	_exit.setFillColor(sf::Color::Black);
+
+	_status.setCharacterSize(20);
+	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_status.setStyle(sf::Text::Italic);
+	_status.setFillColor(sf::Color::Red);
+}
+void UpdateCourse::ProcessInput()
+{
+	sf::Event event;
+	while (_data->_window->pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+		{
+			_data->_window->close();
+		}
+		if (event.type == sf::Event::MouseMoved)
+		{
+			_exitfocus = (_exitbutton.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+			_submitfocus = (_submitbutton.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+		}
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			for (int i = 0; i < 7; i++)
+			{
+				_boxfocus[i] = (_box[i].getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x, sf::Mouse::getPosition(*_data->_window).y)) ? 1 : 0);
+			}
+			_exitselected = (_exitfocus ? 1 : 0);
+			_submitselected = (_submitfocus ? 1 : 0);
+			_blink = 1;
+		}
+
+		if (event.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		{
+			if (event.text.unicode < 128)
+			{
+				for (int i = 0; i < 7; i++)
+				{
+					if (_boxfocus[i])
+						if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
+						{
+							if (!_getbox[i].empty())
+							{
+								_getbox[i].pop_back();
+							}
+						}
+						else
+						{
+							_getbox[i] += static_cast<char>(event.text.unicode);
+						}
+				}
+				_blink = 1;
+			}
+		}
+
+	}
+}
+void UpdateCourse::Update()
+{
+	time = clock.getElapsedTime();
+	if (time.asSeconds() >= 0.5)
+	{
+		_blink = !_blink;
+		clock.restart();
+	}
+	for (int i = 0; i < 7; i++)
+	{
+		_showbox[i].setString(_getbox[i] + ((_blink && _boxfocus[i]) ? "|" : ""));
+	}
+
+	(_exitfocus ? _exitbutton.setFillColor(sf::Color(214, 219, 223, 100))
+		: _exitbutton.setFillColor(sf::Color(214, 219, 223, 240)));
+	(_submitfocus ? _submitbutton.setFillColor(sf::Color(40, 116, 166, 100))
+		: _submitbutton.setFillColor(sf::Color(40, 116, 166, 240)));
+
+	if (_exitselected)
+	{
+		_data->_states->RemoveState();
+		_exitselected = 0;
+	}
+
+	if (_submitselected || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
+		file.clear();
+		file << get << std::endl;
+		for (int i = 0; i < 7; i++)
+		{
+			file << _getbox[i] << std::endl;
+		}
+		file.close();
+		Sleep(1000);
+		_data->_states->RemoveState();
+		_submitselected = 0;
+	}
+}
+void UpdateCourse::Draw()
+{
+	_data->_window->clear(sf::Color::White);
+	for (int i = 0; i < 7; i++)
+	{
+		_data->_window->draw(_box[i]);
+		_data->_window->draw(_text[i]);
+		_data->_window->draw(_showbox[i]);
+	}
+	_data->_window->draw(_submitbutton);
+	_data->_window->draw(_exitbutton);
+	_data->_window->draw(_submit);
+	_data->_window->draw(_exit);
+	_data->_window->draw(_status);
+	_data->_window->display();
+}
 
 
 
