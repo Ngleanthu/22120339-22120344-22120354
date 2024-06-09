@@ -308,10 +308,11 @@ void ScoreView1::Init()
 
 			std::ifstream fin("Cmanage\\" + id + ".txt");
 			std::string getcredits;
-			fin >> get;
-			fin >> get;
-			fin >> get;
-			fin >> get;
+			int cnt = 4;
+			while (cnt--)
+			{
+				getline(fin, get);
+			}
 			fin >> getcredits;
 			fin.close();
 			int cre = stoi(getcredits);
