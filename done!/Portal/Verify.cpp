@@ -39,19 +39,15 @@ void Verify::Init()
 	_submit.setFont(_data->_assets->GetFont(KANIT));
 	_submit.setString("SUBMIT");
 	_submit.setCharacterSize(24);
-	sf::FloatRect textRect = _submit.getLocalBounds();
-	_submit.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 	_submit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
-	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 100);
+	_submit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 90);
 	_submit.setFillColor(sf::Color::White);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
 	_exit.setString("EXIT");
 	_exit.setCharacterSize(24);
-	textRect = _exit.getLocalBounds();
-	_exit.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-	//_exit.setOrigin(sf::Vector2f(_submit.getGlobalBounds().width / 2, _submit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
+	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
+	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 140);
 	_exit.setFillColor(sf::Color::White);
 
 	_showbox.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));

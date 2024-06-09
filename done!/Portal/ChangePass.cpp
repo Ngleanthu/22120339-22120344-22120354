@@ -108,9 +108,6 @@ void ChangePass::Init()
 	_status.setCharacterSize(24);
 	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
 	_status.setStyle(sf::Text::Italic);
-	sf::FloatRect textRect = _status.getLocalBounds();
-	_status.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-	_status.setPosition(_data->_window->getSize().x / 2 - 285, _data->_window->getSize().y / 2 + 270);
 	_status.setFillColor(sf::Color::Red);
 }
 void ChangePass::ProcessInput()
@@ -218,9 +215,9 @@ void ChangePass::Update()
 	if (_submitselected || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 	{
 
-		if (_getpassword.empty())
+		if (_getpassword.empty() || _getoldpass.empty() || _getpassword2.empty())
 		{
-			_status.setString("Expected password can't be blanked");
+			_status.setString("Please fill in all the blank!");
 		}
 		else if (_getpassword != _getpassword2)
 		{
@@ -232,10 +229,14 @@ void ChangePass::Update()
 		}
 		else
 		{
-			_status.setString("Incorrect current password");
+			_status.setString("Incorrect current password!");
 		}
-		_submitselected = 0;
 
+		sf::FloatRect textRect = _status.getLocalBounds();
+		_status.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+		_status.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 320);
+
+		_submitselected = 0;
 	}
 }
 void ChangePass::Draw()

@@ -55,7 +55,7 @@ void SplashScreen::Init()
 
 	_registerbutton.setFont(_data->_assets->GetFont(KANIT));
 	_registerbutton.setCharacterSize(30);
-	_registerbutton.setString("Create student account\n        (for staff only)");
+	_registerbutton.setString("CREATE NEW ACCOUNT\n       (for staff only)");
 	_registerbutton.setStyle(sf::Text::Bold);
 	_registerbutton.setFillColor(sf::Color::White);
 	textRect = _registerbutton.getLocalBounds();

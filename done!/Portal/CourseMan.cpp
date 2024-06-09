@@ -113,8 +113,6 @@ void CourseMan::Init()
 
     _status.setCharacterSize(20);
     _status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
-    _status.setPosition(_data->_window->getSize().x / 2 - 150,
-                        _data->_window->getSize().y / 2 + 300);
     _status.setFillColor(sf::Color::Red);
 }
 void CourseMan::ProcessInput()
@@ -217,6 +215,8 @@ void CourseMan::Update()
     {
         update(_tmp);
         _status.setString("Update Success!");
+        _status.setOrigin(sf::Vector2f(_status.getGlobalBounds().width / 2, _status.getGlobalBounds().height / 2));
+        _status.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 150);
         _updateselected = 0;
     }
 }

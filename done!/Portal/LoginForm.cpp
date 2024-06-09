@@ -200,7 +200,7 @@ void LoginForm::Update()
 		}
 		else
 		{
-			_status.setString("Username haven't existed or wrong password!");
+			_status.setString("Username hasn't existed or wrong password!");
 			sf::FloatRect textRect = _status.getLocalBounds();
 			_status.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 			_status.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 280);
