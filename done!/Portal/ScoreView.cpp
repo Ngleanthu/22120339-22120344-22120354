@@ -239,6 +239,7 @@ void ScoreView1::Init()
 	std::ifstream file("StudentScore\\" + tmp + ".txt");
 	std::string get;
 	std::string id, mterm, final, other;
+	int sum_credits = 0;
 	while (!file.eof())
 	{
 		getline(file, id, ',');
@@ -304,12 +305,22 @@ void ScoreView1::Init()
 		{
 			float mark = (std::stof(mterm) + std::stof(final) * 2 + std::stof(other)) / 4;
 			mark = round(mark * 10) / 10;
-			
+
+			std::ifstream fin("Cmanage\\" + id + ".txt");
+			std::string getcredits;
+			fin >> get;
+			fin >> get;
+			fin >> get;
+			fin >> get;
+			fin >> getcredits;
+			fin.close();
+			int cre = stoi(getcredits);
 			_finalmark[cur].setFont(_data->_assets->GetFont(KANIT));
 			_finalmark[cur].setFillColor(sf::Color::Black);
 			_finalmark[cur].setPosition(1030, cur * 50 + 150);
 			_finalmark[cur].setString(std::to_string(mark).substr(0 , 3));
-			gpa += mark;
+			gpa += (mark * cre);
+			sum_credits += cre;
 		}
 			
 		else
@@ -339,10 +350,13 @@ void ScoreView1::Init()
 
 	if (ok)
 	{
+		gpa /= sum_credits;
 		_gpa.setFont(_data->_assets->GetFont(KANIT));
 		_gpa.setFillColor(sf::Color::Black);
 		_gpa.setPosition(1010, 60);
-		_gpa.setString(std::to_string(gpa).substr(0, 3));
+		std::string gpa_str = std::to_string(gpa);
+		gpa_str = gpa_str.substr(0, gpa_str.find(".") + 3);
+		_gpa.setString(gpa_str);
 	}
 	else
 	{

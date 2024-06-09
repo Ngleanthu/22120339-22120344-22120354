@@ -1,6 +1,7 @@
 #pragma once
 #include"State.h"
 #include"System.h"
+#include <string>
 #include<fstream>
 
 class ScoreView : public State
