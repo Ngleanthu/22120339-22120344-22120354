@@ -1,3 +1,1 @@
-General Physics2(PH251)
-Introduction to CS2(CS162)
-Introduction to laws(BAA00004)
+Introduction to CS(CS162)

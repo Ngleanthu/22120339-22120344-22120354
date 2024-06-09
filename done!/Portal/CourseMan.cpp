@@ -5,6 +5,7 @@
 #include "CourseView.h"
 #include "Create.h"
 #include "Delete.h"
+
 CourseMan::CourseMan(Data *data)
     : _data(data),
       _exitfocus(0),
@@ -20,7 +21,7 @@ void CourseMan::Init()
 {
     std::string get;
     std::ifstream f("buffer.txt");
-    getline(f, get, '/');
+    getline(f, get);
     f.close();
     _title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
     _title.setString("COURSE VIEW:");
@@ -30,6 +31,7 @@ void CourseMan::Init()
     _title.setFillColor(sf::Color::Black);
     std::ifstream file("Cmanage\\" + get + ".txt");
     _tmp      = get;
+    
     int movex = 0, movey = 0;
     while (!file.eof())
     {
