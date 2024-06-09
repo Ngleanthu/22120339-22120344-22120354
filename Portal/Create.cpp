@@ -1113,7 +1113,7 @@ void UpdateCourse::Update()
 	if (_submitselected || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 	{
 		file.clear();
-		file << get.substr(get.find("(") + 1 , get.find(")") - 1) << std::endl;
+		file << get << std::endl;
 		for (int i = 0; i < 7; i++)
 		{
 			file << _getbox[i] << std::endl;
