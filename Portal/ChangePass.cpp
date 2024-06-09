@@ -14,7 +14,7 @@ void ChangePass::Init()
 
 	time = sf::Time::Zero;
 
-	std::ifstream file("buffer.txt");
+	std::ifstream file("username.txt");
 	getline(file, username);
 	file.clear();
 	file.close();
