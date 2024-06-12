@@ -19,74 +19,82 @@ void CourseView::Init()
 	memset(_studentselected, 0, 100);
 
 	cur = 0;
-	_title.setFont(_data->_assets->GetFont(LIGHT));
-	_title.setString("Info                                                                                Students");
-	_title.setFillColor(sf::Color::Red);
+	_title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_title.setString("INFORMATION:						STUDENTS:");
+	_title.setStyle(sf::Text::Bold);
+	_title.setPosition(sf::Vector2f(20.0f, 15.0f));
+	_title.setFillColor(sf::Color::Black);
 	
 	_exitbutton.setSize(sf::Vector2f(300, 40));
     _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
-	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
+	_exitbutton.setPosition(170, _data->_window->getSize().y / 2 + 150);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
 	_exit.setString("BACK");
 	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
+	_exit.setPosition(170, _data->_window->getSize().y / 2 + 140);
 	_exit.setFillColor(sf::Color::Black);
 
 	_createbox.setSize(sf::Vector2f(300, 40));
     _createbox.setFillColor(sf::Color(40, 116, 166, 240));
 	_createbox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
-	_createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);
+	_createbox.setPosition(170, _data->_window->getSize().y / 2 + 50);
 
 	_create.setFont(_data->_assets->GetFont(KANIT));
 	_create.setCharacterSize(25);
-	_create.setString("Add new student");
-	_create.setPosition(_data->_window->getSize().x / 2 - 110, _data->_window->getSize().y / 2 + 170);
+	_create.setString("ADD NEW STUDENT");
+	_create.setOrigin(sf::Vector2f(_create.getGlobalBounds().width / 2, _create.getGlobalBounds().height / 2));
+	_create.setPosition(170, _data->_window->getSize().y / 2 + 40);
 	_create.setFillColor(sf::Color::White);
 
 	_deletebox.setSize(sf::Vector2f(300, 40));
     _deletebox.setFillColor(sf::Color(40, 116, 166, 240));
-	_deletebox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
-	_deletebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 140);
+	_deletebox.setOrigin(sf::Vector2f(_deletebox.getGlobalBounds().width / 2, _deletebox.getGlobalBounds().height / 2));
+	_deletebox.setPosition(170, _data->_window->getSize().y / 2 + 100);
 
 	_delete.setFont(_data->_assets->GetFont(KANIT));
 	_delete.setCharacterSize(25);
-	_delete.setString("Delete student");
-	_delete.setPosition(_data->_window->getSize().x / 2 - 110, _data->_window->getSize().y / 2 + 120);
+	_delete.setString("DELETE STUDENT");
+	_delete.setOrigin(sf::Vector2f(_delete.getGlobalBounds().width / 2, _delete.getGlobalBounds().height / 2));
+	_delete.setPosition(170, _data->_window->getSize().y / 2 + 90);
 	_delete.setFillColor(sf::Color::White);
 
 	_exportbox.setSize(sf::Vector2f(300, 40));
     _exportbox.setFillColor(sf::Color(40, 116, 166, 240));
-	_exportbox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
-	_exportbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 90);
+	_exportbox.setOrigin(sf::Vector2f(_exportbox.getGlobalBounds().width / 2, _exportbox.getGlobalBounds().height / 2));
+	_exportbox.setPosition(170, _data->_window->getSize().y / 2);
 
 	_export.setFont(_data->_assets->GetFont(KANIT));
 	_export.setCharacterSize(25);
-	_export.setString("Export to CSVfile");
-	_export.setPosition(_data->_window->getSize().x / 2 - 110, _data->_window->getSize().y / 2 + 70);
+	_export.setString("EXPORT TO CSVFILE");
+	_export.setOrigin(sf::Vector2f(_export.getGlobalBounds().width / 2, _export.getGlobalBounds().height / 2));
+	_export.setPosition(170, _data->_window->getSize().y / 2 - 10);
 	_export.setFillColor(sf::Color::White);
 
-	_scorebox.setSize(sf::Vector2f(200, 40));
-	_scorebox.setFillColor(sf::Color::Cyan);
-	_scorebox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
-	_scorebox.setPosition(150, _data->_window->getSize().y / 2 - 70);
+	_scorebox.setSize(sf::Vector2f(300, 40));
+	_scorebox.setFillColor(sf::Color(40, 116, 166, 240));
+	_scorebox.setOrigin(sf::Vector2f(_scorebox.getGlobalBounds().width / 2, _scorebox.getGlobalBounds().height / 2));
+	_scorebox.setPosition(170, _data->_window->getSize().y / 2 - 50);
 
 	_score.setFont(_data->_assets->GetFont(KANIT));
 	_score.setCharacterSize(25);
-	_score.setString("View Score");
-	_score.setPosition(50, _data->_window->getSize().y / 2 - 90);
-	_score.setFillColor(sf::Color::Black);
+	_score.setString("VIEW SCORE");
+	_score.setOrigin(sf::Vector2f(_score.getGlobalBounds().width / 2, _score.getGlobalBounds().height / 2));
+	_score.setPosition(170, _data->_window->getSize().y / 2 - 60);
+	_score.setFillColor(sf::Color::White);
 
 	_status.setCharacterSize(20);
-	_status.setFont(_data->_assets->GetFont(LIGHT));
+	_status.setFont(_data->_assets->GetFont(KANIT));
 	_status.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 290);
-	_status.setFillColor(sf::Color::Red);
+	_status.setFillColor(sf::Color::Black);
 
-	_coursebox.setSize(sf::Vector2f(500,260));
+	_coursebox.setSize(sf::Vector2f(600.0f, 300.0f));
 	_coursebox.setFillColor(sf::Color(214, 219, 223, 240));
-	_coursebox.setPosition(0,35);
+	_coursebox.setPosition(sf::Vector2f(20.0f, 55.0f));
+	_coursebox.setOutlineThickness(1);
+	_coursebox.setOutlineColor(sf::Color::Black);
 
 	
 	std::ifstream f("buffer.txt");
@@ -105,9 +113,9 @@ void CourseView::Init()
 		{
 			continue;
 		}
-		_info[l].setFont(_data->_assets->GetFont(LIGHT));
+		_info[l].setFont(_data->_assets->GetFont(KANIT));
 		_info[l].setString(get);
-		_info[l].setPosition(0, 30 + 30 * l);
+		_info[l].setPosition(sf::Vector2f(25.0f, 60.0f + 35.0f * l));
 		_info[l].setFillColor(sf::Color::Black);
 		l++;
 	}
@@ -119,7 +127,7 @@ void CourseView::Init()
 	_info[5].setString("Maximum students : " + _info[5].getString());
 	_info[6].setString("Day of the week : " + _info[6].getString());
 	_info[7].setString("Sessions : " + _info[7].getString());
-	int movex = 0, movey = 0; 
+	int move_x = 0, move_y = 0; 
 	while (!file1.eof())
 	{
 		getline(file1, get);
@@ -133,13 +141,13 @@ void CourseView::Init()
 		{
 			_student[cur].setFont(_data->_assets->GetFont(LIGHT));
 			_student[cur].setString(get);
-			_student[cur].setPosition(700 + 50 * movex, 30 + 30 * movey);
+			_student[cur].setPosition(700 + 100 * move_x, 50 + 35 * move_y);
 			_student[cur].setFillColor(sf::Color::Black);
-			movey++;
-			if (_student[cur].getPosition().y > 500)
+			move_y++;
+			if (_student[cur].getPosition().y > 850)
 			{
-				movey = 0;
-				movex++;
+				move_y = 0;
+				move_x++;
 			}
 			cur++;
 		}
@@ -192,10 +200,11 @@ void CourseView::Update()
                       : _deletebox.setFillColor(sf::Color(40, 116, 166, 240)));
     (_exportfocus ? _exportbox.setFillColor(sf::Color(40, 116, 166, 100))
                       : _exportbox.setFillColor(sf::Color(40, 116, 166, 240)));
-	(_scorefocus ? _scorebox.setFillColor(sf::Color::Yellow) : _scorebox.setFillColor(sf::Color::Cyan));
+	(_scorefocus ? _scorebox.setFillColor(sf::Color(40, 116, 166, 100))
+		: _scorebox.setFillColor(sf::Color(40, 116, 166, 240)));;
 	for (int i = 0; i < cur; i++)
 	{
-		(_studentfocus[i] ? _student[i].setFillColor(sf::Color::Blue) : _student[i].setFillColor(sf::Color::Red));
+		(_studentfocus[i] ? _student[i].setFillColor(sf::Color::Red) : _student[i].setFillColor(sf::Color::Black));
 	}
 	for (int i = 0; i < cur; i++)
 	{

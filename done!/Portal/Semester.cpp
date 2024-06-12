@@ -9,10 +9,11 @@ Semester::Semester(Data* data) : _data(data), size(0), _exitfocus(0), _exitselec
 
 void Semester::Init()
 {
-	_title.setFont(_data->_assets->GetFont(LIGHT));
-	_title.setString("Semester");
-	_title.setPosition(0, 0);
-	_title.setCharacterSize(40);
+	_title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_title.setString("SEMESTER:");
+	_title.setStyle(sf::Text::Bold);
+	_title.setPosition(50, 40);
+	_title.setCharacterSize(30);
 	_title.setFillColor(sf::Color::Black);
 	n = 0;
 	std::ifstream file("CManage\\Semester.txt");
@@ -36,7 +37,7 @@ void Semester::Init()
 		_semester[size].setCharacterSize(25);
 		_semester[size].setString(get);
 		_semester[size].setOrigin(sf::Vector2f(_semester[size].getGlobalBounds().width / 2, _semester[size].getGlobalBounds().height / 2));
-		_semester[size].setPosition(movex * 700 + 400, movey * 60 + 115);
+		_semester[size].setPosition(movex * 700 + 400, movey * 60 + 110);
 		movey++;
 		if (_semester[size].getPosition().y > 500)
 		{
@@ -54,16 +55,16 @@ void Semester::Init()
 	_exitbutton.setSize(sf::Vector2f(300, 40));
     _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
 	_exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2, _exitbutton.getGlobalBounds().height / 2));
-	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
+	_exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
 
 	_exit.setFont(_data->_assets->GetFont(KANIT));
 	_exit.setString("BACK");
 	_exit.setCharacterSize(24);
 	_exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
+	_exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 230);
 	_exit.setFillColor(sf::Color::Black);
 
-	_createbox.setSize(sf::Vector2f(300, 50));
+	_createbox.setSize(sf::Vector2f(300, 40));
     _createbox.setFillColor(sf::Color(40, 116, 166, 240));
 	_createbox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2, _createbox.getGlobalBounds().height / 2));
 	_createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);

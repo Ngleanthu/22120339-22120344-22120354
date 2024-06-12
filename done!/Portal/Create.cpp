@@ -591,7 +591,7 @@ void CreateSemester::Init()
         _box[i].setOutlineColor(sf::Color(40, 116, 166, 240));
 
 		_text[i].setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
-		_text[i].setCharacterSize(28);
+		_text[i].setCharacterSize(25);
 		_text[i].setPosition(_data->_window->getSize().x / 2 - 200, _data->_window->getSize().y / 2 - 410 + 120 * i);
 		_text[i].setFillColor(sf::Color::Black);
 

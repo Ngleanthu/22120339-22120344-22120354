@@ -22,10 +22,11 @@ void CourseMan::Init()
     std::ifstream f("buffer.txt");
     getline(f, get, '/');
     f.close();
-    _title.setFont(_data->_assets->GetFont(LIGHT));
-    _title.setString("Course view");
-    _title.setPosition(0, 0);
-    _title.setCharacterSize(40);
+    _title.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+    _title.setString("COURSE VIEW:");
+    _title.setStyle(sf::Text::Bold);
+    _title.setPosition(100, 40);
+    _title.setCharacterSize(30);
     _title.setFillColor(sf::Color::Black);
     std::ifstream file("Cmanage\\" + get + ".txt");
     _tmp      = get;
@@ -65,48 +66,49 @@ void CourseMan::Init()
     _exitbutton.setSize(sf::Vector2f(300, 40));
     _exitbutton.setFillColor(sf::Color(214, 219, 223, 240));
     _exitbutton.setOrigin(sf::Vector2f(_exitbutton.getGlobalBounds().width / 2,_exitbutton.getGlobalBounds().height / 2));
-    _exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
+    _exitbutton.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 350);
 
     _exit.setFont(_data->_assets->GetFont(KANIT));
     _exit.setString("BACK");
-    _exit.setCharacterSize(24);
+    _exit.setCharacterSize(25);
     _exit.setOrigin(sf::Vector2f(_exit.getGlobalBounds().width / 2, _exit.getGlobalBounds().height / 2));
-    _exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 240);
+    _exit.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 340);
     _exit.setFillColor(sf::Color::Black);
 
     _createbox.setSize(sf::Vector2f(300, 40));
     _createbox.setFillColor(sf::Color(40, 116, 166, 240));
     _createbox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2,_createbox.getGlobalBounds().height / 2));
-    _createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);
+    _createbox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 300);
 
     _create.setFont(_data->_assets->GetFont(KANIT));
     _create.setCharacterSize(25);
     _create.setString("CREATE NEW COURSE");
     _create.setOrigin(sf::Vector2f(_create.getGlobalBounds().width / 2, _create.getGlobalBounds().height / 2));
-    _create.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 180);
+    _create.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 290);
     _create.setFillColor(sf::Color::White);
 
     _deletebox.setSize(sf::Vector2f(300, 40));
     _deletebox.setFillColor(sf::Color(40, 116, 166, 240));
     _deletebox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2,_createbox.getGlobalBounds().height / 2));
-    _deletebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 140);
+    _deletebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 250);
 
     _delete.setFont(_data->_assets->GetFont(KANIT));
     _delete.setCharacterSize(25);
     _delete.setString("DELETE COURSE");
-    _delete.setPosition(_data->_window->getSize().x / 2 - 110,_data->_window->getSize().y / 2 + 120);
+    _delete.setOrigin(sf::Vector2f(_delete.getGlobalBounds().width / 2, _delete.getGlobalBounds().height / 2));
+    _delete.setPosition(_data->_window->getSize().x / 2,_data->_window->getSize().y / 2 + 240);
     _delete.setFillColor(sf::Color::White);
 
     _updatebox.setSize(sf::Vector2f(300, 40));
     _updatebox.setFillColor(sf::Color(40, 116, 166, 240));
     _updatebox.setOrigin(sf::Vector2f(_createbox.getGlobalBounds().width / 2,_createbox.getGlobalBounds().height / 2));
-    _updatebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 90);
+    _updatebox.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 200);
 
     _update.setFont(_data->_assets->GetFont(KANIT));
     _update.setCharacterSize(25);
     _update.setString("UPDATE SCORE");
-    _update.setPosition(_data->_window->getSize().x / 2 - 110,
-                        _data->_window->getSize().y / 2 + 70);
+    _update.setOrigin(sf::Vector2f(_update.getGlobalBounds().width / 2, _update.getGlobalBounds().height / 2));
+    _update.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 190);
     _update.setFillColor(sf::Color::White);
 
     _status.setCharacterSize(20);
@@ -128,7 +130,7 @@ void CourseMan::ProcessInput()
         {
             _exitfocus   = (_exitbutton.getGlobalBounds().contains(
                               sf::Vector2f(sf::Mouse::getPosition(*_data->_window).x,
-                                             sf::Mouse::getPosition(*_data->_window).y))
+                                           sf::Mouse::getPosition(*_data->_window).y))
                                 ? 1
                                 : 0);
             _createfocus = (_createbox.getGlobalBounds().contains(
