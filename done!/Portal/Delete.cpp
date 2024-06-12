@@ -78,8 +78,8 @@ void DeleteCourse::Init()
 	_showbox.setString("");
 
 	_status.setCharacterSize(20);
-	_status.setFont(_data->_assets->GetFont(LIGHT));
-	_status.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 + 245);
+	_status.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_status.setStyle(sf::Text::Italic);
 	_status.setFillColor(sf::Color::Red);
 }
 void DeleteCourse::ProcessInput()
@@ -169,6 +169,8 @@ void DeleteCourse::Update()
 		if (ok)
 		{
 			_status.setString("Not found!");
+			_status.setOrigin(sf::Vector2f(_status.getGlobalBounds().width / 2, _status.getGlobalBounds().height / 2));
+			_status.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 + 50);
 		}
 		else
 		{
@@ -238,10 +240,11 @@ void DeleteStudent::Init()
 	_box.setOrigin(sf::Vector2f(_box.getGlobalBounds().width / 2, _box.getGlobalBounds().height / 2));
 	_box.setPosition(_data->_window->getSize().x / 2, _data->_window->getSize().y / 2 - 100);
 	_box.setOutlineThickness(1);
-	_box.setOutlineColor(sf::Color::Red);
+	_box.setOutlineColor(sf::Color(40, 116, 166, 240));
 
-	_text.setFont(_data->_assets->GetFont(LIGHT));
-	_text.setString("Course ID");
+	_text.setFont(_data->_assets->GetFont(CHIVOMONO_LIGHT));
+	_text.setString("Student ID: ");
+	_text.setCharacterSize(25);
 	_text.setPosition(_data->_window->getSize().x / 2 - 150, _data->_window->getSize().y / 2 - 160);
 	_text.setFillColor(sf::Color::Black);
 

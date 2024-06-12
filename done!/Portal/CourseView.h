@@ -7,6 +7,7 @@ class CourseView : public State
 {
 private:
 	Data* _data;
+	sf::Clock clock;
 	sf::Text _title;
 	int cur;
 	sf::RectangleShape _coursebox;
