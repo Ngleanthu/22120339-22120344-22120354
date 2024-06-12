@@ -458,8 +458,12 @@ FodyWeavers.xsd
 drawio-desktop.xml
 *.drawio.bkp
 
+*.DS_Store
+.DS_Store
+
 
 session.txt
 **/[Bb]uffer.txt
 **/[Uu]sername.txt
 **/[Ss]tudentbuf.txt
+.DS_Store
