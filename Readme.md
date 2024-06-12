@@ -1,8 +1,5 @@
-﻿*it do be kinda fun, chạy đồ án + ôn thi lmao*
-
-# CS162 Project - HCMUS Portal
-
-## Time left: 6 + 2 weeks!
+# CSC10002-23CTT5 Project Bonus
+# Members Group: 22120339 - 22120344 - 22120354
 
 ## Notes cho các thành viên nhóm:
 
@@ -13,8 +10,7 @@
   - [`functions.cpp`](./src/functions.cpp) là file chứa các hàm lớn, có liên quan đến flow của app.
   - [`main.cpp`](./src/main.cpp) là file chứa hàm `main()`.
    - [`global.h`](./src/global.h) là file header chứa các include file header ngoài và khai báo các hàm.
-   - [`struct_definitions`](./src/struct_definitions/) là các file header chứa các `Struct` của chương trình.
-   - [`functions`](./src/functions/) là các file chứa các hàm mà mỗi thành viên sẽ viết.
+   - Folder này sẽ chứa toàn bộ các file của dự án của từng thành viên.
 ### Quy tắc code dự án
 
 - Mỗi chức năng cần code ra 1 file riêng, bỏ vào một folder riêng, hạn chế code thẳng lên file `main.cpp`.
