@@ -459,6 +459,7 @@ drawio-desktop.xml
 *.drawio.bkp
 
 *.DS_Store
+.DS_Store
 
 
 session.txt
