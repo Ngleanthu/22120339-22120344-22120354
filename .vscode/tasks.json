@@ -1,0 +1,35 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ build project",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "${relativeFileDirname}/src/main.cpp",
+                "${relativeFileDirname}/src/functions/ChangePassword/*.cpp",
+                "${relativeFileDirname}/src/functions/FileIO/*.cpp",
+                "${relativeFileDirname}/src/functions/Login/*.cpp",
+                "${relativeFileDirname}/src/functions/Logout/*.cpp",
+                "${relativeFileDirname}/src/functions/Misc/*.cpp",
+                "${relativeFileDirname}/src/functions/Profile/*.cpp",
+                "${relativeFileDirname}/src/functions/Session/*.cpp",
+                "${relativeFileDirname}/src/functions/Menu/*.cpp",
+                "-o",
+                "${relativeFileDirname}/test-portal.out"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        }
+    ],
+    "version": "2.0.0"
+}

@@ -457,3 +457,9 @@ FodyWeavers.xsd
 ## ----------------------------------------------
 drawio-desktop.xml
 *.drawio.bkp
+
+
+session.txt
+**/[Bb]uffer.txt
+**/[Uu]sername.txt
+**/[Ss]tudentbuf.txt
